@@ -1,0 +1,8 @@
+{
+	"bot_token" : "bot token if using a bot account",
+	"client_id" : "client id if using a bot account and you want people to be able to invite it to their server",
+	"youtube_api_key": "create one here https://console.developers.google.com",
+	"imgflip_username": "https://imgflip.com/ username",
+	"imgflip_password": "https://imgflip.com/ password",
+	"brewerydb_api_key": "go here and click sign up http://www.brewerydb.com/developers"
+}

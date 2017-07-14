@@ -1,0 +1,10 @@
+{
+	"debug": true,
+	"commandPrefix": "!",
+	"elizaEnabled": true,
+	"defaultEmbedColor": 5592405,
+	"pruneInterval": 10,
+	"pruneMax": 100,
+	"serverName": "insert your server name",
+	"welcomeChannel": "insert channel id of channel where you want welcome to be"
+}
