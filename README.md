@@ -7,34 +7,29 @@ Invite the bot to your server [here.](https://discordapp.com/oauth2/authorize?cl
 
 
 # Features:
-- !brew *query* => returns a summary of a specific beer or brewery
 
-- !topic => passive-aggressively remind your users of the channel topic!
+- !brew *query* => returns a summary of a specific beer or brewery
 
 - !roll 1d20 => roll for initiative! Or something else, using whatever combo of dice.
 
 - !unshorten *shortlink* => unshorten a shortened link, so you can see if it's shady or not.
+
 - !lmgtfy *query* => googles something for an idiot!
+
 - !say *text* => echos text
 
-- !prune *optional number* => prunes a number of messages from the channel.
-
-- MUSIC!
-- - !play most audio sources
-- - !skip songs
-- - !queue and !dequeue songs
-- - !pause !resume and adjust the !volume
-
-- !date_fact
-- !year_fact
-- !math_fact
-- !chucknorris
 - !cat_fact
+
 - !dog_fact
+
 - !bacon gifs!
+
 - !smifffact => facts about Will Smith!
+
 - !gitgud *optional @mention* => tell someone to get gud!
+
 - ask the magic !8ball stuff!
+
 - !choose *optional number of items, comma separated* => ask the bot to decide things for you!
 
 - !wiki *query* => returns the summary of the first search result on Wikipedia
@@ -43,8 +38,18 @@ Invite the bot to your server [here.](https://discordapp.com/oauth2/authorize?cl
 
 - !xkcd *optional comic number*
 
-- !alias => create custom shorthand commands in channel!
+- !topic => passive-aggressively remind your users of the channel topic!
 
+Commands requiring permissions
+- !prune *optional number* => prunes a number of messages from the channel.
+
+MUSIC!
+- !play most audio sources
+- !skip songs
+- !queue and !dequeue songs
+- !pause !resume and adjust the !volume
+
+- !alias => create custom shorthand commands in channel!
 - @botname => responds when @mentioned
 
 And more! Try !help to get a full list of available commands
@@ -73,7 +78,7 @@ The examples directory contains example files for the configs, as well as some e
 Before first run you will need to create an `auth.json` file. A bot token is required. The other credentials are not required for the bot to run, but highly recommended as commands that depend on them will malfunction. See `auth.json.example`.
 
 To start the bot just run
-`node discord_bot.js`.
+`node greybot.js`.
 
 
 # Updates
@@ -88,4 +93,4 @@ Check out our the [issues area](https://github.com/naterchrdsn/GReYBot/issues)
 [![GitHub issues](https://img.shields.io/github/issues/naterchrdsn/GReYBot.svg?style=flat-square)](https://github.com/naterchrdsn/GReYBot/issues)
 
 # Help
-If you need help join us on [discord.](https://discord.gg/A8a2yeP)
+If you need help join us on [discord](https://discord.gg/A8a2yeP).
