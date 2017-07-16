@@ -90,7 +90,7 @@ issues with this, you can try deleting your node_modules folder and then running
 # ToDo:
 Check out our the [issues area](https://github.com/naterchrdsn/GReYBot/issues)
 
-[![GitHub issues](https://img.shields.io/github/issues/naterchrdsn/GReYBot.svg?style=flat-square)](https://github.com/naterchrdsn/GReYBot/issues)
+[![Stories in Ready](https://badge.waffle.io/naterchrdsn/GReYBot.png?label=ready&title=Ready)](https://waffle.io/naterchrdsn/GReYBot?utm_source=badge) [![GitHub issues](https://img.shields.io/github/issues/naterchrdsn/GReYBot.svg?style=flat-square)](https://github.com/naterchrdsn/GReYBot/issues)
 
 # Help
 If you need help join us on [discord](https://discord.gg/A8a2yeP).
