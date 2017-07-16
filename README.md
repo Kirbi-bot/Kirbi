@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/naterchrdsn/GReYBot.png?label=ready&title=Ready)](https://waffle.io/naterchrdsn/GReYBot?utm_source=badge)
 # GReYBot
 A chat bot for the GReY Discord Server based on [Chalda's DiscordBot](https://github.com/chalda/DiscordBot) and [martindale's Snarl Bot](https://github.com/martindale/snarl), using [discord.js](https://github.com/hydrabolt/discord.js/)
 
