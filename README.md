@@ -5,8 +5,9 @@ A chat bot for the GReY Discord Server based on [Chalda's DiscordBot](https://gi
 
 Invite the bot to your server [here](https://discordapp.com/oauth2/authorize?client_id=283636170741514250&scope=bot&permissions=66186303).
 
-
 # Features:
+
+- @botname => responds when @mentioned
 
 - !brew *query* => returns a summary of a specific beer or brewery
 
@@ -49,15 +50,11 @@ MUSIC!
 - !queue and !dequeue songs
 - !pause !resume and adjust the !volume
 
-- !alias => create custom shorthand commands in channel!
-- @botname => responds when @mentioned
-
 And more! Try !help to get a full list of available commands
-
 
 # Installation
 
-Written on Node.JS.
+Written in Node.JS.
 
 1. Clone the repo
 2. Run ```npm install``` in the repo directory
@@ -71,8 +68,7 @@ Please note that you must have a working C compiler and Python in your path for
 * [Python 2.7](https://www.python.org/downloads/)
 
 ## Customization
-The examples directory contains example files for the configs, as well as some example commands, rss feeds, and more!
-
+The examples directory contains example files for the configs, as well as some example commands, rss feeds, and more! These files need to be renamed, without the .example extension, and placed in the `/config/` folder.
 
 # Running
 Before first run you will need to create an `auth.json` file. A bot token is required. The other credentials are not required for the bot to run, but highly recommended as commands that depend on them will malfunction. See `auth.json.example`.
@@ -80,14 +76,12 @@ Before first run you will need to create an `auth.json` file. A bot token is req
 To start the bot just run
 `node greybot.js`.
 
-
 # Updates
 If you update the bot, please run `npm update` before starting it again. If you have
 issues with this, you can try deleting your node_modules folder and then running
 `npm install` again. Please see [Installation](#Installation).
 
-
-# ToDo:
+# To Do:
 Check out our our [status page](https://waffle.io/naterchrdsn/GReYBot).
 
 [![Issues Open](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/naterchrdsn/GReYBot) [![Issues Reviewed](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/reviewed.svg?style=flat-square&label=issues%20reviewed&colorB=00ff00)](https://waffle.io/naterchrdsn/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=00aaff)](http://waffle.io/naterchrdsn/GReYBot)
