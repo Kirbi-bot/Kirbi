@@ -95,4 +95,4 @@ Check out our our [status page](https://waffle.io/naterchrdsn/GReYBot).
 # Help
 If you need help join us on [discord](https://discord.gg/A8a2yeP).
 
-[![Discord](https://img.shields.io/discord/294483428651302924.svg)](https://discord.gg/A8a2yeP)
+[![Discord](https://img.shields.io/discord/294483428651302924.svg?style=flat-square)](https://discord.gg/A8a2yeP)
