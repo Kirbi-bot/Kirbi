@@ -1,9 +1,9 @@
 # GReYBot
 A chat bot for the GReY Discord Server based on [Chalda's DiscordBot](https://github.com/chalda/DiscordBot) and [martindale's Snarl Bot](https://github.com/martindale/snarl), using [discord.js](https://github.com/hydrabolt/discord.js/)
 
-[![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg?style=flat-square)](https://raw.githubusercontent.com/naterchrdsn/GReYBot/master/LICENSE.md)
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg?style=flat-square)](https://raw.githubusercontent.com/naterchrdsn/GReYBot/master/LICENSE.md) [![Issues Open](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/naterchrdsn/GReYBot) [![Issues Reviewed](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/reviewed.svg?style=flat-square&label=issues%20reviewed&colorB=00ff00)](https://waffle.io/naterchrdsn/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=00aaff)](http://waffle.io/naterchrdsn/GReYBot)
 
-Invite the bot to your server [here.](https://discordapp.com/oauth2/authorize?client_id=283636170741514250&scope=bot&permissions=66186303)
+Invite the bot to your server [here](https://discordapp.com/oauth2/authorize?client_id=283636170741514250&scope=bot&permissions=66186303).
 
 
 # Features:
@@ -88,9 +88,11 @@ issues with this, you can try deleting your node_modules folder and then running
 
 
 # ToDo:
-Check out our the [issues area](https://github.com/naterchrdsn/GReYBot/issues)
+Check out our our [status page](https://waffle.io/naterchrdsn/GReYBot).
 
-[![Stories in Ready](https://badge.waffle.io/naterchrdsn/GReYBot.png?label=ready&title=Ready)](https://waffle.io/naterchrdsn/GReYBot?utm_source=badge) [![GitHub issues](https://img.shields.io/github/issues/naterchrdsn/GReYBot.svg?style=flat-square)](https://github.com/naterchrdsn/GReYBot/issues)
+[![Issues Open](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/naterchrdsn/GReYBot) [![Issues Reviewed](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/reviewed.svg?style=flat-square&label=issues%20reviewed&colorB=00ff00)](https://waffle.io/naterchrdsn/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=00aaff)](http://waffle.io/naterchrdsn/GReYBot)
 
 # Help
 If you need help join us on [discord](https://discord.gg/A8a2yeP).
+
+[![Discord](https://img.shields.io/discord/294483428651302924.svg)](https://discord.gg/A8a2yeP)
