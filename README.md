@@ -59,6 +59,8 @@ Written in Node.JS.
 1. Clone the repo
 2. Run ```npm install``` in the repo directory
 
+For music playback, you will need [ffmpeg](https://www.ffmpeg.org/download.html) installed and in your path variables.
+
 ## Windows Users
 Please note that you must have a working C compiler and Python in your path for
 `npm install` to work. The bot has been tested to work on Windows using Visual Studio 2015 Community and Python 2.7.

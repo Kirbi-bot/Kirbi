@@ -77,7 +77,7 @@ exports.play = {
 
 					// Play if only one element in the queue.
 					if (queue.length === 1) {
-						executeQueue(client, msg, queue);
+						executeQueue(msg, queue);
 						resp.delete(1000);
 					}
 				}).catch(() => { });
@@ -96,7 +96,7 @@ exports.skip = {
 	description: 'skips to the next song in the playback queue',
 	process: (msg, suffix) => {
 		// Get the voice connection.
-		const voiceConnection = client.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
 		if (voiceConnection === null) return msg.channel.send(wrap('No music being played.'));
 
 		// Get the queue.
@@ -137,7 +137,7 @@ exports.queue = {
 
 		// Get the status of the queue.
 		let queueStatus = 'Stopped';
-		const voiceConnection = client.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
 		if (voiceConnection !== null && voiceConnection != undefined) {
 			queueStatus = voiceConnection.paused ? 'Paused' : 'Playing';
 		}
@@ -184,7 +184,7 @@ exports.dequeue = {
 
 				if (index == 0) {
 					// If it was the first one, skip it
-					const voiceConnection = client.voiceConnections.get(msg.guild.id);
+					const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
 					if (voiceConnection.player.dispatcher)
 						voiceConnection.player.dispatcher.resume();
 					voiceConnection.player.dispatcher.end();
@@ -214,7 +214,7 @@ exports.pause = {
 	description: 'pauses music playback',
 	process: (msg, suffix) => {
 		// Get the voice connection.
-		const voiceConnection = client.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
 		if (voiceConnection == null) return msg.channel.send(wrap('No music being played.'));
 
 		// Pause.
@@ -233,7 +233,7 @@ exports.resume = {
 	description: 'resumes music playback',
 	process: (msg, suffix) => {
 		// Get the voice connection.
-		const voiceConnection = client.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
 		if (voiceConnection == null) return msg.channel.send(wrap('No music being played.'));
 
 		// Resume.
@@ -253,7 +253,7 @@ exports.volume = {
 	description: 'set music playback volume as a fraction, a percent, or in dB',
 	process: (msg, suffix) => {
 		// Get the voice connection.
-		const voiceConnection = client.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
 		if (voiceConnection == null) return msg.channel.send(wrap('No music being played.'));
 		// Set the volume
 		if (voiceConnection.player.dispatcher) {
@@ -284,13 +284,13 @@ exports.volume = {
  * @param msg Original message.
  * @param queue The queue.
  */
-function executeQueue(client, msg, queue) {
+function executeQueue(msg, queue) {
 	// If the queue is empty, finish.
 	if (queue.length === 0) {
 		msg.channel.send(wrap('Playback finished.'));
 
 		// Leave the voice channel.
-		const voiceConnection = client.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
 		if (voiceConnection != null) {
 			voiceConnection.player.dispatcher && voiceConnection.player.dispatcher.end();
 			voiceConnection.channel.leave();
@@ -300,10 +300,12 @@ function executeQueue(client, msg, queue) {
 
 	new Promise((resolve, reject) => {
 		// Join the voice channel if not already in one.
-		const voiceConnection = client.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
+
 		if (voiceConnection == null) {
 			// Check if the user is in a voice channel.
 			var voiceChannel = getAuthorVoiceChannel(msg);
+
 			if (voiceChannel != null) {
 				voiceChannel.join().then(connection => {
 					resolve(connection);
@@ -330,7 +332,7 @@ function executeQueue(client, msg, queue) {
 				msg.channel.send(`fail: ${err}`);
 				// Skip to the next song.
 				queue.shift();
-				executeQueue(client, msg, queue);
+				executeQueue(msg, queue);
 			});
 
 			// Catch the end event.
@@ -341,7 +343,7 @@ function executeQueue(client, msg, queue) {
 					queue.shift();
 
 					// Play the next song in the queue.
-					executeQueue(client, msg, queue);
+					executeQueue(msg, queue);
 				}, 1000);
 			});
 			//}).catch((ex) => {msg.channel.send("playStream fail: " + ex)});//*/
