@@ -22,7 +22,8 @@ exports.brew = {
 					msg.channel.send({
 						embed: {
 							color: GReYBot.Config.defaultEmbedColor,
-							description: `${result.name}\n${result.description}`
+							title: `${result.name}`,
+							description: `${result.description}`
 						}
 					});
 				} else {

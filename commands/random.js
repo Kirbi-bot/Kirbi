@@ -24,15 +24,26 @@ exports.math_fact = {
 	process: (msg, suffix) => {
 		request('http://numbersapi.com/random/math?json',
 			function (err, res, body) {
-				var data = JSON.parse(body);
-				if (data && data.text) {
-					msg.channel.send({
-						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
-							title: 'Math Fact',
-							description: data.text
-						}
-					});
+				try {
+					if (err) throw err;
+					var data = JSON.parse(body);
+					if (data && data.text) {
+						msg.channel.send({
+							embed: {
+								color: GReYBot.Config.defaultEmbedColor,
+								title: 'Math Fact',
+								description: data.text
+							}
+						});
+					}
+				} catch (err) {
+					var msgTxt = `command math_fact failed :disappointed_relieved:`;
+					if (GReYBot.Config.debug) {
+						msgTxt += `\n${err.stack}`;
+						
+						GReYBot.logError(err);
+					}
+					msg.channel.send(msgTxt);
 				}
 			});
 	}
@@ -43,15 +54,26 @@ exports.year_fact = {
 	process: (msg, suffix) => {
 		request('http://numbersapi.com/random/year?json',
 			function (err, res, body) {
-				var data = JSON.parse(body);
-				if (data && data.text) {
-					msg.channel.send({
-						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
-							title: 'Year Fact',
-							description: data.text
-						}
-					});
+				try {
+					if (err) throw err;
+					var data = JSON.parse(body);
+					if (data && data.text) {
+						msg.channel.send({
+							embed: {
+								color: GReYBot.Config.defaultEmbedColor,
+								title: 'Year Fact',
+								description: data.text
+							}
+						});
+					}
+				} catch (err) {
+					var msgTxt = `command year_fact failed :disappointed_relieved:`;
+					if (GReYBot.Config.debug) {
+						msgTxt += `\n${err.stack}`;
+						
+						GReYBot.logError(err);
+					}
+					msg.channel.send(msgTxt);
 				}
 			});
 	}
@@ -62,15 +84,26 @@ exports.date_fact = {
 	process: (msg, suffix) => {
 		request('http://numbersapi.com/random/date?json',
 			function (err, res, body) {
-				var data = JSON.parse(body);
-				if (data && data.text) {
-					msg.channel.send({
-						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
-							title: 'Date Fact',
-							description: data.text
-						}
-					});
+				try {
+					if (err) throw err;
+					var data = JSON.parse(body);
+					if (data && data.text) {
+						msg.channel.send({
+							embed: {
+								color: GReYBot.Config.defaultEmbedColor,
+								title: 'Date Fact',
+								description: data.text
+							}
+						});
+					}
+				} catch (err) {
+					var msgTxt = `command date_fact failed :disappointed_relieved:`;
+					if (GReYBot.Config.debug) {
+						msgTxt += `\n${err.stack}`;
+						
+						GReYBot.logError(err);
+					}
+					msg.channel.send(msgTxt);
 				}
 			});
 	}
@@ -81,15 +114,26 @@ exports.chucknorris = {
 	process: (msg, suffix) => {
 		request('http://api.icndb.com/jokes/random',
 			function (err, res, body) {
-				var data = JSON.parse(body);
-				if (data && data.value && data.value.joke) {
-					msg.channel.send({
-						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
-							title: 'Math Fact',
-							description: data.value.joke
-						}
-					});
+				try {
+					if (err) throw err;
+					var data = JSON.parse(body);
+					if (data && data.value && data.value.joke) {
+						msg.channel.send({
+							embed: {
+								color: GReYBot.Config.defaultEmbedColor,
+								title: 'Math Fact',
+								description: data.value.joke
+							}
+						});
+					}
+				} catch (err) {
+					var msgTxt = `command chucknorris failed :disappointed_relieved:`;
+					if (GReYBot.Config.debug) {
+						msgTxt += `\n${err.stack}`;
+						
+						GReYBot.logError(err);
+					}
+					msg.channel.send(msgTxt);
 				}
 			});
 	}
@@ -100,15 +144,26 @@ exports.cat_fact = {
 	process: (msg, suffix) => {
 		request('https://catfact.ninja/fact',
 			function (err, res, body) {
-				var data = JSON.parse(body);
-				if (data && data.fact) {
-					msg.channel.send({
-						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
-							title: 'Cat Fact',
-							description: data.fact
-						}
-					});
+				try {
+					if (err) throw err;
+					var data = JSON.parse(body);
+					if (data && data.fact) {
+						msg.channel.send({
+							embed: {
+								color: GReYBot.Config.defaultEmbedColor,
+								title: 'Cat Fact',
+								description: data.fact
+							}
+						});
+					}
+				} catch (err) {
+					var msgTxt = `command cat_fact failed :disappointed_relieved:`;
+					if (GReYBot.Config.debug) {
+						msgTxt += `\n${err.stack}`;
+						
+						GReYBot.logError(err);
+					}
+					msg.channel.send(msgTxt);
 				}
 			});
 	}
@@ -119,15 +174,26 @@ exports.dog_fact = {
 	process: (msg, suffix) => {
 		request('https://dog-api.kinduff.com/api/facts',
 			function (err, res, body) {
-				var data = JSON.parse(body);
-				if (data && data.facts && data.facts[0]) {
-					msg.channel.send({
-						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
-							title: 'Dog Fact',
-							description: data.facts[0]
-						}
-					});
+				try {
+					if (err) throw err;
+					var data = JSON.parse(body);
+					if (data && data.facts && data.facts[0]) {
+						msg.channel.send({
+							embed: {
+								color: GReYBot.Config.defaultEmbedColor,
+								title: 'Dog Fact',
+								description: data.facts[0]
+							}
+						});
+					}
+				} catch (err) {
+					var msgTxt = `command dog_fact failed :disappointed_relieved:`;
+					if (GReYBot.Config.debug) {
+						msgTxt += `\n${err.stack}`;
+						
+						GReYBot.logError(err);
+					}
+					msg.channel.send(msgTxt);	
 				}
 			});
 	}

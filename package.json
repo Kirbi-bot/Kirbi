@@ -12,7 +12,7 @@
 	"license": "Apache-2.0",
 	"dependencies": {
 		"bufferutil": "^3.0.1",
-		"chalk": "~2.0.1",
+		"chalk": "^2.0.1",
 		"d20": "^1.4.1",
 		"discord.js": "^11.1.0",
 		"feedparser": "1.1.x",
@@ -28,7 +28,7 @@
 		"unshort": "^1.0.0",
 		"urban": "^0.3.1",
 		"uws": "^0.14.1",
-		"wikijs": "^0.1.4",
+		"wikijs": "^0.3.0",
 		"youtube-dl": "^1.11.1"
 	},
 	"main": "start.js"

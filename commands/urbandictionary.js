@@ -1,4 +1,5 @@
-var urban = require('urban');
+const GReYBot = require('../greybot');
+const urban = require('urban');
 
 exports.commands = [
 	'urban'
@@ -10,15 +11,31 @@ exports.urban = {
 	process: (msg, suffix) => {
 		var targetWord = suffix == "" ? urban.random() : urban(suffix);
 		targetWord.first(function (json) {
+			var title = `Urban Dictionary: ${suffix}`;
+			var message;
+			var example;
+
 			if (json) {
-				var message = `Urban Dictionary: ** ${json.word}**\n\n${json.definition}`;
+				title = `Urban Dictionary: ${json.word}`
+				message = `${json.definition}`;
 				if (json.example) {
-					message = `${message}\n\n__Example__:\n${json.example}`;
+					example = `Example: ${json.example}`;
 				}
-				msg.channel.send(message);
+
 			} else {
-				msg.channel.send('No matches found');
+				message = 'No matches found';
 			}
+
+			msg.channel.send({
+				embed: {
+					color: GReYBot.Config.defaultEmbedColor,
+					title: title,
+					description: message,
+					footer: {
+						text: example
+					}
+				}
+			});
 		});
 	}
 }
