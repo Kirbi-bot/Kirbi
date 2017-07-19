@@ -1,3 +1,5 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
 	'date_fact',
 	'year_fact',
@@ -130,7 +132,7 @@ exports['8ball'] = {
 		}
 
 		msg.channel.send({embed: {
-			color: GReYBotConfig.defaultEmbedColor,
+			color: GReYBot.Config.defaultEmbedColor,
 			title: `:8ball: **${response}**`,
 		}});
 	}
@@ -147,7 +149,7 @@ exports.choose = {
 		}
 
 		msg.channel.send({embed: {
-			color: GReYBotConfig.defaultEmbedColor,
+			color: GReYBot.Config.defaultEmbedColor,
 			title: `:thinking: **${response}**`,
 		}});
 	}

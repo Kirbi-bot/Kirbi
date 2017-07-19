@@ -1,3 +1,5 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
 	'wiki'
 ]
@@ -10,7 +12,7 @@ exports.wiki = {
 	process: (msg, suffix) => {
 		var query = suffix;
 		if(!query) {
-			msg.channel.send(`Usage: ${GReYBotConfig.commandPrefix}wiki search terms`);
+			msg.channel.send(`Usage: ${GReYBot.Config.commandPrefix}wiki search terms`);
 			return;
 		}
 		

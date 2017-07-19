@@ -1,3 +1,5 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
 	'xkcd',
 	'highnoon'
@@ -14,7 +16,7 @@ exports.xkcd = {
 			try {
 				var comic = JSON.parse(body);
 				msg.channel.send({embed: {
-					color: GReYBotConfig.defaultEmbedColor,
+					color: GReYBot.Config.defaultEmbedColor,
 					title: `XKCD ${comic.num} ${comic.title}`,
 					image: {
 						url: comic.img

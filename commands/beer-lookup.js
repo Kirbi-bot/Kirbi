@@ -1,3 +1,5 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
     'brew'
 ]
@@ -11,7 +13,7 @@ exports.brew = {
             msg.channel.send('How about asking for something in specific?');
         }
         url += encodeURIComponent(suffix);
-        url += `&key=${GReYBotAuth.brewerydb_api_key}`;
+        url += `&key=${GReYBot.Auth.brewerydb_api_key}`;
         require('request')(url, function(err, res, body) {
             var response = JSON.parse(body);
             if (typeof(response.data) !== 'undefined' && response.data.length > 0) {
