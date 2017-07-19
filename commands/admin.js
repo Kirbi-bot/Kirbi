@@ -2,7 +2,8 @@ const GReYBot = require('../greybot');
 
 exports.commands = [
 	'log',
-	'uptime'
+	'uptime',
+	'reload'
 ]
 
 var startTime = Date.now();
@@ -46,5 +47,11 @@ exports.uptime = {
 				description: `**Uptime**: ${timestr}`
 			}
 		});
+	}
+}
+
+exports.reload = {
+	process: (msg, suffix) => {
+		require('../lib/commands').init();
 	}
 }

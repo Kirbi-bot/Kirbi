@@ -31,5 +31,5 @@
 		"wikijs": "^0.1.4",
 		"youtube-dl": "^1.11.1"
 	},
-	"main": "greybot.js"
+	"main": "start.js"
 }

@@ -11,47 +11,59 @@ try {
 	process.exit();
 }
 
-console.log(`Starting DiscordBot\nNode version: ${process.version}\nDiscord.js version: ${Discord.version}`);
+console.log(`Starting GReYBot\nNode version: ${process.version}\nDiscord.js version: ${Discord.version}`);
 
 exports.Discord = new Discord.Client();
 
 //load auth data
-try {
-	exports.Auth = require('./config/auth');
-} catch (err) {
-	console.log(chalk.red(`Please create an auth.json like auth.json.example with a bot token or an email and password.\n${err.stack}`));
-	process.exit();
-}
-
-//load config data
-exports.Config = {};
-try {
-	exports.Config = require('./config/config');
-} catch (err) {
-	//no config file, use defaults
-	exports.Config.debug = false;
-	exports.Config.commandPrefix = '!';
-	exports.Config.defaultEmbedColor = 5592405;
-	exports.Config.pruneInterval = 10;
-	exports.Config.pruneMax = 100;
-	exports.Config.serverName = 'GReY Online';
-	exports.Config.welcomeChannel = '334798958587150337';
-
+function Auth() {
 	try {
-		if (fs.lstatSync('../config/config.json').isFile()) {
-			console.log(chalk.yellow(`WARNING: config.json found but we couldn't read it!\n${err.stack}`));
-		}
-	} catch (err2) {
-		fs.writeFile('../config/config.json', JSON.stringify(exports.Config, null, 2), (err3) => {
-			if (err3) console.log(chalk.red(err3));
-		});
+		return require('./config/auth');
+	} catch (err) {
+		console.log(chalk.red(`Please create an auth.json like auth.json.example with a bot token or an email and password.\n${err.stack}`));
+		process.exit();
 	}
 }
 
-if (!exports.Config.hasOwnProperty("commandPrefix")) {
-	exports.Config.commandPrefix = '!';
+exports.Auth = Auth();
+
+//load config data
+function Config() {
+	var config = {};
+
+	try {
+		config = require('./config/config');
+	} catch (err) {
+		//no config file, use defaults
+		config.debug = false;
+		config.commandPrefix = '!';
+		config.defaultEmbedColor = 5592405;
+		config.pruneInterval = 10;
+		config.pruneMax = 100;
+		config.serverName = 'GReY Online';
+		config.welcomeChannel = '334798958587150337';
+
+		try {
+			if (fs.lstatSync('../config/config.json').isFile()) {
+				console.log(chalk.yellow(`WARNING: config.json found but we couldn't read it!\n${err.stack}`));
+			}
+		} catch (err2) {
+			fs.writeFile('../config/config.json', JSON.stringify(config, null, 2), (err3) => {
+				if (err3) console.log(chalk.red(err3));
+			});
+		}
+	}
+
+	if (!config.hasOwnProperty("commandPrefix")) {
+		config.commandPrefix = '!';
+	}
+
+	return config;
 }
 
+exports.Config = Config();
+
+//command functions
 exports.Commands = {};
 
 exports.addCommand = function (commandName, commandObject) {
@@ -64,6 +76,8 @@ exports.addCommand = function (commandName, commandObject) {
 exports.commandCount = function () {
 	return Object.keys(exports.Commands).length;
 }
+
+//helpers
 exports.getFileArray = function (srcPath) {
 	srcPath = path.join(path.dirname(require.main.filename), srcPath);
 	return fs.readdirSync(srcPath).filter(file => fs.statSync(path.join(srcPath, file)).isFile());
@@ -81,6 +95,7 @@ exports.logError = function (err) {
 	console.log(chalk.red(err));
 }
 
+//bot login
 exports.login = function () {
 	if (exports.Auth.bot_token) {
 		console.log('Logging in with token...');

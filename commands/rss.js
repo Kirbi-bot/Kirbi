@@ -7,7 +7,7 @@ exports.commands = [
 try {
 	var rssFeeds = GReYBot.getJsonObject('/config/rss.json');
 } catch (err) {
-	GReYBot.logError(`Couldn't load rss.json. See rss.json.example if you want rss feed commands. error: ${e}`);
+	GReYBot.logError(`Couldn't load rss.json. See rss.json.example if you want rss feed commands. error: ${err}`);
 }
 
 function loadFeeds() {
