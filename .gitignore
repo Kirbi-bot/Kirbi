@@ -33,13 +33,8 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-#config files
-auth.json
-alias.json
-commands.json
-config.json
-messagebox.json
+#other node stuffs
 package-lock.json
-permissions.json
-servers.json
-rss.json
+
+#config files
+config/*
