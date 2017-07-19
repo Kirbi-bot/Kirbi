@@ -1,13 +1,13 @@
 const fs = require('fs');
 const path = require('path');
-
+const chalk = require('chalk');
 
 try {
 	var Discord = require("discord.js");
-} catch (e) {
-	console.log(e.stack);
-	console.log(process.version);
-	console.log("Please run npm install and ensure it passes with no errors!");
+} catch (err) {
+	console.log(chalk.red(err.stack));
+	console.log(chalk.red(process.version));
+	console.log(chalk.red('Please run npm install and ensure it passes with no errors!'));
 	process.exit();
 }
 
@@ -18,8 +18,8 @@ exports.Discord = new Discord.Client();
 //load auth data
 try {
 	exports.Auth = require('./config/auth');
-} catch (e) {
-	console.log(`Please create an auth.json like auth.json.example with a bot token or an email and password.\n${e.stack}`);
+} catch (err) {
+	console.log(chalk.red(`Please create an auth.json like auth.json.example with a bot token or an email and password.\n${err.stack}`));
 	process.exit();
 }
 
@@ -27,7 +27,7 @@ try {
 exports.Config = {};
 try {
 	exports.Config = require('./config/config');
-} catch (e) {
+} catch (err) {
 	//no config file, use defaults
 	exports.Config.debug = false;
 	exports.Config.commandPrefix = '!';
@@ -39,11 +39,11 @@ try {
 
 	try {
 		if (fs.lstatSync('../config/config.json').isFile()) {
-			console.log(`WARNING: config.json found but we couldn't read it!\n${e.stack}`);
+			console.log(chalk.yellow(`WARNING: config.json found but we couldn't read it!\n${err.stack}`));
 		}
-	} catch (e2) {
-		fs.writeFile('../config/config.json', JSON.stringify(exports.Config, null, 2), (err) => {
-			if (err) console.error(err);
+	} catch (err2) {
+		fs.writeFile('../config/config.json', JSON.stringify(exports.Config, null, 2), (err3) => {
+			if (err3) console.log(chalk.red(err3));
 		});
 	}
 }
@@ -69,7 +69,7 @@ exports.getFileArray = function (srcPath) {
 	return fs.readdirSync(srcPath).filter(file => fs.statSync(path.join(srcPath, file)).isFile());
 }
 exports.getFileContents = function (filePath) {
-	return require('fs').readFileSync(path.join(path.dirname(require.main.filename), filePath), 'utf-8');
+	return fs.readFileSync(path.join(path.dirname(require.main.filename), filePath), 'utf-8');
 }
 exports.getJsonObject = function (filePath) {
 	return JSON.parse(exports.getFileContents(filePath));
@@ -77,12 +77,16 @@ exports.getJsonObject = function (filePath) {
 exports.require = function (filePath) {
 	return require(path.join(path.dirname(require.main.filename), filePath));
 }
+exports.logError = function (err) {
+	console.log(chalk.red(err));
+}
+
 exports.login = function () {
 	if (exports.Auth.bot_token) {
 		console.log('Logging in with token...');
 		exports.Discord.login(exports.Auth.bot_token);
 	} else {
-		console.log('GReYBot must have a bot token...');
+		console.log(chalk.red('GReYBot must have a bot token...'));
 	}
 }
 

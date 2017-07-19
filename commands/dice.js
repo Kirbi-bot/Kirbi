@@ -1,3 +1,5 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
 	"roll"
 ]
@@ -19,11 +21,21 @@ exports.roll = {
 					passing += 1;
 				};
 			}
+
+			var response;
+
 			if (passing == eachDie.length) {
-				msg.channel.send(`${msg.author} rolled a ${d20.roll(suffix)}`);
+				response = `${msg.author} rolled a ${d20.roll(suffix)}`;
 			} else {
-				msg.channel.send(`${msg.author} tried to roll too many dice at once!`);
+				response = `${msg.author} tried to roll too many dice at once!`;
 			}
+
+			msg.channel.send({
+				embed: {
+					color: GReYBot.Config.defaultEmbedColor,
+					description: `${response}`
+				}
+			});
 		}
 	}
 }

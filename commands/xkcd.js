@@ -25,7 +25,7 @@ exports.xkcd = {
 						text: comic.alt
 					}
 				}});
-			} catch (e) {
+			} catch (err) {
 				msg.channel.send(`Couldn't fetch an XKCD for ${suffix}`);
 			}
 		});

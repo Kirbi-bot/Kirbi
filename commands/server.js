@@ -10,7 +10,7 @@ exports.server = {
 	usage: `list|${servers.map(server => server.key).join('|')}`,
 	process: (msg, suffix) => {
 
-		if (suffix.toLowerCase() === "list") {
+		if (suffix.toLowerCase() === "list" || suffix.trim() === "") {
 			msg.channel.send({
 				embed: {
 					title: `${GReYBot.Config.serverName} Servers`,
