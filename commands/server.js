@@ -1,3 +1,5 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
 	'server'
 ]
@@ -8,12 +10,12 @@ exports.server = {
 	usage: `list|${servers.map(server => server.key).join('|')}`,
 	process: (msg, suffix) => {
 
-		if (suffix.toLowerCase() === "list") {
+		if (suffix.toLowerCase() === "list" || suffix.trim() === "") {
 			msg.channel.send({
 				embed: {
-					title: `${GReYBotConfig.serverName} Servers`,
+					title: `${GReYBot.Config.serverName} Servers`,
 					description: servers.map(server => server.key).join('\n'),
-					color: GReYBotConfig.defaultEmbedColor
+					color: GReYBot.Config.defaultEmbedColor
 				}
 			});
 		}
@@ -25,7 +27,7 @@ exports.server = {
 					embed: {
 						title: info.title,
 						description: info.description,
-						color: GReYBotConfig.defaultEmbedColor
+						color: GReYBot.Config.defaultEmbedColor
 					}
 				});
 			}
