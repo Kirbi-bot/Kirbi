@@ -12,7 +12,7 @@ exports.lmgtfy = {
 	description: 'Plebs, plz.',
 	process: (msg, suffix) => {
 		if (suffix) {
-			msg.channel.send(`<http://lmgtfy.com/?q=${encodeURI(require("remove-markdown")(suffix))}>`);
+			msg.channel.send(`<http://lmgtfy.com/?q=${encodeURI(require("remove-markdown")(suffix))}>`).then(message => msg.delete());
 		}
 	}
 }

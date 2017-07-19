@@ -1,3 +1,5 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
 	'xkcd',
 	'highnoon'
@@ -14,7 +16,7 @@ exports.xkcd = {
 			try {
 				var comic = JSON.parse(body);
 				msg.channel.send({embed: {
-					color: GReYBotConfig.defaultEmbedColor,
+					color: GReYBot.Config.defaultEmbedColor,
 					title: `XKCD ${comic.num} ${comic.title}`,
 					image: {
 						url: comic.img
@@ -23,7 +25,7 @@ exports.xkcd = {
 						text: comic.alt
 					}
 				}});
-			} catch (e) {
+			} catch (err) {
 				msg.channel.send(`Couldn't fetch an XKCD for ${suffix}`);
 			}
 		});
