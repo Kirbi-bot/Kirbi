@@ -57,7 +57,7 @@ And more! Try !help to get a full list of available commands
 Written in Node.JS.
 
 1. Clone the repo
-2. Run ```npm install``` in the repo directory
+2. Run `npm install` in the repo directory
 
 For music playback, you will need [ffmpeg](https://www.ffmpeg.org/download.html) installed and in your path variables.
 
@@ -68,6 +68,13 @@ Please note that you must have a working C compiler and Python in your path for
 * [npm errors on Windows](http://stackoverflow.com/questions/21365714/nodejs-error-installing-with-npm)
 * [Visual Studio Community 2015](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)
 * [Python 2.7](https://www.python.org/downloads/)
+
+## Mac Users
+Easiest installation process involves [Homebrew](https://brew.sh/).
+
+1. Install prereqs: ```xcode-select --install``` ```brew install git node libtool autoconf automake``` ```brew install ffmpeg --with-ffplay --with-opus --with-speex --with-tools```
+2. Clone the repo
+3. Run `npm install` inside the directory
 
 ## Customization
 The examples directory contains example files for the configs, as well as some example commands, rss feeds, and more! These files need to be renamed, without the .example extension, and placed in the `/config/` folder.
