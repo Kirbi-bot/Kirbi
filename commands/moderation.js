@@ -1,7 +1,8 @@
 const GReYBot = require('../greybot');
 
 exports.commands = [
-	'prune'
+	'prune',
+	'kick'
 ]
 
 var lastPruned = new Date().getTime() - (GReYBot.Config.pruneInterval * 1000);
@@ -50,6 +51,47 @@ exports.prune = {
 					description: `You can't do that ${msg.member}...`
 				}
 			}).then(message => message.delete(5000));
+		}
+	}
+}
+
+exports.kick = {
+	usage: '<user> <reason>',
+	description: 'Kick a user with an optional reason. Requires both the command user and the bot to have kick permission',
+	process: function (bot, msg, suffix) {
+		let args = suffix.split(" ");
+		if (args.length > 0 && args[0]) {
+			let hasPermissonToKick =  msg.guild.members.get(bot.user.id).permissions.has("KICK_MEMBERS");
+			if (!hasPermissonToKick) {
+				msg.channel.send( "I don't have permission to kick people!");
+				return;
+			}
+			if (!msg.guild.members.get(msg.author.id).permissions.has("KICK_MEMBERS")) {
+				msg.channel.send( "You don't have permission to kick people!");
+				return;
+			}
+			var targetId = resolveMention(args[0]);
+			let target = msg.guild.members.get(targetId);
+			if (target != undefined) {
+				if (!target.kickable) {
+					msg.channel.send("I can't kick " + target + ". Do they have the same or a higher role than me?");
+					return;
+				}
+				if (args.length > 1) {
+					let reason = args.slice(1).join(" ");
+					target.kick(reason).then(x => {
+						msg.channel.send("Kicking " + target + " from " + msg.guild + " for " + reason + "!");
+					}).catch(err => msg.channel.send("Kicking " + target + " failed:\n"));
+				} else {
+					target.kick().then(x => {
+						msg.channel.send("Kicking " + target + " from " + msg.guild + "!");
+					}).catch(err => msg.channel.send("Kicking " + target + " failed:\n"));
+				}
+			} else {
+				msg.channel.send("I couldn't find a user " + args[0]);
+			}
+		} else {
+			msg.channel.send("You must specify a user to kick!");
 		}
 	}
 }
