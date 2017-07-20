@@ -123,12 +123,8 @@ exports.getJsonObject = function (filePath) {
 	return JSON.parse(exports.getFileContents(filePath));
 }
 exports.require = function (filePath) {
-	//const hotload = require("hotload");
 	delete require.cache[path.join(path.dirname(require.main.filename), filePath)];
-	return require(path.join(path.dirname(require.main.filename), filePath)); /*, function(file){
-		//must do this or else we get a console.log
-		return;
-	});*/
+	return require(path.join(path.dirname(require.main.filename), filePath));
 }
 exports.logError = function (err) {
 	console.log(chalk.red(err));
