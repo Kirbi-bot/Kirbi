@@ -53,13 +53,22 @@ exports.uptime = {
 
 exports.reload = {
 	process: (msg) => {
-		require('../lib/commands').init();
-		msg.channel.send({
-			embed: {
-				color: GReYBot.Config.defaultEmbedColor,
-				description: 'Reloaded all commands...'
-			}
-		}).then(message => message.delete(5000));
+		if (msg.author.hasPermission('ADMINISTRATOR')) {
+			require('../lib/commands').init();
+			msg.channel.send({
+				embed: {
+					color: GReYBot.Config.defaultEmbedColor,
+					description: 'Reloaded all commands...'
+				}
+			}).then(message => message.delete(5000));
+		} else {
+			msg.channel.send({
+				embed: {
+					color: GReYBot.Config.defaultEmbedColor,
+					description: `You can't do that Dave...`
+				}
+			}).then(message => message.delete(5000));
+		}
 	}
 }
 
