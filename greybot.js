@@ -66,6 +66,38 @@ exports.Config = Config();
 //command functions
 exports.Commands = {};
 
+//permissions
+function Permissions() {
+	var permissions = {};
+	permissions = require("./config/permissions.json");
+	try {
+		
+	} catch (e) {
+		permissions.guilds = {};
+	}
+
+	permissions.checkPermission = function (guildId, command) {
+		try {
+			var allowed = true;
+			try {
+				if (permissions.commands.hasOwnProperty(command)) {
+					allowed = false;
+
+					if(permissions.commands[command].hasOwnProperty(guildId)){
+						allowed = permissions.commands[command][guildId];
+					}
+				}
+			} catch (err) { console.log(err); }
+			return allowed;
+		} catch (e) { }
+		return false;
+	}
+
+	return permissions;
+}
+
+exports.Permissions = Permissions();
+
 exports.addCommand = function (commandName, commandObject) {
 	try {
 		exports.Commands[commandName] = commandObject;
