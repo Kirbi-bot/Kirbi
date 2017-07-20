@@ -9,8 +9,7 @@ exports.welcome = {
 	description: 'displays welcome message(s)',
 	process: (msg, suffix) => {
 		if (msg.channel.id === GReYBot.Config.welcomeChannel) {
-			var path = require('path');
-			var welcomeMessage = GReYBot.getFileContents('/extras/welcome.md');
+			let welcomeMessage = GReYBot.getFileContents('/extras/welcome.md');
 			if (welcomeMessage) {
 				welcomeMessage = welcomeMessage.split('=====');
 				welcomeMessage.forEach(message => {
@@ -23,7 +22,6 @@ exports.welcome = {
 						}
 					});
 				});
-
 			}
 		}
 	}
