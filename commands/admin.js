@@ -3,6 +3,7 @@ const GReYBot = require('../greybot');
 exports.commands = [
 	'log',
 	'uptime',
+	'reload',
 	'servers'
 ]
 
@@ -47,6 +48,18 @@ exports.uptime = {
 				description: `**Uptime**: ${timestr}`
 			}
 		});
+	}
+}
+
+exports.reload = {
+	process: (msg) => {
+		require('../lib/commands').init();
+		msg.channel.send({
+			embed: {
+				color: GReYBot.Config.defaultEmbedColor,
+				description: 'Reloaded all commands...'
+			}
+		}).then(message => message.delete(5000));
 	}
 }
 
