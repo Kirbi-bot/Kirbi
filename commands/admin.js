@@ -1,3 +1,5 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
 	'log',
 	'uptime'
@@ -38,6 +40,11 @@ exports.uptime = {
 		if (secs > 0) {
 			timestr += `${secs} seconds `;
 		}
-		msg.channel.send(`**Uptime**: ${timestr}`);
+		msg.channel.send({
+			embed: {
+				color: GReYBot.Config.defaultEmbedColor,
+				description: `**Uptime**: ${timestr}`
+			}
+		});
 	}
 }

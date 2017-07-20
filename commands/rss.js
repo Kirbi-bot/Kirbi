@@ -1,11 +1,13 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
 	'rss'
 ]
 
 try {
 	var rssFeeds = GReYBot.getJsonObject('/config/rss.json');
-} catch (e) {
-	console.log(`Couldn't load rss.json. See rss.json.example if you want rss feed commands. error: ${e}`);
+} catch (err) {
+	GReYBot.logError(`Couldn't load rss.json. See rss.json.example if you want rss feed commands. error: ${err}`);
 }
 
 function loadFeeds() {

@@ -1,5 +1,8 @@
+const GReYBot = require('../greybot');
+
 const YoutubeDL = require('youtube-dl');
 const Request = require('request');
+
 exports.commands = [
 	'play',
 	'skip',
@@ -96,7 +99,7 @@ exports.skip = {
 	description: 'skips to the next song in the playback queue',
 	process: (msg, suffix) => {
 		// Get the voice connection.
-		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.Discord.voiceConnections.get(msg.guild.id);
 		if (voiceConnection === null) return msg.channel.send(wrap('No music being played.'));
 
 		// Get the queue.
@@ -137,7 +140,7 @@ exports.queue = {
 
 		// Get the status of the queue.
 		let queueStatus = 'Stopped';
-		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.Discord.voiceConnections.get(msg.guild.id);
 		if (voiceConnection !== null && voiceConnection != undefined) {
 			queueStatus = voiceConnection.paused ? 'Paused' : 'Playing';
 		}
@@ -184,7 +187,7 @@ exports.dequeue = {
 
 				if (index == 0) {
 					// If it was the first one, skip it
-					const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
+					const voiceConnection = GReYBot.Discord.voiceConnections.get(msg.guild.id);
 					if (voiceConnection.player.dispatcher)
 						voiceConnection.player.dispatcher.resume();
 					voiceConnection.player.dispatcher.end();
@@ -214,7 +217,7 @@ exports.pause = {
 	description: 'pauses music playback',
 	process: (msg, suffix) => {
 		// Get the voice connection.
-		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.Discord.voiceConnections.get(msg.guild.id);
 		if (voiceConnection == null) return msg.channel.send(wrap('No music being played.'));
 
 		// Pause.
@@ -233,7 +236,7 @@ exports.resume = {
 	description: 'resumes music playback',
 	process: (msg, suffix) => {
 		// Get the voice connection.
-		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.Discord.voiceConnections.get(msg.guild.id);
 		if (voiceConnection == null) return msg.channel.send(wrap('No music being played.'));
 
 		// Resume.
@@ -253,7 +256,7 @@ exports.volume = {
 	description: 'set music playback volume as a fraction, a percent, or in dB',
 	process: (msg, suffix) => {
 		// Get the voice connection.
-		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.Discord.voiceConnections.get(msg.guild.id);
 		if (voiceConnection == null) return msg.channel.send(wrap('No music being played.'));
 		// Set the volume
 		if (voiceConnection.player.dispatcher) {
@@ -290,7 +293,7 @@ function executeQueue(msg, queue) {
 		msg.channel.send(wrap('Playback finished.'));
 
 		// Leave the voice channel.
-		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.Discord.voiceConnections.get(msg.guild.id);
 		if (voiceConnection != null) {
 			voiceConnection.player.dispatcher && voiceConnection.player.dispatcher.end();
 			voiceConnection.channel.leave();
@@ -300,7 +303,7 @@ function executeQueue(msg, queue) {
 
 	new Promise((resolve, reject) => {
 		// Join the voice channel if not already in one.
-		const voiceConnection = GReYBot.voiceConnections.get(msg.guild.id);
+		const voiceConnection = GReYBot.Discord.voiceConnections.get(msg.guild.id);
 
 		if (voiceConnection == null) {
 			// Check if the user is in a voice channel.

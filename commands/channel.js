@@ -1,3 +1,5 @@
+const GReYBot = require('../greybot');
+
 exports.commands = [
     'topic'
 ];
@@ -7,13 +9,13 @@ exports.topic = {
 	process: (msg, suffix) => {
 		response = msg.channel.topic;
 		if (msg.channel.topic.trim() === '') {
-			response = 'There doesn\'t seem to be a topic for this channel. Maybe ask the mods?';
+			response = `There doesn't seem to be a topic for this channel. Maybe ask the mods?`
 		}
 		
 		msg.channel.send({
 			embed: {
-				color: 0x555555,
-				title: `**${response}**`,
+				color: GReYBot.Config.defaultEmbedColor,
+				title: `**${response}**`
 			}
 		});
 	}
