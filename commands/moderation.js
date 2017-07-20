@@ -58,7 +58,7 @@ exports.prune = {
 exports.kick = {
 	usage: '<user> <reason>',
 	description: 'Kick a user with an optional reason. Requires both the command user and the bot to have kick permission',
-	process: function (bot, msg, suffix) {
+	process: (bot, msg, suffix) => {
 		let args = suffix.split(" ");
 		if (args.length > 0 && args[0]) {
 			let hasPermissonToKick =  msg.guild.members.get(bot.user.id).permissions.has("KICK_MEMBERS");
