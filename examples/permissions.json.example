@@ -1,0 +1,10 @@
+{
+	"commands": {
+		"server": {
+			"guildID": true,
+		},
+		"welcome": {
+			"guildID": true
+		}
+	}
+}
