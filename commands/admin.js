@@ -53,7 +53,7 @@ exports.uptime = {
 
 exports.reload = {
 	process: (msg) => {
-		if (msg.author.hasPermission('ADMINISTRATOR')) {
+		if (msg.member.hasPermission('ADMINISTRATOR')) {
 			require('../lib/commands').init();
 			msg.channel.send({
 				embed: {
