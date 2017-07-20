@@ -53,7 +53,13 @@ exports.uptime = {
 exports.servers = {
 	usage: '<command>',
 	description: 'Returns a list of servers the bot is connected to',
-	process: (bot,msg) => {
-		msg.channel.sendMessage(`__**${bot.user.username} is currently on the following servers:**__ \n\n${bot.guilds.map(g => `${g.name} - **${g.memberCount} Members**`).join(`\n`)}`, {split: true});
+	process: (msg) => {
+		msg.channel.send({
+			embed: {
+				color: GReYBot.Config.defaultEmbedColor,
+				title: GReYBot.Discord.user.username,
+				description: `Currently on the following servers:\n\n${GReYBot.Discord.guilds.map(g => `${g.name} - **${g.memberCount} Members**`).join(`\n`)}`
+			}
+		});
 	}
 }
