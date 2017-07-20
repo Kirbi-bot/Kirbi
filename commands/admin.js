@@ -2,7 +2,8 @@ const GReYBot = require('../greybot');
 
 exports.commands = [
 	'log',
-	'uptime'
+	'uptime',
+	'servers'
 ]
 
 var startTime = Date.now();
@@ -14,7 +15,7 @@ exports.log = {
 }
 
 exports.uptime = {
-	usage: '',
+	usage: '<command>',
 	description: 'returns the amount of time since the bot started',
 	process: (msg, suffix) => {
 		var now = Date.now();
@@ -46,5 +47,13 @@ exports.uptime = {
 				description: `**Uptime**: ${timestr}`
 			}
 		});
+	}
+}
+
+exports.servers = {
+	usage: '<command>',
+	description: 'Returns a list of servers the bot is connected to',
+	process: (bot,msg) => {
+		msg.channel.sendMessage(`__**${bot.user.username} is currently on the following servers:**__ \n\n${bot.guilds.map(g => `${g.name} - **${g.memberCount} Members**`).join(`\n`)}`, {split: true});
 	}
 }
