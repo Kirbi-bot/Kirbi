@@ -1,10 +1,13 @@
 {
-	"commands": {
-		"server": {
-			"guildID": true,
-		},
-		"welcome": {
-			"guildID": true
-		}
-	}
+    "commands": {
+		"reload": [
+            "GUILDID"
+        ],
+        "servers": [
+            "GUILDID"
+        ],
+        "welcome": [
+            "GUILDID"
+		]
+    }
 }
