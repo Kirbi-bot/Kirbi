@@ -80,12 +80,11 @@ function Permissions() {
 		try {
 			var allowed = true;
 			try {
-				if (permissions.commands.length > 0) {
+				if (permissions.commands) {
 					if (permissions.commands.hasOwnProperty(command)) {
 						allowed = false;
-
-						if (permissions.commands[command].hasOwnProperty(guildId)) {
-							allowed = permissions.commands[command][guildId];
+						if (permissions.commands[command].includes(guildId)) {
+							allowed = true;
 						}
 					}
 				}
