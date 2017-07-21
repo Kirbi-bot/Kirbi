@@ -3,6 +3,7 @@ const GReYBot = require('../greybot');
 exports.commands = [
 	'log',
 	'uptime',
+	'reload',
 	'servers'
 ]
 
@@ -47,6 +48,27 @@ exports.uptime = {
 				description: `**Uptime**: ${timestr}`
 			}
 		});
+	}
+}
+
+exports.reload = {
+	process: (msg) => {
+		if (msg.member.hasPermission('ADMINISTRATOR')) {
+			require('../lib/commands').init();
+			msg.channel.send({
+				embed: {
+					color: GReYBot.Config.defaultEmbedColor,
+					description: 'Reloaded all commands...'
+				}
+			}).then(message => message.delete(5000));
+		} else {
+			msg.channel.send({
+				embed: {
+					color: GReYBot.Config.defaultEmbedColor,
+					description: `You can't do that Dave...`
+				}
+			}).then(message => message.delete(5000));
+		}
 	}
 }
 
