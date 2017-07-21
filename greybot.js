@@ -69,22 +69,24 @@ exports.Commands = {};
 //permissions
 function Permissions() {
 	var permissions = {};
-	permissions = require("./config/permissions.json");
+
 	try {
-		
+		permissions = require('./config/permissions.json');
 	} catch (e) {
-		permissions.guilds = {};
+		permissions.commands = {};
 	}
 
 	permissions.checkPermission = function (guildId, command) {
 		try {
 			var allowed = true;
 			try {
-				if (permissions.commands.hasOwnProperty(command)) {
-					allowed = false;
+				if (permissions.commands.length > 0) {
+					if (permissions.commands.hasOwnProperty(command)) {
+						allowed = false;
 
-					if(permissions.commands[command].hasOwnProperty(guildId)){
-						allowed = permissions.commands[command][guildId];
+						if (permissions.commands[command].hasOwnProperty(guildId)) {
+							allowed = permissions.commands[command][guildId];
+						}
 					}
 				}
 			} catch (err) { console.log(err); }
@@ -121,6 +123,7 @@ exports.getJsonObject = function (filePath) {
 	return JSON.parse(exports.getFileContents(filePath));
 }
 exports.require = function (filePath) {
+	delete require.cache[path.join(path.dirname(require.main.filename), filePath)];
 	return require(path.join(path.dirname(require.main.filename), filePath));
 }
 exports.logError = function (err) {
