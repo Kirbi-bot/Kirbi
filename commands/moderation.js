@@ -7,6 +7,18 @@ exports.commands = [
 
 var lastPruned = new Date().getTime() - (GReYBot.Config.pruneInterval * 1000);
 
+function resolveMention(usertxt){
+	var userid = usertxt;
+	if(usertxt.startsWith('<@!')){
+		userid = usertxt.substr(3,usertxt.length-4);
+	} else {
+		if(usertxt.startsWith('<@')){
+			userid = usertxt.substr(2,usertxt.length-3);
+		}
+	}
+	return userid;
+}
+
 exports.prune = {
 	usage: '<count|1-100>',
 	process: (msg, suffix) => {
@@ -58,38 +70,39 @@ exports.prune = {
 exports.kick = {
 	usage: '<user> <reason>',
 	description: 'Kick a user with an optional reason. Requires both the command user and the bot to have kick permission',
-	process: (bot, msg, suffix) => {
+	process: (msg, suffix) => {
 		let args = suffix.split(" ");
 		if (args.length > 0 && args[0]) {
-			let hasPermissonToKick =  msg.guild.members.get(bot.user.id).permissions.has("KICK_MEMBERS");
+			let hasPermissonToKick =  msg.guild.me.hasPermission("KICK_MEMBERS");
 			if (!hasPermissonToKick) {
 				msg.channel.send( "I don't have permission to kick people!");
 				return;
 			}
-			if (!msg.guild.members.get(msg.author.id).permissions.has("KICK_MEMBERS")) {
+			if (!msg.member.hasPermission("KICK_MEMBERS")) {
 				msg.channel.send( "You don't have permission to kick people!");
 				return;
 			}
-			var targetId = resolveMention(args[0]);
-			let target = msg.guild.members.get(targetId);
-			if (target != undefined) {
-				if (!target.kickable) {
-					msg.channel.send("I can't kick " + target + ". Do they have the same or a higher role than me?");
-					return;
-				}
-				if (args.length > 1) {
-					let reason = args.slice(1).join(" ");
-					target.kick(reason).then(x => {
-						msg.channel.send("Kicking " + target + " from " + msg.guild + " for " + reason + "!");
-					}).catch(err => msg.channel.send("Kicking " + target + " failed:\n"));
+			let targetId = resolveMention(args[0]);
+			msg.guild.fetchMember(targetId).then(member => {
+				if (member != undefined) {
+					if (!member.kickable) {
+						msg.channel.send("I can't kick " + member + ". Do they have the same or a higher role than me?");
+						return;
+					}
+					if (args.length > 1) {
+						let reason = args.slice(1).join(" ");
+						member.kick(reason).then(x => {
+							msg.channel.send("Kicking " + member + " from " + msg.guild + " for " + reason + "!");
+						}).catch(err => msg.channel.send("Kicking " + member + " failed:\n"));
+					} else {
+						member.kick().then(x => {
+							msg.channel.send("Kicking " + member + " from " + msg.guild + "!");
+						}).catch(err => msg.channel.send("Kicking " + member + " failed:\n"));
+					}
 				} else {
-					target.kick().then(x => {
-						msg.channel.send("Kicking " + target + " from " + msg.guild + "!");
-					}).catch(err => msg.channel.send("Kicking " + target + " failed:\n"));
+					msg.channel.send("I couldn't find a user " + args[0]);
 				}
-			} else {
-				msg.channel.send("I couldn't find a user " + args[0]);
-			}
+			});
 		} else {
 			msg.channel.send("You must specify a user to kick!");
 		}
