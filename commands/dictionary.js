@@ -11,7 +11,7 @@ exports.define = {
 	usage: '<word>',
 	description: 'looks up a word in the Merriam-Webster Collegiate Dictionary',
 	process: (msg, suffix) => {
-    	var word = suffix;
+    		var word = suffix;
 		if (!word) {
 			msg.channel.send('I won\'t define an empty string.');
 			return;
