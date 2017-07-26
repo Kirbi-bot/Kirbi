@@ -11,15 +11,6 @@ exports.define = {
 	usage: '<word>',
 	description: 'looks up a word in the Merriam-Webster Collegiate Dictionary',
 	process: (msg, suffix) => {
-		Array.prototype.clean = function(deleteValue) {
-			for (var i = 0; i < this.length; i++) {
-				if (this[i] == deleteValue) {
-				this.splice(i, 1);
-				i--;
-				}
-			}
-			return this;
-		};
     	var word = suffix;
 		if (!word) {
 			msg.channel.send('I won\'t define an empty string.');
@@ -33,12 +24,10 @@ exports.define = {
 					let wordList = result.entry_list.entry;
 					let phonetic = '';
 					phonetic += wordList[0].pr.map(entry => {
-						if (typeof(entry) === 'string') {
-							return entry;
+						if (typeof entry === 'object') {
+						    return entry['_'];
 						}
-						if (entry['_']) {
-							return entry['_'];
-						}
+						return entry;
 					}).join('\n');
 					definitionResult += '*['+phonetic+']*\n';
 					definitionResult += 'Hear it: http://media.merriam-webster.com/soundc11/'+wordList[0].sound[0].wav[0].slice(0,1)+'/'+wordList[0].sound[0].wav[0]+'\n\n';
@@ -48,20 +37,18 @@ exports.define = {
 						if (wordResult.ew[0] !== word) { return; };
 						definitionResult += '__'+wordResult.fl[0]+'__\n';
 						defArray = defArray.filter(item => {
-							if (typeof(item) === 'string') {
-								return item !== ':' && item !== ': ';
+							if (typeof item === 'object') {
+								item['_'] = item['_'].trim();
+								return item['_'] !== ':';
 							}
-							if (item['_']) {
-								return item['_'] !== ':' && item['_'] !== ': ';
-							}
+							item = item.trim();
+							return item !== ':';
 						});
 						defList += defArray.map(entry => {
-							if (typeof(entry) === 'string') {
-								return entry;
+							if (typeof entry === 'object') {
+							    return entry['_'];
 							}
-							if (entry['_']) {
-								return entry['_'];
-							}
+							return entry;
 						}).join('\n');
 						definitionResult += defList+'\n\n';
 					});
