@@ -25,17 +25,17 @@ exports.define = {
 					let phonetic = '';
 					phonetic += wordList[0].pr.map(entry => {
 						if (typeof entry === 'object') {
-						    return entry['_'];
+							return entry['_'];
 						}
 						return entry;
 					}).join('\n');
-					definitionResult += '*['+phonetic+']*\n';
-					definitionResult += 'Hear it: http://media.merriam-webster.com/soundc11/'+wordList[0].sound[0].wav[0].slice(0,1)+'/'+wordList[0].sound[0].wav[0]+'\n\n';
+					definitionResult += '*[' + phonetic + ']*\n';
+					definitionResult += 'Hear it: http://media.merriam-webster.com/soundc11/' + wordList[0].sound[0].wav[0].slice(0,1) + '/' + wordList[0].sound[0].wav[0] + '\n\n';
 					wordList.forEach(wordResult => {
 						let defList = '';
 						let defArray = wordResult.def[0].dt;
 						if (wordResult.ew[0] !== word) { return; };
-						definitionResult += '__'+wordResult.fl[0]+'__\n';
+						definitionResult += '__' + wordResult.fl[0] + '__\n';
 						defArray = defArray.filter(item => {
 							if (typeof item === 'object') {
 								item['_'] = item['_'].trim();
@@ -46,11 +46,11 @@ exports.define = {
 						});
 						defList += defArray.map(entry => {
 							if (typeof entry === 'object') {
-							    return entry['_'];
+								return entry['_'];
 							}
 							return entry;
 						}).join('\n');
-						definitionResult += defList+'\n\n';
+						definitionResult += defList + '\n\n';
 					});
 
 					msg.channel.send({
