@@ -67,7 +67,7 @@ exports.brew = {
 									color: GReYBot.Config.defaultEmbedColor,
 									title: result.name,
 									author: {
-										name: BreweryDB,
+										name: 'BreweryDB',
 										url: 'http://www.brewerydb.com/',
 										icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
 									},
