@@ -17,13 +17,32 @@ exports.brew = {
 		require('request')(url, function (err, res, body) {
 			var response = JSON.parse(body);
 			if (typeof (response.data) !== 'undefined' && response.data.length > 0) {
-				var result = response.data[0];
+				let result = response.data[0];
 				if (typeof (result.description) !== 'undefined') {
 					msg.channel.send({
 						embed: {
 							color: GReYBot.Config.defaultEmbedColor,
-							title: `${result.name}`,
-							description: `${result.description}`
+							title: result.name,
+							thumbnail: {
+								url: result.labels.medium
+							},
+							description: '\n' + result.description + '\n\n',
+							fields: [
+								{
+									name: 'Style: ' + result.style.name,
+									value: result.style.description
+								},
+								{
+									name: 'ABV',
+									value: result.abv,
+									inline: true
+								},
+								{
+									name: 'IBU',
+									value: result.ibu,
+									inline: true
+								}
+							]
 						}
 					});
 				} else {
