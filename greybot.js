@@ -112,11 +112,19 @@ exports.commandCount = function () {
 
 //helpers
 exports.getFileArray = function (srcPath) {
-	srcPath = path.join(path.dirname(require.main.filename), srcPath);
-	return fs.readdirSync(srcPath).filter(file => fs.statSync(path.join(srcPath, file)).isFile());
+	try {
+		srcPath = path.join(path.dirname(require.main.filename), srcPath);
+		return fs.readdirSync(srcPath).filter(file => fs.statSync(path.join(srcPath, file)).isFile());
+	} catch (err) {
+		return [];
+	}
 }
 exports.getFileContents = function (filePath) {
-	return fs.readFileSync(path.join(path.dirname(require.main.filename), filePath), 'utf-8');
+	try {
+		return fs.readFileSync(path.join(path.dirname(require.main.filename), filePath), 'utf-8');
+	} catch (err) {
+		return '';
+	}
 }
 exports.getJsonObject = function (filePath) {
 	return JSON.parse(exports.getFileContents(filePath));

@@ -1,7 +1,7 @@
 # GReYBot
 A chat bot for the GReY Discord Server based on [Chalda's DiscordBot](https://github.com/chalda/DiscordBot) and [martindale's Snarl Bot](https://github.com/martindale/snarl), using [discord.js](https://github.com/hydrabolt/discord.js/)
 
-[![License](https://img.shields.io/badge/license-Apache%202-blue.svg?style=flat-square)](https://raw.githubusercontent.com/naterchrdsn/GReYBot/master/LICENSE.md) [![Issues Open](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/naterchrdsn/GReYBot) [![Issues Reviewed](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/reviewed.svg?style=flat-square&label=issues%20reviewed&colorB=00ff00)](https://waffle.io/naterchrdsn/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=00aaff)](http://waffle.io/naterchrdsn/GReYBot)
+[![license](https://img.shields.io/github/license/naterchrdsn/greybot.svg?style=flat-square&colorB=00aaff)](https://github.com/naterchrdsn/GReYBot) [![Issues Open](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/naterchrdsn/GReYBot) [![Issues Accepted](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/naterchrdsn/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/naterchrdsn/GReYBot) [![Issues Ready](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/ready-for-review.svg?style=flat-square&label=issues%20ready&colorB=ff00aa)](http://waffle.io/naterchrdsn/GReYBot)
 
 Invite the bot to your server [here](https://discordapp.com/oauth2/authorize?client_id=283636170741514250&scope=bot&permissions=66186303).
 
@@ -119,7 +119,7 @@ issues with this, you can try deleting your node_modules folder and then running
 # To Do:
 Check out our our [status page](https://waffle.io/naterchrdsn/GReYBot).
 
-[![Issues Open](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/naterchrdsn/GReYBot) [![Issues Reviewed](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/reviewed.svg?style=flat-square&label=issues%20reviewed&colorB=00ff00)](https://waffle.io/naterchrdsn/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=00aaff)](http://waffle.io/naterchrdsn/GReYBot)
+[![Issues Open](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/naterchrdsn/GReYBot) [![Issues Accepted](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/naterchrdsn/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/naterchrdsn/GReYBot)
 
 # Help
 If you need help join us on [discord](https://discord.gg/A8a2yeP).

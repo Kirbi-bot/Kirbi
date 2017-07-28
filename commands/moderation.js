@@ -27,7 +27,7 @@ exports.prune = {
 
 		if (msg.member.hasPermission('MANAGE_MESSAGES', true)) {
 			var timeSinceLastPrune = Math.floor(new Date().getTime() - lastPruned);
-			console.log(timeSinceLastPrune);
+
 			if (timeSinceLastPrune > (GReYBot.Config.pruneInterval * 1000)) {
 				count++;
 				if (count > 1) {
