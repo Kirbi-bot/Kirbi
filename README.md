@@ -109,7 +109,7 @@ The examples directory contains example files for the configs, as well as some e
 Before first run you will need to create an `auth.json` file. A bot token is required. The other credentials are not required for the bot to run, but highly recommended as commands that depend on them will malfunction. See `auth.json.example`.
 
 To start the bot just run
-`node greybot.js`.
+`node start`.
 
 # Updates
 If you update the bot, please run `npm update` before starting it again. If you have
