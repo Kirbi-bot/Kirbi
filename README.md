@@ -119,7 +119,7 @@ issues with this, you can try deleting your node_modules folder and then running
 # To Do:
 Check out our our [status page](https://waffle.io/naterchrdsn/GReYBot).
 
-[![Issues Open](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/naterchrdsn/GReYBot) [![Issues Reviewed](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/reviewed.svg?style=flat-square&label=issues%20reviewed&colorB=00ff00)](https://waffle.io/naterchrdsn/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=00aaff)](http://waffle.io/naterchrdsn/GReYBot)
+[![Issues Open](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/naterchrdsn/GReYBot) [![Issues Accepted](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/naterchrdsn/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/naterchrdsn/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/naterchrdsn/GReYBot)
 
 # Help
 If you need help join us on [discord](https://discord.gg/A8a2yeP).
