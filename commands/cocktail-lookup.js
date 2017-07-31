@@ -17,16 +17,13 @@ exports.cocktail = {
 						url: 'http://www.thecocktaildb.com/',
 						icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
 					},
-					thumbnail: {
-						url: thumbnail
-					},
 					description: 'How about asking for something in specific?'
 				}
 			});
 
 			return;
 		}
-		
+
 		require('request')(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${encodeURIComponent(suffix)}`, function (err, res, body) {
 			var response = JSON.parse(body);
 			if (typeof response !== 'undefined' && response.drinks !== null) {
@@ -92,6 +89,11 @@ exports.cocktail = {
 					msg.channel.send({
 						embed: {
 							color: GReYBot.Config.defaultEmbedColor,
+							author: {
+								name: 'CocktailDB',
+								url: 'http://www.thecocktaildb.com/',
+								icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
+							},
 							description: `${response.data.drinks[0].strDrink} is a good drink, but I don't have a good way to describe it.`
 						}
 					});
@@ -100,6 +102,11 @@ exports.cocktail = {
 				msg.channel.send({
 					embed: {
 						color: GReYBot.Config.defaultEmbedColor,
+						author: {
+							name: 'CocktailDB',
+							url: 'http://www.thecocktaildb.com/',
+							icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
+						},
 						description: `Damn, I've never heard of that. Where do I need to go to find it?`
 					}
 				});

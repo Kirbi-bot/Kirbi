@@ -8,7 +8,6 @@ exports.brew = {
 	usage: '[brew | brewery]',
 	description: 'Used to retrieve specific information about a brewery or brew.',
 	process: (msg, suffix) => {
-		var url = 'http://api.brewerydb.com/v2/search?q=';
 		if (!suffix) {
 			msg.channel.send({
 				embed: {
@@ -18,17 +17,14 @@ exports.brew = {
 						url: 'http://www.brewerydb.com/',
 						icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
 					},
-					description: 'How about asking for something specific?',
-					fields: fields
+					description: 'How about asking for something specific?'
 				}
 			});
 
 			return;
 		}
 
-		url += encodeURIComponent(suffix);
-		url += `&key=${GReYBot.Auth.brewerydb_api_key}`;
-		require('request')(url, function (err, res, body) {
+		require('request')(`http://api.brewerydb.com/v2/search?q=${encodeURIComponent(suffix)}&key=${GReYBot.Auth.brewerydb_api_key}`, function (err, res, body) {
 			var response = JSON.parse(body);
 			if (typeof response.data !== 'undefined' && response.data.length > 0) {
 				let result = response.data[0];
@@ -100,6 +96,11 @@ exports.brew = {
 					msg.channel.send({
 						embed: {
 							color: GReYBot.Config.defaultEmbedColor,
+							author: {
+								name: 'BreweryDB',
+								url: 'http://www.brewerydb.com/',
+								icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
+							},
 							description: `${response.data[0].name} is a good beer, but I don't have a good way to describe it.`
 						}
 					});
@@ -108,7 +109,12 @@ exports.brew = {
 				msg.channel.send({
 					embed: {
 						color: GReYBot.Config.defaultEmbedColor,
-						description: `Damn, I've never heard of that.  Where do I need to go to find it?`
+						author: {
+							name: 'BreweryDB',
+							url: 'http://www.brewerydb.com/',
+							icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
+						},
+						description: `Damn, I've never heard of that. Where do I need to go to find it?`
 					}
 				});
 			}
