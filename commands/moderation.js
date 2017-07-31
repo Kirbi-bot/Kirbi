@@ -244,8 +244,8 @@ exports.prune = {
 
 		if (timeSinceLastPrune > (GReYBot.Config.pruneInterval * 1000)) {
 
-			if (parseInt(count) !== NaN) {
-				count = parseInt(count);
+			if (parseInt(suffix) !== NaN) {
+				var count = parseInt(suffix);
 				count++;
 				if (count > GReYBot.Config.pruneMax) count = GReYBot.Config.pruneMax;
 
