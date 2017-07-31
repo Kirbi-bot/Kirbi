@@ -250,7 +250,7 @@ exports.prune = {
 				if (count > GReYBot.Config.pruneMax) count = GReYBot.Config.pruneMax;
 
 				msg.channel.fetchMessages({ limit: count })
-					.then(messages => messages.map(m => m.delete()))
+					.then(messages => messages.map(m => m.delete().catch(err => {})))
 					.then(function () {
 						msg.channel.send({
 							embed: {
