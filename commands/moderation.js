@@ -243,8 +243,9 @@ exports.prune = {
 		var timeSinceLastPrune = Math.floor(new Date().getTime() - lastPruned);
 
 		if (timeSinceLastPrune > (GReYBot.Config.pruneInterval * 1000)) {
-			let count = parseInt(suffix)++ || 0;
-			if (count > 1) {
+
+			if (typeof count === 'number' && count > 1) {
+				count++;
 				if (count > GReYBot.Config.pruneMax) count = GReYBot.Config.pruneMax;
 
 				msg.channel.fetchMessages({ limit: count })
@@ -259,6 +260,13 @@ exports.prune = {
 					});
 
 				lastPruned = new Date().getTime();
+			} else {
+				msg.channel.send({
+					embed: {
+						color: GReYBot.Config.defaultEmbedColor,
+						description: `I need a numerical number...`
+					}
+				}).then(message => message.delete(5000));
 			}
 		} else {
 			var wait = Math.floor(GReYBot.Config.pruneInterval - (timeSinceLastPrune / 1000));
