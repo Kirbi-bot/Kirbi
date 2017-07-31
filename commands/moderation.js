@@ -257,7 +257,7 @@ exports.prune = {
 								color: GReYBot.Config.defaultEmbedColor,
 								description: `Pruning ${(count === 100) ? 100 : count - 1} messages...`
 							}
-						}).then(message => message.delete(5000));
+						}).then(message => message.delete(5000).catch(err => {}));
 					});
 
 				lastPruned = new Date().getTime();
