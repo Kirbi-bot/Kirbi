@@ -1,9 +1,17 @@
 exports.commands = [
-	'yodify',
-	'leet'
+	'leet',
+	'yodify'
 ]
 
 var leet = require('leet');
+
+exports.leet = {
+	usage: '<message>',
+	description: 'converts boring regular text to 1337',
+	process: (msg, suffix) => {
+		msg.channel.send(leet.convert(suffix));
+	}
+}
 
 exports.yodify = {
 	usage: '<statement>',
@@ -27,13 +35,5 @@ exports.yodify = {
 				});
 			}
 		);
-	}
-},
-
-exports.leet = {
-	usage: '<message>',
-	description: 'converts boring regular text to 1337',
-	process: (msg, suffix) => {
-		msg.channel.send(leet.convert(suffix));
 	}
 }

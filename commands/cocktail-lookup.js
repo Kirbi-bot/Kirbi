@@ -8,17 +8,31 @@ exports.cocktail = {
 	usage: '[cocktail]',
 	description: 'Used to retrieve information about a cocktail.',
 	process: (msg, suffix) => {
-		var url = 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 		if (!suffix) {
-			msg.channel.send('How about asking for something in specific?');
+			msg.channel.send({
+				embed: {
+					color: GReYBot.Config.defaultEmbedColor,
+					author: {
+						name: 'CocktailDB',
+						url: 'http://www.thecocktaildb.com/',
+						icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
+					},
+					thumbnail: {
+						url: thumbnail
+					},
+					description: 'How about asking for something in specific?'
+				}
+			});
+
+			return;
 		}
-		url += encodeURIComponent(suffix);
-		require('request')(url, function (err, res, body) {
+		
+		require('request')(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${encodeURIComponent(suffix)}`, function (err, res, body) {
 			var response = JSON.parse(body);
 			if (typeof response !== 'undefined' && response.drinks !== null) {
 				let result = response.drinks[0];
-        		let ingredients = Object.entries(result).slice(7,22).map(entry => entry[1]);
-				let ratios = Object.entries(result).slice(22,37).map(entry => entry[1]);
+				let ingredients = Object.entries(result).slice(7, 22).map(entry => entry[1]);
+				let ratios = Object.entries(result).slice(22, 37).map(entry => entry[1]);
 
 				if (typeof result.strInstructions !== 'undefined' && result.strInstructions !== '') {
 					let fields = [];
@@ -69,7 +83,7 @@ exports.cocktail = {
 								icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
 							},
 							thumbnail: {
-									url: thumbnail
+								url: thumbnail
 							},
 							fields: fields
 						}
@@ -78,7 +92,7 @@ exports.cocktail = {
 					msg.channel.send({
 						embed: {
 							color: GReYBot.Config.defaultEmbedColor,
-							description: `${response.data.drinks[0].strDrink} is a good drink, but I don\'t have a good way to describe it.`
+							description: `${response.data.drinks[0].strDrink} is a good drink, but I don't have a good way to describe it.`
 						}
 					});
 				}
@@ -86,7 +100,7 @@ exports.cocktail = {
 				msg.channel.send({
 					embed: {
 						color: GReYBot.Config.defaultEmbedColor,
-						description: `Damn, I've never heard of that.  Where do I need to go to find it?`
+						description: `Damn, I've never heard of that. Where do I need to go to find it?`
 					}
 				});
 			}
