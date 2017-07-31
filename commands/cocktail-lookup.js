@@ -31,15 +31,15 @@ exports.cocktail = {
 				let ingredients = Object.entries(result).slice(7, 22).map(entry => entry[1]);
 				let ratios = Object.entries(result).slice(22, 37).map(entry => entry[1]);
 
-				if (typeof result.strInstructions !== 'undefined' && result.strInstructions !== '') {
+				if (typeof result.strInstructions !== 'undefined' && result.strInstructions !== '' && result.strInstructions !== null) {
 					let fields = [];
 					let thumbnail = '';
-					if (typeof result.strDrinkThumb !== 'undefined' && result.strDrinkThumb !== '') {
+					if (typeof result.strDrinkThumb !== 'undefined' && result.strDrinkThumb !== '' && result.strDrinkThumb !== null) {
 						thumbnail = result.strDrinkThumb;
 					} else if (thumbnail === '') {
 						thumbnail = 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/tropical-drink_1f379.png';
 					}
-					if (typeof result.strGlass !== 'undefined' && result.strGlass !== '') {
+					if (typeof result.strGlass !== 'undefined' && result.strGlass !== '' && result.strGlass !== null) {
 						fields.push({
 							name: 'Glass:',
 							value: result.strGlass,
@@ -49,8 +49,8 @@ exports.cocktail = {
 					if (typeof ingredients !== 'undefined' && ingredients.length) {
 						let ingredientsList = '';
 						ingredients.forEach((element, index) => {
-							if (element !== '' && element !== '\n') {
-								if (ratios[index] !== '' && ratios[index] !== '\n') {
+							if (element !== '' && element !== '\n' && element !== null) {
+								if (ratios[index] !== '' && ratios[index] !== '\n' && ratios[index] !== null) {
 									ingredientsList += `* ${element} - ${ratios[index]}\n`;
 								} else {
 									ingredientsList += `* ${element}\n`;
@@ -63,12 +63,10 @@ exports.cocktail = {
 							inline: true
 						});
 					};
-					if (typeof result.strInstructions !== 'undefined' && result.strInstructions !== '') {
-						fields.push({
-							name: 'Instructions:',
-							value: result.strInstructions
-						});
-					};
+					fields.push({
+						name: 'Instructions:',
+						value: result.strInstructions
+					});
 
 					msg.channel.send({
 						embed: {
