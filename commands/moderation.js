@@ -26,7 +26,7 @@ exports.ban = {
 	process: function (msg, suffix) {
 		var args = suffix.split(' ');
 		if (args.length > 0 && args[0]) {
-			if (!msg.guild.me.hasPermission('BAN_MEMBERS', true)) {
+			if (!msg.guild.me.hasPermission('BAN_MEMBERS')) {
 				msg.channel.send({
 					embed: {
 						color: GReYBot.Config.defaultEmbedColor,
@@ -37,7 +37,7 @@ exports.ban = {
 				return;
 			}
 
-			if (!msg.member.hasPermission('BAN_MEMBERS', true)) {
+			if (!msg.member.hasPermission('BAN_MEMBERS')) {
 				msg.channel.send({
 					embed: {
 						color: GReYBot.Config.defaultEmbedColor,
@@ -135,7 +135,7 @@ exports.kick = {
 		let args = suffix.split(' ');
 
 		if (args.length > 0 && args[0]) {
-			if (!msg.guild.me.hasPermission('KICK_MEMBERS', true)) {
+			if (!msg.guild.me.hasPermission('KICK_MEMBERS')) {
 				msg.channel.send({
 					embed: {
 						color: GReYBot.Config.defaultEmbedColor,
@@ -146,7 +146,7 @@ exports.kick = {
 				return;
 			}
 
-			if (!msg.member.hasPermission('KICK_MEMBERS', true)) {
+			if (!msg.member.hasPermission('KICK_MEMBERS')) {
 				msg.channel.send({
 					embed: {
 						color: GReYBot.Config.defaultEmbedColor,
@@ -218,7 +218,7 @@ exports.prune = {
 			return;
 		}
 
-		if (!msg.guild.me.hasPermission('MANAGE_MESSAGES', true)) {
+		if (!msg.guild.me.hasPermission('MANAGE_MESSAGES')) {
 			msg.channel.send({
 				embed: {
 					color: GReYBot.Config.defaultEmbedColor,
@@ -229,7 +229,7 @@ exports.prune = {
 			return;
 		}
 
-		if (!msg.member.hasPermission('MANAGE_MESSAGES', true)) {
+		if (!msg.member.hasPermission('MANAGE_MESSAGES')) {
 			msg.channel.send({
 				embed: {
 					color: GReYBot.Config.defaultEmbedColor,
