@@ -218,7 +218,7 @@ exports.prune = {
 			return;
 		}
 
-		if (!msg.guild.me.hasPermission('KICK_MEMBERS', true)) {
+		if (!msg.guild.me.hasPermission('MANAGE_MESSAGES', true)) {
 			msg.channel.send({
 				embed: {
 					color: GReYBot.Config.defaultEmbedColor,
