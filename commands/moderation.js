@@ -60,7 +60,7 @@ exports.ban = {
 						return;
 					}
 					if (args.length > 1) {
-						if (typeof args[1] === 'number') {
+						if (parseInt(args[1]) !== NaN) {
 							if (args.length > 2) {
 								let days = args[1];
 								let reason = args.slice(2).join(' ');
@@ -244,7 +244,8 @@ exports.prune = {
 
 		if (timeSinceLastPrune > (GReYBot.Config.pruneInterval * 1000)) {
 
-			if (typeof count === 'number' && count > 1) {
+			if (parseInt(count) !== NaN) {
+				count = parseInt(count);
 				count++;
 				if (count > GReYBot.Config.pruneMax) count = GReYBot.Config.pruneMax;
 
