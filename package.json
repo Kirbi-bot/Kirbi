@@ -7,7 +7,7 @@
 	"author": "@naterchrdsn",
 	"repository": {
 	  	"type": "git",
-		"url": "git+https://github.com/naterchrdsn/GReYBot.git"
+		"url": "git+https://github.com/Richardson-Media-House/Kirbi.git"
 	},
 	"license": "Apache-2.0",
 	"dependencies": {
