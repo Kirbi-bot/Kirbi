@@ -1,3 +1,4 @@
+![Kirbi!](/../util/kirbi_icon.png?raw=true)
 # Kirbi
 A modular chat bot for Discord, using [discord.js](https://github.com/hydrabolt/discord.js/)
 
