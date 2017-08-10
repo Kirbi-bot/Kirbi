@@ -1,8 +1,8 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 const { AntiraidSettings } = require('../extras/classes');
 
 // Instantiate the guild watcher for antiraid
-GReYBot.antiraidGuilds = {};
+Kirbi.antiraidGuilds = {};
 
 exports.commands = [
 	'antiraid',
@@ -20,7 +20,7 @@ exports.antiraid = {
 		if (parameter === '') {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: `Please specify a property of the antiraid settings. \nAvailable properties: ${Object.keys(settingTypes).join(', ')}.`
 				}
 			});
@@ -28,10 +28,10 @@ exports.antiraid = {
 		}
 
 		// Get the antiraid settings for the guild that the command was run from or instantiate it if it doesn't already exist.
-		let antiraidSettings = GReYBot.antiraidGuilds[msg.guild.id];
+		let antiraidSettings = Kirbi.antiraidGuilds[msg.guild.id];
 		if (!antiraidSettings) {
-			GReYBot.antiraidGuilds[msg.guild.id] = new AntiraidSettings(GReYBot.Discord.guilds.find('id', msg.guild.id));
-			antiraidSettings = GReYBot.antiraidGuilds[msg.guild.id];
+			Kirbi.antiraidGuilds[msg.guild.id] = new AntiraidSettings(Kirbi.Discord.guilds.find('id', msg.guild.id));
+			antiraidSettings = Kirbi.antiraidGuilds[msg.guild.id];
 		}
 
 		// Only some values of the antiraid are allowed to be viewed and updated.
@@ -39,7 +39,7 @@ exports.antiraid = {
 		if (!settingType) {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: `That property is not available.`
 				}
 			});
@@ -55,7 +55,7 @@ exports.antiraid = {
 
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: `That ${parameter} antiraid setting is currently set to '${value}'.`
 				}
 			});
@@ -70,7 +70,7 @@ exports.antiraid = {
 				value = Math.max(0, Number.parseInt(value));
 				break;
 			case 'Channel':
-				const guild = GReYBot.Discord.guilds.find('id', msg.guild.id);
+				const guild = Kirbi.Discord.guilds.find('id', msg.guild.id);
 				value = guild ? guild.channels.find('id', value) : null;
 				if (!value) {
 					message = `The ${parameter} antiraid setting has been set to 'none'.`;
@@ -88,7 +88,7 @@ exports.antiraid = {
 		// Display a message when done.
 		msg.channel.send({
 			embed: {
-				color: GReYBot.Config.defaultEmbedColor,
+				color: Kirbi.Config.defaultEmbedColor,
 				description: message
 			}
 		});

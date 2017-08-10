@@ -1,4 +1,4 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'xkcd',
@@ -16,7 +16,7 @@ exports.xkcd = {
 			try {
 				var comic = JSON.parse(body);
 				msg.channel.send({embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					title: `XKCD ${comic.num} ${comic.title}`,
 					image: {
 						url: comic.img

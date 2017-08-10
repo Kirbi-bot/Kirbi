@@ -1,4 +1,4 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'wiki'
@@ -12,7 +12,7 @@ exports.wiki = {
 	process: (msg, suffix) => {
 		var query = suffix;
 		if (!query) {
-			msg.channel.send(`Usage: ${GReYBot.Config.commandPrefix}wiki search terms`);
+			msg.channel.send(`Usage: ${Kirbi.Config.commandPrefix}wiki search terms`);
 			return;
 		}
 
@@ -25,7 +25,7 @@ exports.wiki = {
 						if (paragraph) {
 							msg.channel.send({
 								embed: {
-									color: GReYBot.Config.defaultEmbedColor,
+									color: Kirbi.Config.defaultEmbedColor,
 									title: page.title,
 									description: `${paragraph}\n\n${page.fullurl}`
 								}

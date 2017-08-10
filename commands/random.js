@@ -1,4 +1,4 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 const request = require('request');
 
 
@@ -16,7 +16,7 @@ exports.commands = [
 	'choose'
 ]
 
-var factsData = GReYBot.require('/extras/data.js');
+var factsData = Kirbi.require('/extras/data.js');
 
 exports.math_fact = {
 	usage: '<random math>',
@@ -30,7 +30,7 @@ exports.math_fact = {
 					if (data && data.text) {
 						msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								title: 'Math Fact',
 								description: data.text
 							}
@@ -38,10 +38,10 @@ exports.math_fact = {
 					}
 				} catch (err) {
 					var msgTxt = `command math_fact failed :disappointed_relieved:`;
-					if (GReYBot.Config.debug) {
+					if (Kirbi.Config.debug) {
 						msgTxt += `\n${err.stack}`;
 						
-						GReYBot.logError(err);
+						Kirbi.logError(err);
 					}
 					msg.channel.send(msgTxt);
 				}
@@ -60,7 +60,7 @@ exports.year_fact = {
 					if (data && data.text) {
 						msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								title: 'Year Fact',
 								description: data.text
 							}
@@ -68,10 +68,10 @@ exports.year_fact = {
 					}
 				} catch (err) {
 					var msgTxt = `command year_fact failed :disappointed_relieved:`;
-					if (GReYBot.Config.debug) {
+					if (Kirbi.Config.debug) {
 						msgTxt += `\n${err.stack}`;
 						
-						GReYBot.logError(err);
+						Kirbi.logError(err);
 					}
 					msg.channel.send(msgTxt);
 				}
@@ -90,7 +90,7 @@ exports.date_fact = {
 					if (data && data.text) {
 						msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								title: 'Date Fact',
 								description: data.text
 							}
@@ -98,10 +98,10 @@ exports.date_fact = {
 					}
 				} catch (err) {
 					var msgTxt = `command date_fact failed :disappointed_relieved:`;
-					if (GReYBot.Config.debug) {
+					if (Kirbi.Config.debug) {
 						msgTxt += `\n${err.stack}`;
 						
-						GReYBot.logError(err);
+						Kirbi.logError(err);
 					}
 					msg.channel.send(msgTxt);
 				}
@@ -120,7 +120,7 @@ exports.chucknorris = {
 					if (data && data.value && data.value.joke) {
 						msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								title: 'Math Fact',
 								description: data.value.joke
 							}
@@ -128,10 +128,10 @@ exports.chucknorris = {
 					}
 				} catch (err) {
 					var msgTxt = `command chucknorris failed :disappointed_relieved:`;
-					if (GReYBot.Config.debug) {
+					if (Kirbi.Config.debug) {
 						msgTxt += `\n${err.stack}`;
 						
-						GReYBot.logError(err);
+						Kirbi.logError(err);
 					}
 					msg.channel.send(msgTxt);
 				}
@@ -150,7 +150,7 @@ exports.cat_fact = {
 					if (data && data.fact) {
 						msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								title: 'Cat Fact',
 								description: data.fact
 							}
@@ -158,10 +158,10 @@ exports.cat_fact = {
 					}
 				} catch (err) {
 					var msgTxt = `command cat_fact failed :disappointed_relieved:`;
-					if (GReYBot.Config.debug) {
+					if (Kirbi.Config.debug) {
 						msgTxt += `\n${err.stack}`;
 						
-						GReYBot.logError(err);
+						Kirbi.logError(err);
 					}
 					msg.channel.send(msgTxt);
 				}
@@ -180,7 +180,7 @@ exports.dog_fact = {
 					if (data && data.facts && data.facts[0]) {
 						msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								title: 'Dog Fact',
 								description: data.facts[0]
 							}
@@ -188,10 +188,10 @@ exports.dog_fact = {
 					}
 				} catch (err) {
 					var msgTxt = `command dog_fact failed :disappointed_relieved:`;
-					if (GReYBot.Config.debug) {
+					if (Kirbi.Config.debug) {
 						msgTxt += `\n${err.stack}`;
 						
-						GReYBot.logError(err);
+						Kirbi.logError(err);
 					}
 					msg.channel.send(msgTxt);	
 				}
@@ -213,7 +213,7 @@ exports.smifffact = {
 		var randomnumber = Math.floor(Math.random() * (factsData.smiff.length - 1 + 1)) + 1;
 		msg.channel.send({
 			embed: {
-				color: GReYBot.Config.defaultEmbedColor,
+				color: Kirbi.Config.defaultEmbedColor,
 				title: 'Will Smith Fact',
 				description: factsData.smiff[randomnumber]
 			}
@@ -243,7 +243,7 @@ exports['8ball'] = {
 
 		msg.channel.send({
 			embed: {
-				color: GReYBot.Config.defaultEmbedColor,
+				color: Kirbi.Config.defaultEmbedColor,
 				title: suffix,
 				description: `:8ball: **${response}**`,
 			}
@@ -263,7 +263,7 @@ exports.choose = {
 
 		msg.channel.send({
 			embed: {
-				color: GReYBot.Config.defaultEmbedColor,
+				color: Kirbi.Config.defaultEmbedColor,
 				title: `:thinking: **${response}**`,
 			}
 		});

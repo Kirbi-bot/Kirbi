@@ -1,4 +1,4 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 const urban = require('urban');
 
 exports.commands = [
@@ -28,7 +28,7 @@ exports.urban = {
 
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					title: title,
 					description: message,
 					footer: {
