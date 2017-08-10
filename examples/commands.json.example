@@ -12,6 +12,6 @@
     {
         "command": "source",
         "description": "Link to my source code!",
-        "response": "https://github.com/naterchrdsn/GReYBot"
+        "response": "https://github.com/richardson-media-house/kirbi"
     }
 ]

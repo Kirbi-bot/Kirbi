@@ -1,10 +1,10 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'server'
 ]
 
-var servers = GReYBot.getJsonObject('/config/servers.json');
+var servers = Kirbi.getJsonObject('/config/servers.json');
 
 exports.server = {
 	usage: `list|${servers.map(server => server.key).join('|')}`,
@@ -13,9 +13,9 @@ exports.server = {
 		if (suffix.toLowerCase() === "list" || suffix.trim() === "") {
 			msg.channel.send({
 				embed: {
-					title: `${GReYBot.Config.serverName} Servers`,
+					title: `${Kirbi.Config.serverName} Servers`,
 					description: servers.map(server => server.key).join('\n'),
-					color: GReYBot.Config.defaultEmbedColor
+					color: Kirbi.Config.defaultEmbedColor
 				}
 			});
 		}
@@ -27,7 +27,7 @@ exports.server = {
 					embed: {
 						title: info.title,
 						description: info.description,
-						color: GReYBot.Config.defaultEmbedColor
+						color: Kirbi.Config.defaultEmbedColor
 					}
 				});
 			}

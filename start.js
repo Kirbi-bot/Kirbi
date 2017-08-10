@@ -1,1 +1,1 @@
-require('./greybot').login();
+require('./kirbi').login();
