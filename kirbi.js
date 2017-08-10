@@ -1,15 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
-
-try {
-	var Discord = require("discord.js");
-} catch (err) {
-	console.log(chalk.red(err.stack));
-	console.log(chalk.red(process.version));
-	console.log(chalk.red('Please run npm install and ensure it passes with no errors!'));
-	process.exit();
-}
+const Discord = require("discord.js");
 
 console.log(`Starting Kirbi\nNode version: ${process.version}\nDiscord.js version: ${Discord.version}`);
 
@@ -65,6 +57,16 @@ exports.Config = Config();
 
 //command functions
 exports.Commands = {};
+exports.addCommand = function (commandName, commandObject) {
+	try {
+		exports.Commands[commandName] = commandObject;
+	} catch (err) {
+		console.log(err);
+	}
+}
+exports.commandCount = function () {
+	return Object.keys(exports.Commands).length;
+}
 
 //permissions
 function Permissions() {
@@ -98,17 +100,6 @@ function Permissions() {
 }
 
 exports.Permissions = Permissions();
-
-exports.addCommand = function (commandName, commandObject) {
-	try {
-		exports.Commands[commandName] = commandObject;
-	} catch (err) {
-		console.log(err);
-	}
-}
-exports.commandCount = function () {
-	return Object.keys(exports.Commands).length;
-}
 
 //helpers
 exports.getFileArray = function (srcPath) {

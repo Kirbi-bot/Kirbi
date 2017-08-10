@@ -1,5 +1,5 @@
 {
-	"debug": true,
+	"debug": false,
 	"commandPrefix": "!",
 	"elizaEnabled": true,
 	"defaultEmbedColor": 5592405,
