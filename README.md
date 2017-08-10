@@ -1,9 +1,9 @@
-# GReYBot
-A chat bot for the GReY Discord Server based on [Chalda's DiscordBot](https://github.com/chalda/DiscordBot) and [martindale's Snarl Bot](https://github.com/martindale/snarl), using [discord.js](https://github.com/hydrabolt/discord.js/)
+# Kirbi
+A modular chat bot for Discord, using [discord.js](https://github.com/hydrabolt/discord.js/)
 
-[![license](https://img.shields.io/github/license/richardson-media-house/greybot.svg?style=flat-square&colorB=00aaff)](https://github.com/richardson-media-house/GReYBot) [![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/GReYBot) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/GReYBot) [![Issues Ready](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/ready-for-review.svg?style=flat-square&label=issues%20ready&colorB=ff00aa)](http://waffle.io/richardson-media-house/GReYBot)
+[![license](https://img.shields.io/github/license/richardson-media-house/kirbi.svg?style=flat-square&colorB=00aaff)](https://github.com/richardson-media-house/kirbi) [![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/kirbi) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/kirbi) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/kirbi) [![Issues Ready](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/ready-for-review.svg?style=flat-square&label=issues%20ready&colorB=ff00aa)](http://waffle.io/richardson-media-house/kirbi)
 
-Invite the bot to your server [here](https://discordapp.com/oauth2/authorize?client_id=283636170741514250&scope=bot&permissions=66186303).
+Invite the bot to your server [here](https://discordapp.com/oauth2/authorize?client_id=345207331295854593&scope=bot&permissions=66186303).
 
 # Features:
 
@@ -117,9 +117,9 @@ issues with this, you can try deleting your node_modules folder and then running
 `npm install` again. Please see [Installation](#Installation).
 
 # To Do:
-Check out our our [status page](https://waffle.io/richardson-media-house/GReYBot).
+Check out our our [status page](https://waffle.io/richardson-media-house/kirbi).
 
-[![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/GReYBot) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/GReYBot)
+[![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/kirbi) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/kirbi) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/kirbi)
 
 # Help
 If you need help join us on [discord](https://discord.gg/A8a2yeP).

@@ -1,4 +1,4 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'ban',
@@ -6,7 +6,7 @@ exports.commands = [
 	'prune'
 ]
 
-var lastPruned = new Date().getTime() - (GReYBot.Config.pruneInterval * 1000);
+var lastPruned = new Date().getTime() - (Kirbi.Config.pruneInterval * 1000);
 
 function resolveMention(usertxt) {
 	var userid = usertxt;
@@ -29,7 +29,7 @@ exports.ban = {
 			if (!msg.guild.me.hasPermission('BAN_MEMBERS')) {
 				msg.channel.send({
 					embed: {
-						color: GReYBot.Config.defaultEmbedColor,
+						color: Kirbi.Config.defaultEmbedColor,
 						description: `I don't have permission to ban people!`
 					}
 				}).then(message => message.delete(5000));
@@ -40,7 +40,7 @@ exports.ban = {
 			if (!msg.member.hasPermission('BAN_MEMBERS')) {
 				msg.channel.send({
 					embed: {
-						color: GReYBot.Config.defaultEmbedColor,
+						color: Kirbi.Config.defaultEmbedColor,
 						description: `You don't have permission to ban people, ${msg.member}!`
 					}
 				}).then(message => message.delete(5000));
@@ -53,7 +53,7 @@ exports.ban = {
 					if (!member.bannable) {
 						msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								description: `I can't ban ${member}. Do they have the same or a higher role than me?`
 							}
 						}).then(message => message.delete(5000));
@@ -67,13 +67,13 @@ exports.ban = {
 								member.ban({ days: parseFloat(days), reason: reason }).then(x => {
 									msg.channel.send({
 										embed: {
-											color: GReYBot.Config.defaultEmbedColor,
+											color: Kirbi.Config.defaultEmbedColor,
 											description: `Banning ${member} from ${msg.guild} for ${reason}!`
 										}
 									});
 								}).catch(err => msg.channel.send({
 									embed: {
-										color: GReYBot.Config.defaultEmbedColor,
+										color: Kirbi.Config.defaultEmbedColor,
 										description: `Banning ${member} from ${msg.guild} failed!`
 									}
 								}));
@@ -83,7 +83,7 @@ exports.ban = {
 									msg.channel.send(`Banning ${member} from ${msg.guild}!`);
 								}).catch(err => msg.channel.send({
 									embed: {
-										color: GReYBot.Config.defaultEmbedColor,
+										color: Kirbi.Config.defaultEmbedColor,
 										description: `Banning ${member} from ${msg.guild} failed!`
 									}
 								}));
@@ -93,13 +93,13 @@ exports.ban = {
 							member.ban({ reason: reason }).then(x => {
 								msg.channel.send({
 									embed: {
-										color: GReYBot.Config.defaultEmbedColor,
+										color: Kirbi.Config.defaultEmbedColor,
 										description: `Banning ${member} from ${msg.guild} for ${reason}!`
 									}
 								});
 							}).catch(err => msg.channel.send({
 								embed: {
-									color: GReYBot.Config.defaultEmbedColor,
+									color: Kirbi.Config.defaultEmbedColor,
 									description: `Banning ${member} from ${msg.guild} failed!`
 								}
 							}));
@@ -109,7 +109,7 @@ exports.ban = {
 							msg.channel.send(`Banning ${member} from ${msg.guild}!`);
 						}).catch(err => msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								description: `Banning ${member} from ${msg.guild} failed!`
 							}
 						}));
@@ -119,7 +119,7 @@ exports.ban = {
 		} else {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: 'You must specify a user to ban.'
 				}
 			});
@@ -138,7 +138,7 @@ exports.kick = {
 			if (!msg.guild.me.hasPermission('KICK_MEMBERS')) {
 				msg.channel.send({
 					embed: {
-						color: GReYBot.Config.defaultEmbedColor,
+						color: Kirbi.Config.defaultEmbedColor,
 						description: `I don't have permission to kick people!`
 					}
 				}).then(message => message.delete(5000));
@@ -149,7 +149,7 @@ exports.kick = {
 			if (!msg.member.hasPermission('KICK_MEMBERS')) {
 				msg.channel.send({
 					embed: {
-						color: GReYBot.Config.defaultEmbedColor,
+						color: Kirbi.Config.defaultEmbedColor,
 						description: `I don't have permission to kick people, ${msg.member}!`
 					}
 				}).then(message => message.delete(5000));
@@ -168,7 +168,7 @@ exports.kick = {
 						member.kick().then(x => {
 							msg.channel.send({
 								embed: {
-									color: GReYBot.Config.defaultEmbedColor,
+									color: Kirbi.Config.defaultEmbedColor,
 									description: `Kicking ${member} from ${msg.guild} for ${reason}!`
 								}
 							})
@@ -177,13 +177,13 @@ exports.kick = {
 						member.kick().then(x => {
 							msg.channel.send({
 								embed: {
-									color: GReYBot.Config.defaultEmbedColor,
+									color: Kirbi.Config.defaultEmbedColor,
 									description: `Kicking ${member} from ${msg.guild}!`
 								}
 							})
 						}).catch(err => msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								description: `Kicking ${member} failed!`
 							}
 						}).then(message => message.delete(5000)));
@@ -195,7 +195,7 @@ exports.kick = {
 		} else {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: 'You must specify a user to kick.'
 				}
 			});
@@ -210,7 +210,7 @@ exports.prune = {
 		if (!suffix) {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: 'You must specify a number of messages to prune.'
 				}
 			}).then(message => message.delete(5000));
@@ -221,7 +221,7 @@ exports.prune = {
 		if (!msg.guild.me.hasPermission('MANAGE_MESSAGES')) {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: `I can't prune messages, ${msg.member}...`
 				}
 			}).then(message => message.delete(5000));
@@ -232,7 +232,7 @@ exports.prune = {
 		if (!msg.member.hasPermission('MANAGE_MESSAGES')) {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: `You can't prune messages, ${msg.member}...`
 				}
 			}).then(message => message.delete(5000));
@@ -242,19 +242,19 @@ exports.prune = {
 
 		var timeSinceLastPrune = Math.floor(new Date().getTime() - lastPruned);
 
-		if (timeSinceLastPrune > (GReYBot.Config.pruneInterval * 1000)) {
+		if (timeSinceLastPrune > (Kirbi.Config.pruneInterval * 1000)) {
 
 			if (parseInt(suffix) !== NaN) {
 				var count = parseInt(suffix);
 				count++;
-				if (count > GReYBot.Config.pruneMax) count = GReYBot.Config.pruneMax;
+				if (count > Kirbi.Config.pruneMax) count = Kirbi.Config.pruneMax;
 
 				msg.channel.fetchMessages({ limit: count })
 					.then(messages => messages.map(m => m.delete().catch(err => {})))
 					.then(function () {
 						msg.channel.send({
 							embed: {
-								color: GReYBot.Config.defaultEmbedColor,
+								color: Kirbi.Config.defaultEmbedColor,
 								description: `Pruning ${(count === 100) ? 100 : count - 1} messages...`
 							}
 						}).then(message => message.delete(5000).catch(err => {}));
@@ -264,16 +264,16 @@ exports.prune = {
 			} else {
 				msg.channel.send({
 					embed: {
-						color: GReYBot.Config.defaultEmbedColor,
+						color: Kirbi.Config.defaultEmbedColor,
 						description: `I need a numerical number...`
 					}
 				}).then(message => message.delete(5000));
 			}
 		} else {
-			var wait = Math.floor(GReYBot.Config.pruneInterval - (timeSinceLastPrune / 1000));
+			var wait = Math.floor(Kirbi.Config.pruneInterval - (timeSinceLastPrune / 1000));
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: `You can't do that yet, please wait ${wait} second${wait > 1 ? 's' : ''}`
 				}
 			}).then(message => message.delete(5000));

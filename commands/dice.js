@@ -1,4 +1,4 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	"roll"
@@ -32,7 +32,7 @@ exports.roll = {
 
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: `${response}`
 				}
 			});

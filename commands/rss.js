@@ -1,13 +1,13 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'rss'
 ]
 
 try {
-	var rssFeeds = GReYBot.getJsonObject('/config/rss.json');
+	var rssFeeds = Kirbi.getJsonObject('/config/rss.json');
 } catch (err) {
-	GReYBot.logError(`Couldn't load rss.json. See rss.json.example if you want rss feed commands. error: ${err}`);
+	Kirbi.logError(`Couldn't load rss.json. See rss.json.example if you want rss feed commands. error: ${err}`);
 }
 
 function loadFeeds() {

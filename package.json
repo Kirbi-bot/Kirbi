@@ -1,13 +1,13 @@
 {
-	"name": "GReYBot",
-	"version": "1.1.0",
-	"description": "A chat bot for the GReY Community Discord server",
+	"name": "Kirbi",
+	"version": "0.2.0",
+	"description": "A modular chat bot for Discord.",
 	"readme": "README.md",
 	"maintainers": [],
 	"author": "@naterchrdsn",
 	"repository": {
 	  	"type": "git",
-		"url": "git+https://github.com/naterchrdsn/GReYBot.git"
+		"url": "git+https://github.com/Richardson-Media-House/Kirbi.git"
 	},
 	"license": "Apache-2.0",
 	"dependencies": {

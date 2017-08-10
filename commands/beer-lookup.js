@@ -1,4 +1,4 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'brew'
@@ -11,7 +11,7 @@ exports.brew = {
 		if (!suffix) {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					author: {
 						name: 'BreweryDB',
 						url: 'http://www.brewerydb.com/',
@@ -24,7 +24,7 @@ exports.brew = {
 			return;
 		}
 
-		require('request')(`http://api.brewerydb.com/v2/search?q=${encodeURIComponent(suffix)}&key=${GReYBot.Auth.brewerydb_api_key}`, function (err, res, body) {
+		require('request')(`http://api.brewerydb.com/v2/search?q=${encodeURIComponent(suffix)}&key=${Kirbi.Auth.brewerydb_api_key}`, function (err, res, body) {
 			var response = JSON.parse(body);
 			if (typeof response.data !== 'undefined' && response.data.length > 0) {
 				let result = response.data[0];
@@ -78,7 +78,7 @@ exports.brew = {
 
 					msg.channel.send({
 						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
+							color: Kirbi.Config.defaultEmbedColor,
 							title: result.name,
 							author: {
 								name: 'BreweryDB',
@@ -95,7 +95,7 @@ exports.brew = {
 				} else {
 					msg.channel.send({
 						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
+							color: Kirbi.Config.defaultEmbedColor,
 							author: {
 								name: 'BreweryDB',
 								url: 'http://www.brewerydb.com/',
@@ -108,7 +108,7 @@ exports.brew = {
 			} else {
 				msg.channel.send({
 					embed: {
-						color: GReYBot.Config.defaultEmbedColor,
+						color: Kirbi.Config.defaultEmbedColor,
 						author: {
 							name: 'BreweryDB',
 							url: 'http://www.brewerydb.com/',

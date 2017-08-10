@@ -1,4 +1,4 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'cocktail'
@@ -11,7 +11,7 @@ exports.cocktail = {
 		if (!suffix) {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					author: {
 						name: 'CocktailDB',
 						url: 'http://www.thecocktaildb.com/',
@@ -70,7 +70,7 @@ exports.cocktail = {
 
 					msg.channel.send({
 						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
+							color: Kirbi.Config.defaultEmbedColor,
 							title: `__${result.strDrink}__`,
 							author: {
 								name: 'CocktailDB',
@@ -86,7 +86,7 @@ exports.cocktail = {
 				} else {
 					msg.channel.send({
 						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
+							color: Kirbi.Config.defaultEmbedColor,
 							author: {
 								name: 'CocktailDB',
 								url: 'http://www.thecocktaildb.com/',
@@ -99,7 +99,7 @@ exports.cocktail = {
 			} else {
 				msg.channel.send({
 					embed: {
-						color: GReYBot.Config.defaultEmbedColor,
+						color: Kirbi.Config.defaultEmbedColor,
 						author: {
 							name: 'CocktailDB',
 							url: 'http://www.thecocktaildb.com/',

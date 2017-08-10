@@ -1,4 +1,4 @@
-var GReYBot = require('../greybot');
+var Kirbi = require('../kirbi');
 var util = require('util');
 var xml2js = require('xml2js');
 var parser = new xml2js.Parser();
@@ -16,7 +16,7 @@ exports.define = {
 		if (!word) {
 			msg.channel.send({
 				embed: {
-					color: GReYBot.Config.defaultEmbedColor,
+					color: Kirbi.Config.defaultEmbedColor,
 					description: 'I won\'t define an empty string.'
 				}
 			});
@@ -24,7 +24,7 @@ exports.define = {
 			return;
 		}
 
-		require('request')(`http://www.dictionaryapi.com/api/v1/references/collegiate/xml/${word}?key=${GReYBot.Auth.dictionary_api_key}`,
+		require('request')(`http://www.dictionaryapi.com/api/v1/references/collegiate/xml/${word}?key=${Kirbi.Auth.dictionary_api_key}`,
 			function (err, res, body) {
 				let definitionResult = "";
 				parser.parseString(body, function (err, result) {
@@ -62,7 +62,7 @@ exports.define = {
 
 					msg.channel.send({
 						embed: {
-							color: GReYBot.Config.defaultEmbedColor,
+							color: Kirbi.Config.defaultEmbedColor,
 							title: word,
 							description: definitionResult
 						}

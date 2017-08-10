@@ -11,7 +11,7 @@ try {
 	process.exit();
 }
 
-console.log(`Starting GReYBot\nNode version: ${process.version}\nDiscord.js version: ${Discord.version}`);
+console.log(`Starting Kirbi\nNode version: ${process.version}\nDiscord.js version: ${Discord.version}`);
 
 exports.Discord = new Discord.Client();
 
@@ -143,7 +143,7 @@ exports.login = function () {
 		console.log('Logging in with token...');
 		exports.Discord.login(exports.Auth.bot_token);
 	} else {
-		console.log(chalk.red('GReYBot must have a bot token...'));
+		console.log(chalk.red('Kirbi must have a bot token...'));
 	}
 }
 
