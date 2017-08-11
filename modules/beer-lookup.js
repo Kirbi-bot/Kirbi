@@ -1,4 +1,4 @@
-const Kirbi = require('../kirbi');
+const Kirbi = require('/kirbi');
 
 exports.commands = [
 	'brew'
@@ -6,21 +6,19 @@ exports.commands = [
 
 exports.brew = {
 	usage: '[brew | brewery]',
+	type: 'normal',
 	description: 'Used to retrieve specific information about a brewery or brew.',
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 		if (!suffix) {
-			msg.channel.send({
-				embed: {
-					color: Kirbi.Config.defaultEmbedColor,
-					author: {
-						name: 'BreweryDB',
-						url: 'http://www.brewerydb.com/',
-						icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
-					},
-					description: 'How about asking for something specific?'
-				}
-			});
-
+			cb({embed: {
+				color: Kirbi.Config.defaultEmbedColor,
+				author: {
+					name: 'BreweryDB',
+					url: 'http://www.brewerydb.com/',
+					icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
+				},
+				description: 'How about asking for something specific?'
+			}}, msg);
 			return;
 		}
 
@@ -76,47 +74,41 @@ exports.brew = {
 						});
 					};
 
-					msg.channel.send({
-						embed: {
-							color: Kirbi.Config.defaultEmbedColor,
-							title: result.name,
-							author: {
-								name: 'BreweryDB',
-								url: 'http://www.brewerydb.com/',
-								icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
-							},
-							thumbnail: {
-								url: thumbnail
-							},
-							description: `\n${result.description}\n\n`,
-							fields: fields
-						}
-					});
+					cb({embed: {
+						color: Kirbi.Config.defaultEmbedColor,
+						title: result.name,
+						author: {
+							name: 'BreweryDB',
+							url: 'http://www.brewerydb.com/',
+							icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
+						},
+						thumbnail: {
+							url: thumbnail
+						},
+						description: `\n${result.description}\n\n`,
+						fields: fields
+					}}, msg);
 				} else {
-					msg.channel.send({
-						embed: {
-							color: Kirbi.Config.defaultEmbedColor,
-							author: {
-								name: 'BreweryDB',
-								url: 'http://www.brewerydb.com/',
-								icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
-							},
-							description: `${response.data[0].name} is a good beer, but I don't have a good way to describe it.`
-						}
-					});
-				}
-			} else {
-				msg.channel.send({
-					embed: {
+					cb({embed: {
 						color: Kirbi.Config.defaultEmbedColor,
 						author: {
 							name: 'BreweryDB',
 							url: 'http://www.brewerydb.com/',
 							icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
 						},
-						description: `Damn, I've never heard of that. Where do I need to go to find it?`
-					}
-				});
+						description: `${response.data[0].name} is a good beer, but I don't have a good way to describe it.`
+					}}, msg);
+				}
+			} else {
+				cb({embed: {
+					color: Kirbi.Config.defaultEmbedColor,
+					author: {
+						name: 'BreweryDB',
+						url: 'http://www.brewerydb.com/',
+						icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
+					},
+					description: `Damn, I've never heard of that. Where do I need to go to find it?`
+				}}, msg);
 			}
 		});
 	}

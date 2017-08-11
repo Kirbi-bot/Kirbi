@@ -8,30 +8,30 @@ var leet = require('leet');
 exports.leet = {
 	usage: '<message>',
 	description: 'converts boring regular text to 1337',
-	process: (msg, suffix) => {
-		msg.channel.send(leet.convert(suffix));
+	process: (msg, suffix, isEdit, cb) => {
+		cb(leet.convert(suffix), msg);
 	}
 }
 
 exports.yodify = {
 	usage: '<statement>',
 	description: 'Translate to Yoda speak',
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 		if (!suffix) {
-			return msg.channel.send('Your statement, I must have.');
+			return cb('Your statement, I must have.', msg);
 		}
 
 		require('soap').createClient('http://www.yodaspeak.co.uk/webservice/yodatalk.php?wsdl',
 			function (err, client) {
 				if (err) {
-					return msg.channel.send('Lost, I am. Not found, the web service is. Hrmm...');
+					return cb('Lost, I am. Not found, the web service is. Hrmm...', msg);
 				}
 
 				client.yodaTalk({ inputText: suffix }, function (err, result) {
 					if (err) {
-						return msg.channel.send('Confused, I am. Disturbance in the force, there is. Hrmm...');
+						return cb('Confused, I am. Disturbance in the force, there is. Hrmm...', msg);
 					}
-					return msg.channel.send(result.return);
+					return cb(result.return, msg);
 				});
 			}
 		);

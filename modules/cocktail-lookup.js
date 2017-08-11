@@ -6,23 +6,21 @@ exports.commands = [
 
 exports.cocktail = {
 	usage: '[cocktail]',
+	type: 'normal',
 	description: 'Used to retrieve information about a cocktail.',
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 		if (!suffix) {
-			msg.channel.send({
-				embed: {
-					color: Kirbi.Config.defaultEmbedColor,
-					author: {
-						name: 'CocktailDB',
-						url: 'http://www.thecocktaildb.com/',
-						icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
-					},
-					description: 'How about asking for something in specific?'
-				}
-			});
-
+			cb({embed: {
+				color: Kirbi.Config.defaultEmbedColor,
+				author: {
+					name: 'CocktailDB',
+					url: 'http://www.thecocktaildb.com/',
+					icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
+				},
+				description: 'How about asking for something in specific?'
+			}}, msg);
 			return;
-		}
+		};
 
 		require('request')(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${encodeURIComponent(suffix)}`, function (err, res, body) {
 			var response = JSON.parse(body);
@@ -68,46 +66,40 @@ exports.cocktail = {
 						value: result.strInstructions
 					});
 
-					msg.channel.send({
-						embed: {
-							color: Kirbi.Config.defaultEmbedColor,
-							title: `__${result.strDrink}__`,
-							author: {
-								name: 'CocktailDB',
-								url: 'http://www.thecocktaildb.com/',
-								icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
-							},
-							thumbnail: {
-								url: thumbnail
-							},
-							fields: fields
-						}
-					});
+					cb({embed: {
+						color: Kirbi.Config.defaultEmbedColor,
+						title: `__${result.strDrink}__`,
+						author: {
+							name: 'CocktailDB',
+							url: 'http://www.thecocktaildb.com/',
+							icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
+						},
+						thumbnail: {
+							url: thumbnail
+						},
+						fields: fields
+					}}, msg);
 				} else {
-					msg.channel.send({
-						embed: {
-							color: Kirbi.Config.defaultEmbedColor,
-							author: {
-								name: 'CocktailDB',
-								url: 'http://www.thecocktaildb.com/',
-								icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
-							},
-							description: `${response.data.drinks[0].strDrink} is a good drink, but I don't have a good way to describe it.`
-						}
-					});
-				}
-			} else {
-				msg.channel.send({
-					embed: {
+					cb({embed: {
 						color: Kirbi.Config.defaultEmbedColor,
 						author: {
 							name: 'CocktailDB',
 							url: 'http://www.thecocktaildb.com/',
 							icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
 						},
-						description: `Damn, I've never heard of that. Where do I need to go to find it?`
-					}
-				});
+						description: `${response.data.drinks[0].strDrink} is a good drink, but I don't have a good way to describe it.`
+					}}, msg);
+				}
+			} else {
+				cb({embed: {
+					color: Kirbi.Config.defaultEmbedColor,
+					author: {
+						name: 'CocktailDB',
+						url: 'http://www.thecocktaildb.com/',
+						icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/240/twitter/103/cocktail-glass_1f378.png'
+					},
+					description: `Damn, I've never heard of that. Where do I need to go to find it?`
+				}}, msg);
 			}
 		});
 	}

@@ -10,16 +10,16 @@ exports.commands = [
 exports.define = {
 	usage: '<word>',
 	description: 'Looks up a word in the Merriam-Webster Collegiate Dictionary',
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 		var word = suffix;
 
 		if (!word) {
-			msg.channel.send({
+			cb({
 				embed: {
 					color: Kirbi.Config.defaultEmbedColor,
 					description: 'I won\'t define an empty string.'
 				}
-			});
+			}, msg);
 
 			return;
 		}
@@ -60,13 +60,13 @@ exports.define = {
 						definitionResult += `${defList}\n\n`;
 					});
 
-					msg.channel.send({
+					cb({
 						embed: {
 							color: Kirbi.Config.defaultEmbedColor,
 							title: word,
 							description: definitionResult
 						}
-					});
+					}, msg);
 				});
 			});
 	}

@@ -8,14 +8,14 @@ exports.commands = [
 exports.xkcd = {
 	usage: '[comic number]',
 	description: 'Displays a given XKCD comic number (or the latest if nothing specified',
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 		var url = "http://xkcd.com/";
 		if (suffix != "") url += `${suffix}/`;
 		url += 'info.0.json';
 		require('request')(url, function (err, res, body) {
 			try {
 				var comic = JSON.parse(body);
-				msg.channel.send({embed: {
+				cb({embed: {
 					color: Kirbi.Config.defaultEmbedColor,
 					title: `XKCD ${comic.num} ${comic.title}`,
 					image: {
@@ -26,17 +26,17 @@ exports.xkcd = {
 					}
 				}});
 			} catch (err) {
-				msg.channel.send(`Couldn't fetch an XKCD for ${suffix}`);
+				cb(`Couldn't fetch an XKCD for ${suffix}`);
 			}
 		});
 	}
 }
 
 exports.highnoon = {
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 		require('request')({
 			uri: "http://imgs.xkcd.com/comics/now.png",
 			followAllRedirects: true
-		}, (err, resp, body) => msg.channel.send('', {file: resp.request.uri.href}));
+		}, (err, resp, body) => cb({embed: { image: {url: resp.request.uri.href}}}));
 	}
 }

@@ -9,10 +9,10 @@ var Wiki = require('wikijs').default;
 exports.wiki = {
 	usage: '<search terms>',
 	description: 'Returns the summary of the first matching search result from Wikipedia',
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 		var query = suffix;
 		if (!query) {
-			msg.channel.send(`Usage: ${Kirbi.Config.commandPrefix}wiki search terms`);
+			cb(`Usage: ${Kirbi.Config.commandPrefix}wiki search terms`, msg);
 			return;
 		}
 
@@ -23,20 +23,20 @@ exports.wiki = {
 					var continuation = function () {
 						var paragraph = sumText.shift();
 						if (paragraph) {
-							msg.channel.send({
+							cb({
 								embed: {
 									color: Kirbi.Config.defaultEmbedColor,
 									title: page.title,
 									description: `${paragraph}\n\n${page.fullurl}`
 								}
-							});
+							}, msg);
 						}
 					};
 					continuation();
 				});
 			});
 		}, function (err) {
-			msg.channel.send(err);
+			cb(err, msg);
 		});
 	}
 }

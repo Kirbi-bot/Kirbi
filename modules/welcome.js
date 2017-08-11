@@ -14,13 +14,13 @@ exports.welcome = {
 				welcomeMessage = welcomeMessage.split('=====');
 				welcomeMessage.forEach(message => {
 					message = message.split('-----');
-					msg.channel.send({
+					cb({
 						embed: {
 							color: Kirbi.Config.defaultEmbedColor,
 							title: message[0].trim(),
 							description: message[1].trim()
 						}
-					});
+					}, msg);
 				});
 			}
 		}

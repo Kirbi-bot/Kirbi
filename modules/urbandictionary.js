@@ -8,7 +8,7 @@ exports.commands = [
 exports.urban = {
 	usage: '<word>',
 	description: "looks up a word on Urban Dictionary",
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 		var targetWord = suffix == "" ? urban.random() : urban(suffix);
 		targetWord.first(function (json) {
 			var title = `Urban Dictionary: ${suffix}`;
@@ -26,7 +26,7 @@ exports.urban = {
 				message = 'No matches found';
 			}
 
-			msg.channel.send({
+			cb({
 				embed: {
 					color: Kirbi.Config.defaultEmbedColor,
 					title: title,
@@ -36,6 +36,6 @@ exports.urban = {
 					}
 				}
 			});
-		});
+		}, msg);
 	}
 }

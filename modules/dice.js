@@ -9,9 +9,9 @@ var d20 = require('d20')
 exports.roll = {
 	usage: '[# of sides] or [# of dice]d[# of sides]( + [# of dice]d[# of sides] + ...)',
 	description: 'roll one die with x sides, or multiple dice using d20 syntax. Default value is 10',
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 		if (suffix.split('d').length <= 1) {
-			msg.channel.send(`${msg.author} rolled a ${d20.roll(suffix || '10')}`);
+			cb(`${msg.author} rolled a ${d20.roll(suffix || '10')}`, msg);
 		}
 		else if (suffix.split('d').length > 1) {
 			var eachDie = suffix.split("+");
@@ -30,12 +30,12 @@ exports.roll = {
 				response = `${msg.author} tried to roll too many dice at once!`;
 			}
 
-			msg.channel.send({
+			cb({
 				embed: {
 					color: Kirbi.Config.defaultEmbedColor,
 					description: `${response}`
 				}
-			});
+			}, msg);
 		}
 	}
 }
