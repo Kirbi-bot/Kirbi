@@ -13,12 +13,10 @@
 	"dependencies": {
     	"bufferutil": "^3.0.1",
     	"chalk": "^2.0.1",
-    	"d20": "^1.4.1",
     	"discord.js": "^11.1.0",
     	"erlpack": "github:hammerandchisel/erlpack",
     	"feedparser": "1.1.x",
     	"ffmpeg-binaries": "^3.2.2",
-    	"leet": "^1.3.0",
     	"libsodium-wrappers": "^0.5.2",
     	"node-opus": "^0.2.6",
     	"opusscript": "0.0.3",
@@ -26,12 +24,18 @@
     	"remove-markdown": "0.2.0",
     	"soap": "^0.19.2",
     	"sodium": "^2.0.1",
-    	"unshort": "^1.0.0",
-    	"urban": "^0.3.1",
     	"uws": "^0.14.1",
-    	"wikijs": "^0.3.0",
-    	"xml2js": "^0.4.17",
-		"youtube-dl": "^1.11.1"
+		"youtube-dl": "^1.11.1",
+		"kirbi-beer-lookup": "https://github.com/Richardson-Media-House/kirbi-beer-lookup.git",
+		"kirbi-xkcd": "https://github.com/Richardson-Media-House/kirbi-xkcd.git",
+		"kirbi-urbandictionary": "https://github.com/Richardson-Media-House/kirbi-urbandictionary.git",
+		"kirbi-wikipedia": "https://github.com/Richardson-Media-House/kirbi-wikipedia.git",
+		"kirbi-cocktail-lookup": "https://github.com/Richardson-Media-House/kirbi-cocktail-lookup.git",
+		"kirbi-dice": "https://github.com/Richardson-Media-House/kirbi-dice.git",
+		"kirbi-dictionary": "https://github.com/Richardson-Media-House/kirbi-dictionary.git",
+		"kirbi-misc": "https://github.com/Richardson-Media-House/kirbi-misc.git",
+		"kirbi-random": "https://github.com/Richardson-Media-House/kirbi-random.git",
+		"kirbi-translator": "https://github.com/Richardson-Media-House/kirbi-translator.git"
  	},
  	"main": "start.js"
 }

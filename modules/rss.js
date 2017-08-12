@@ -17,12 +17,12 @@ function loadFeeds() {
 			usage: '[count]',
 			description: rssFeeds[cmd].description,
 			url: rssFeeds[cmd].url,
-			process: function (msg, suffix) {
+			process: function (msg, suffix, isEdit, cb) {
 				var count = 1;
 				if (suffix != null && suffix != "" && !isNaN(suffix)) {
 					count = suffix;
 				}
-				rssfeed(msg, this.url, count, false);
+				rssfeed(msg, this.url, count, cb);
 			}
 		};
 	}
@@ -30,13 +30,13 @@ function loadFeeds() {
 
 loadFeeds();
 
-function rssfeed(msg, url, count, full) {
+function rssfeed(msg, url, count, cb) {
 	var FeedParser = require('feedparser');
 	var feedparser = new FeedParser();
 	var request = require('request');
 	request(url).pipe(feedparser);
 	feedparser.on('error', function (error) {
-		msg.channel.send(`Failed reading feed: ${error}`);
+		cb(`Failed reading feed: ${error}`, msg);
 	});
 	var shown = 0;
 	feedparser.on('readable', function () {
@@ -46,26 +46,18 @@ function rssfeed(msg, url, count, full) {
 			return;
 		}
 		var item = stream.read();
-		msg.channel.send(`${item.title} ${item.link}`, function () {
-			if (full === true) {
-				var text = htmlToText.fromString(item.description, {
-					wordwrap: false,
-					ignoreHref: true
-				});
-				msg.channel.send(text);
-			}
-		});
+		cb(`${item.title} ${item.link}`, msg);
 		stream.alreadyRead = true;
 	});
 }
 
 exports.rss = {
 	description: 'Lists Available RSS Feeds',
-	process: function (msg, suffix) {
-		msg.channel.send('Available feeds:').then(function () {
-			for (var c in rssFeeds) {
-				msg.channel.send(`${c}: ${rssFeeds[c].url}`);
-			}
-		});
+	process: function (msg, suffix, isEdit, cb) {
+		var output = '';
+		for (var c in rssFeeds) {
+			output += `${c}: ${rssFeeds[c].url}\n`;
+		}
+		cb(`Available feeds:\n${output}`, msg);
 	}
 }
