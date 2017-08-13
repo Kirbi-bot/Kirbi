@@ -35,7 +35,8 @@
 		"kirbi-dictionary": "https://github.com/Richardson-Media-House/kirbi-dictionary.git",
 		"kirbi-misc": "https://github.com/Richardson-Media-House/kirbi-misc.git",
 		"kirbi-random": "https://github.com/Richardson-Media-House/kirbi-random.git",
-		"kirbi-translator": "https://github.com/Richardson-Media-House/kirbi-translator.git"
+		"kirbi-translator": "https://github.com/Richardson-Media-House/kirbi-translator.git",
+		"kirbi-rss": "https://github.com/Richardson-Media-House/kirbi-rss.git"
  	},
  	"main": "start.js"
 }
