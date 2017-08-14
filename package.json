@@ -15,6 +15,7 @@
     	"remove-markdown": "0.2.0",
     	"soap": "^0.19.2",
 		"kirbi-discord": "Richardson-Media-House/kirbi-discord",
+		"kirbi-discord-admin": "Richardson-Media-House/kirbi-discord-admin",
 		"kirbi-discord-moderation": "Richardson-Media-House/kirbi-discord-moderation",
 		"kirbi-discord-musicplayer": "Richardson-Media-House/kirbi-discord-musicplayer",
 		"kirbi-beer-lookup": "Richardson-Media-House/kirbi-beer-lookup",
