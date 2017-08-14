@@ -15,7 +15,7 @@ exports.server = {
 				embed: {
 					title: `${Kirbi.Config.serverName} Servers`,
 					description: servers.map(server => server.key).join('\n'),
-					color: Kirbi.Config.defaultEmbedColor
+					color: Kirbi.Config.discord.defaultEmbedColor
 				}
 			}, msg);
 		}
@@ -27,7 +27,7 @@ exports.server = {
 					embed: {
 						title: info.title,
 						description: info.description,
-						color: Kirbi.Config.defaultEmbedColor
+						color: Kirbi.Config.discord.defaultEmbedColor
 					}
 				}, msg);
 			}

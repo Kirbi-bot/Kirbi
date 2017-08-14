@@ -1,4 +1,4 @@
-const Kirbi = require('../../kirbi');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'log',
@@ -44,7 +44,7 @@ exports.uptime = {
 		}
 		cb({
 			embed: {
-				color: Kirbi.Config.defaultEmbedColor,
+				color: Kirbi.Config.discord.defaultEmbedColor,
 				description: `**Uptime**: ${timestr}`
 			}
 		}, msg);
@@ -57,14 +57,14 @@ exports.reload = {
 			require('../lib/commands').init();
 			msg.channel.send({
 				embed: {
-					color: Kirbi.Config.defaultEmbedColor,
+					color: Kirbi.Config.discord.defaultEmbedColor,
 					description: 'Reloaded all commands...'
 				}
 			}).then(message => message.delete(5000));
 		} else {
 			msg.channel.send({
 				embed: {
-					color: Kirbi.Config.defaultEmbedColor,
+					color: Kirbi.Config.discord.defaultEmbedColor,
 					description: `You can't do that Dave...`
 				}
 			}).then(message => message.delete(5000));
@@ -78,7 +78,7 @@ exports.servers = {
 	process: (msg) => {
 		msg.channel.send({
 			embed: {
-				color: Kirbi.Config.defaultEmbedColor,
+				color: Kirbi.Config.discord.defaultEmbedColor,
 				title: Kirbi.Discord.user.username,
 				description: `Currently on the following servers:\n\n${Kirbi.Discord.guilds.map(g => `${g.name} - **${g.memberCount} Members**`).join(`\n`)}`
 			}

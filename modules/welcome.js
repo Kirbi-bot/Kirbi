@@ -16,7 +16,7 @@ exports.welcome = {
 					message = message.split('-----');
 					cb({
 						embed: {
-							color: Kirbi.Config.defaultEmbedColor,
+							color: Kirbi.Config.discord.defaultEmbedColor,
 							title: message[0].trim(),
 							description: message[1].trim()
 						}

@@ -35,13 +35,13 @@ exports.logError = function (err) {
 require('./lib/auth');
 require('./lib/config');
 require('./lib/permissions');
-require('./lib/commands');
+require('./lib/commands').setupCommands();
 
 //bot login
 exports.login = function () {
-	if (exports.Config.discordEnabled) {
+	if (exports.Config.discord.enabled) {
 		try {
-			require('kirbi-discord');
+			require('kirbi-discord').discordLogin();
 		} catch (e) {
 			exports.logError(e);
 		}

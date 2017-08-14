@@ -15,20 +15,20 @@
 	"license": "Apache-2.0",
 	"dependencies": {
 		"chalk": "^2.0.1",
-		"kirbi-discord": "Richardson-Media-House/kirbi-discord",
-		"kirbi-discord-moderation": "Richardson-Media-House/kirbi-discord-moderation",
-		"kirbi-discord-musicplayer": "Richardson-Media-House/kirbi-discord-musicplayer",
 		"kirbi-beer-lookup": "Richardson-Media-House/kirbi-beer-lookup",
-		"kirbi-xkcd": "Richardson-Media-House/kirbi-xkcd",
-		"kirbi-urbandictionary": "Richardson-Media-House/kirbi-urbandictionary",
-		"kirbi-wikipedia": "Richardson-Media-House/kirbi-wikipedia",
 		"kirbi-cocktail-lookup": "Richardson-Media-House/kirbi-cocktail-lookup",
 		"kirbi-dice": "Richardson-Media-House/kirbi-dice",
 		"kirbi-dictionary": "Richardson-Media-House/kirbi-dictionary",
+		"kirbi-discord": "Richardson-Media-House/kirbi-discord",
+		"kirbi-discord-moderation": "Richardson-Media-House/kirbi-discord-moderation",
+		"kirbi-discord-musicplayer": "Richardson-Media-House/kirbi-discord-musicplayer",
 		"kirbi-misc": "Richardson-Media-House/kirbi-misc",
+		"kirbi-urbandictionary": "Richardson-Media-House/kirbi-urbandictionary",
 		"kirbi-random": "Richardson-Media-House/kirbi-random",
+		"kirbi-rss": "Richardson-Media-House/kirbi-rss",
 		"kirbi-translator": "Richardson-Media-House/kirbi-translator",
-		"kirbi-rss": "Richardson-Media-House/kirbi-rss"
+		"kirbi-wikipedia": "Richardson-Media-House/kirbi-wikipedia",
+		"kirbi-xkcd": "Richardson-Media-House/kirbi-xkcd"
  	},
  	"main": "start.js"
 }
