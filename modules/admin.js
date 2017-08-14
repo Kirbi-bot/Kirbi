@@ -52,22 +52,22 @@ exports.uptime = {
 }
 
 exports.reload = {
-	process: (msg) => {
+	process: (msg, suffix, isEdit, cb) => {
 		if (msg.member.hasPermission('ADMINISTRATOR')) {
-			require('../lib/commands').init();
-			msg.channel.send({
+			require('../lib/commands').setupCommands();
+			cb({
 				embed: {
 					color: Kirbi.Config.discord.defaultEmbedColor,
 					description: 'Reloaded all commands...'
 				}
-			}).then(message => message.delete(5000));
+			}, msg, true);
 		} else {
-			msg.channel.send({
+			cb({
 				embed: {
 					color: Kirbi.Config.discord.defaultEmbedColor,
 					description: `You can't do that Dave...`
 				}
-			}).then(message => message.delete(5000));
+			}, msg, true);
 		}
 	}
 }
@@ -75,13 +75,13 @@ exports.reload = {
 exports.servers = {
 	usage: '<command>',
 	description: 'Returns a list of servers the bot is connected to',
-	process: (msg) => {
-		msg.channel.send({
+	process: (msg, suffix, isEdit, cb) => {
+		cb({
 			embed: {
 				color: Kirbi.Config.discord.defaultEmbedColor,
 				title: Kirbi.Discord.user.username,
 				description: `Currently on the following servers:\n\n${Kirbi.Discord.guilds.map(g => `${g.name} - **${g.memberCount} Members**`).join(`\n`)}`
 			}
-		});
+		}, msg);
 	}
 }
