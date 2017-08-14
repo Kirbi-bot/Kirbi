@@ -3,9 +3,14 @@
 	"commandPrefix": "!",
 	"externalModules": ["beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "rss"],
 	"elizaEnabled": true,
+	"discordEnabled": true,
+	"slackEnabled": true,
+	"discordOptions": {
+		"serverName": "insert your server name",
+		"welcomeChannel": "insert channel id of channel where you want welcome to be",
+		"modules": ["musicplayer", "admin", "moderation"]
+	},
 	"defaultEmbedColor": 5592405,
 	"pruneInterval": 10,
-	"pruneMax": 100,
-	"serverName": "insert your server name",
-	"welcomeChannel": "insert channel id of channel where you want welcome to be"
+	"pruneMax": 100
 }
