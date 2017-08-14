@@ -1,105 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
-const Discord = require("discord.js");
 
-console.log(`Starting Kirbi\nNode version: ${process.version}\nDiscord.js version: ${Discord.version}`);
-
-exports.Discord = new Discord.Client();
-
-//load auth data
-function Auth() {
-	try {
-		return require('./config/auth');
-	} catch (err) {
-		console.log(chalk.red(`Please create an auth.json like auth.json.example with a bot token or an email and password.\n${err.stack}`));
-		process.exit();
-	}
-}
-
-exports.Auth = Auth();
-
-//load config data
-function Config() {
-	var config = {};
-
-	try {
-		config = require('./config/config');
-	} catch (err) {
-		//no config file, use defaults
-		config.debug = false;
-		config.commandPrefix = '!';
-		config.defaultEmbedColor = 5592405;
-		config.pruneInterval = 10;
-		config.pruneMax = 100;
-		config.serverName = 'GReY Online';
-		config.welcomeChannel = '334798958587150337';
-
-		try {
-			if (fs.lstatSync('../config/config.json').isFile()) {
-				console.log(chalk.yellow(`WARNING: config.json found but we couldn't read it!\n${err.stack}`));
-			}
-		} catch (err2) {
-			fs.writeFile('../config/config.json', JSON.stringify(config, null, 2), (err3) => {
-				if (err3) console.log(chalk.red(err3));
-			});
-		}
-	}
-
-	if (!config.hasOwnProperty("commandPrefix")) {
-		config.commandPrefix = '!';
-	}
-
-	return config;
-}
-
-exports.Config = Config();
-
-//command functions
-exports.Commands = {};
-exports.addCommand = function (commandName, commandObject) {
-	try {
-		exports.Commands[commandName] = commandObject;
-	} catch (err) {
-		console.log(err);
-	}
-}
-exports.commandCount = function () {
-	return Object.keys(exports.Commands).length;
-}
-
-//permissions
-function Permissions() {
-	var permissions = {};
-
-	try {
-		permissions = require('./config/permissions.json');
-	} catch (e) {
-		permissions.commands = {};
-	}
-
-	permissions.checkPermission = function (guildId, command) {
-		try {
-			var allowed = true;
-			try {
-				if (permissions.commands) {
-					if (permissions.commands.hasOwnProperty(command)) {
-						allowed = false;
-						if (permissions.commands[command].includes(guildId)) {
-							allowed = true;
-						}
-					}
-				}
-			} catch (err) { console.log(err); }
-			return allowed;
-		} catch (e) { }
-		return false;
-	}
-
-	return permissions;
-}
-
-exports.Permissions = Permissions();
+console.log(chalk.green(`Starting Kirbi...`));
+console.log(chalk.green(`Node version: ${process.version}`));
 
 //helpers
 exports.getFileArray = function (srcPath) {
@@ -128,15 +32,18 @@ exports.logError = function (err) {
 	console.log(chalk.red(err));
 }
 
+require('./lib/auth');
+require('./lib/config');
+require('./lib/permissions');
+require('./lib/commands').setupCommands();
+
 //bot login
 exports.login = function () {
-	if (exports.Auth.bot_token) {
-		console.log('Logging in with token...');
-		exports.Discord.login(exports.Auth.bot_token);
-	} else {
-		console.log(chalk.red('Kirbi must have a bot token...'));
-	}
+	if (exports.Config.discord.enabled) {
+		try {
+			require('kirbi-discord').discordLogin();
+		} catch (e) {
+			exports.logError(e);
+		}
+	};
 }
-
-require('./lib/commands');
-require('./lib/onEvent');
