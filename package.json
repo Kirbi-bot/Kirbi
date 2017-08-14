@@ -3,17 +3,18 @@
 	"version": "0.2.0",
 	"description": "A modular chat bot for Discord.",
 	"readme": "README.md",
-	"maintainers": [],
-	"author": "@naterchrdsn",
+	"contributors": [
+		"Matt Carroll <admin@develogix.com> (https://develogix.com)",
+		"Joseph Moran III <joseph.moraniii@gmail.com> (https://josephmoran.co)"
+	],
+	"author": "Nate Richardson <hello@naterichardson.com> (https://naterichardson.com)",
 	"repository": {
 	  	"type": "git",
 		"url": "git+https://github.com/Richardson-Media-House/Kirbi.git"
 	},
 	"license": "Apache-2.0",
 	"dependencies": {
-    	"chalk": "^2.0.1",
-    	"remove-markdown": "0.2.0",
-    	"soap": "^0.19.2",
+		"chalk": "^2.0.1",
 		"kirbi-discord": "Richardson-Media-House/kirbi-discord",
 		"kirbi-discord-admin": "Richardson-Media-House/kirbi-discord-admin",
 		"kirbi-discord-moderation": "Richardson-Media-House/kirbi-discord-moderation",
