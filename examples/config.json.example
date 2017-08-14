@@ -8,7 +8,7 @@
 	"discordOptions": {
 		"serverName": "insert your server name",
 		"welcomeChannel": "insert channel id of channel where you want welcome to be",
-		"modules": ["musicplayer", "admin", "moderation"]
+		"modules": ["musicplayer", "moderation"]
 	},
 	"defaultEmbedColor": 5592405,
 	"pruneInterval": 10,
