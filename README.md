@@ -1,57 +1,112 @@
-![Kirbi!](/../util/kirbi_icon.png?raw=true)
-# Kirbi
+
+# Kirbi [![Kirbi!](/../util/kirbi_icon.png?raw=true)]
 A modular chat bot for Discord, using [discord.js](https://github.com/hydrabolt/discord.js/)
 
 [![license](https://img.shields.io/github/license/richardson-media-house/kirbi.svg?style=flat-square&colorB=00aaff)](https://github.com/richardson-media-house/kirbi) [![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/kirbi) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/kirbi) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/kirbi) [![Issues Ready](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/ready-for-review.svg?style=flat-square&label=issues%20ready&colorB=ff00aa)](http://waffle.io/richardson-media-house/kirbi)
 
-Invite the bot to your server [here](https://discordapp.com/oauth2/authorize?client_id=345207331295854593&scope=bot&permissions=66186303).
+Invite the bot to your server: [here](https://discordapp.com/oauth2/authorize?client_id=345207331295854593&scope=bot&permissions=66186303).
 
-# Features:
+# Modules
 
-- @botname => responds when @mentioned
+Kirbi absorbs the functionality of whatever you add to him! We've included a few base features to help with your plugins, which we will describe later (probably in a wiki or something).
 
-- !brew *query* => returns a summary of a specific beer or brewery
+Modules for Kirbi can add commands or other functionality. For example, the [kirbi-beer-lookup](https://github.com/Richardson-Media-House/kirbi-beer-lookup) module adds the !brew command which returns information on breweries and specific brews!
 
-- !roll 1d20 => roll for initiative! Or something else, using whatever combo of dice.
+## Using Modules
 
-- !unshorten *shortlink* => unshorten a shortened link, so you can see if it's shady or not.
+Modules can be autoloaded from either a single file in `./modules/module-name.js` or an NPM module/Github repo named `kirbi-module-name`.
 
-- !lmgtfy *query* => googles something for an idiot!
+To autoload a module, add the plugin name to the `externalModules` (or the `modules` array under the appropriate api name for an api-specific module) array in `config/config.json` (without the `kirbi-`):
 
-- !say *text* => echos text
+```json
+{
+	...
+	"externalModules": ["beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "rss"],
+	"elizaEnabled": true,
+	"discord": {
+		"enabled": true,
+		"serverName": "insert your server name",
+		"welcomeChannel": "insert channel id of channel where you want welcome to be",
+		"modules": ["musicplayer", "moderation"],
+		...
+	}
+}
+```
 
-- !cat_fact
+and make sure to include any external modules as dependencies in the `package.json` file:
 
-- !dog_fact
+```json
+{
+  ...
+	"dependencies": {
+		"chalk": "^2.0.1",
+		"kirbi-beer-lookup": "Richardson-Media-House/kirbi-beer-lookup",
+		"kirbi-cocktail-lookup": "Richardson-Media-House/kirbi-cocktail-lookup",
+		"kirbi-dice": "Richardson-Media-House/kirbi-dice",
+		"kirbi-dictionary": "Richardson-Media-House/kirbi-dictionary",
+		"kirbi-discord": "Richardson-Media-House/kirbi-discord",
+		"kirbi-discord-moderation": "Richardson-Media-House/kirbi-discord-moderation",
+		"kirbi-discord-musicplayer": "Richardson-Media-House/kirbi-discord-musicplayer",
+		"kirbi-misc": "Richardson-Media-House/kirbi-misc",
+		"kirbi-urbandictionary": "Richardson-Media-House/kirbi-urbandictionary",
+		"kirbi-random": "Richardson-Media-House/kirbi-random",
+		"kirbi-rss": "Richardson-Media-House/kirbi-rss",
+		"kirbi-translator": "Richardson-Media-House/kirbi-translator",
+		"kirbi-wikipedia": "Richardson-Media-House/kirbi-wikipedia",
+		"kirbi-xkcd": "Richardson-Media-House/kirbi-xkcd"
+ 	},
+  ...
+}
+```
 
-- !bacon gifs!
 
-- !smifffact => facts about Will Smith!
+## Included Modules
+List of available modules (via `./modules/module-name`):
 
-- !gitgud *optional @mention* => tell someone to get gud!
+*Modules for use when self-hosting*
+- `admin` => adds a few administrative commands for server owners and bot admins to use.
+- `server` => lists out a given list of servers and information about them.
+- `welcome` => spits out a given markdown file in a pretty embed format. Useful for making a welcome/rules channel look better than if you typed it yourself.
 
-- ask the magic !8ball stuff!
+The commands in these modules are not available on the invited version of the bot, as they are for GReY and administering the bot itself :)
 
-- !choose *optional number of items, comma separated* => ask the bot to decide things for you!
+## Official Modules
+List of external modules for you to include with your installation (if you wish):
 
-- !wiki *query* => returns the summary of the first search result on Wikipedia
+*API-Specific Modules*
+- [slack](https://github.com/Richardson-Media-House/kirbi-slack) => adds Slack support to Kirbi
+- [discord](https://github.com/Richardson-Media-House/kirbi-discord) => adds Discord support to Kirbi
+- [discord-moderation](https://github.com/Richardson-Media-House/kirbi-discord-moderation) => adds a collection of Discord-specific moderation commands
+- [discord-musicplayer](https://github.com/Richardson-Media-House/kirbi-discord-musicplayer) => adds commands to play music in voice channels
 
-- !urban *query* => returns result from Urban Dictionary
+*General Modules*
+- [xkcd](https://github.com/Richardson-Media-House/kirbi-xkcd) => adds the !xkcd command
+- [wikipedia](https://github.com/Richardson-Media-House/kirbi-wikipedia) => adds the !wiki command
+- [urbandictionary](https://github.com/Richardson-Media-House/kirbi-urbandictionary) => adds the !urban command
+- [random](https://github.com/Richardson-Media-House/kirbi-random) => adds a bunch of random fact commands and fun stuff
+- [dictionary](https://github.com/Richardson-Media-House/kirbi-dictionary) => adds the !define command
+- [dice](https://github.com/Richardson-Media-House/kirbi-dice) => adds the !roll command
+- [cocktail-lookup](https://github.com/Richardson-Media-House/kirbi-cocktail-lookup) => adds the !cocktail command
+- [beer-lookup](https://github.com/Richardson-Media-House/kirbi-beer-lookup) => adds the !brew command
+- [translator](https://github.com/Richardson-Media-House/kirbi-translator) => adds translation commands
+- [rss](https://github.com/Richardson-Media-House/kirbi-rss) => adds rss feed related commands
+- [misc](https://github.com/Richardson-Media-House/kirbi-misc) => adds misc commands that don't fall into other categories
 
-- !xkcd *optional comic number*
+## Writing Modules
+To write a Kirbi module, create a new NPM module that exports an array named `commands` of triggers your bot will respond to. You can use a simple callback to display your message in either slack or discord (or both), depending on the features you added:
 
-- !topic => passive-aggressively remind your users of the channel topic!
+```js
+exports.commands = [
+	'hello'
+]
 
-Commands requiring permissions
-- !prune *optional number* => prunes a number of messages from the channel.
+exports.hello = {
+	description: 'responds with hello!',
+	process: (msg, suffix, isEdit, cb) => { cb('hello!', msg); }
+}
+```
 
-MUSIC!
-- !play most audio sources
-- !skip songs
-- !queue and !dequeue songs
-- !pause !resume and adjust the !volume
-
-And more! Try !help to get a full list of available commands
+If you think your plugin is amazing, please let us know! We'd love to add it to our list. Currently, the bot is configured to work with external repositories with the `kirbi-` prefix, and we'd like to keep that for the official modules that our team makes :)
 
 # Installation
 
