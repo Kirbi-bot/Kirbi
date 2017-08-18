@@ -1,35 +1,35 @@
-const GReYBot = require('../greybot');
+const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'server'
 ]
 
-var servers = GReYBot.getJsonObject('/config/servers.json');
+var servers = Kirbi.getJsonObject('/config/servers.json');
 
 exports.server = {
 	usage: `list|${servers.map(server => server.key).join('|')}`,
-	process: (msg, suffix) => {
+	process: (msg, suffix, isEdit, cb) => {
 
 		if (suffix.toLowerCase() === "list" || suffix.trim() === "") {
-			msg.channel.send({
+			cb({
 				embed: {
-					title: `${GReYBot.Config.serverName} Servers`,
+					title: `${Kirbi.Config.serverName} Servers`,
 					description: servers.map(server => server.key).join('\n'),
-					color: GReYBot.Config.defaultEmbedColor
+					color: Kirbi.Config.discord.defaultEmbedColor
 				}
-			});
+			}, msg);
 		}
 		else {
 			var info = servers.filter(server => server.key === suffix.toLowerCase())[0];
 
 			if (info) {
-				msg.channel.send({
+				cb({
 					embed: {
 						title: info.title,
 						description: info.description,
-						color: GReYBot.Config.defaultEmbedColor
+						color: Kirbi.Config.discord.defaultEmbedColor
 					}
-				});
+				}, msg);
 			}
 		}
 	}

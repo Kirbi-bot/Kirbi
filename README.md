@@ -1,56 +1,112 @@
-# GReYBot
-A chat bot for the GReY Discord Server based on [Chalda's DiscordBot](https://github.com/chalda/DiscordBot) and [martindale's Snarl Bot](https://github.com/martindale/snarl), using [discord.js](https://github.com/hydrabolt/discord.js/)
 
-[![license](https://img.shields.io/github/license/richardson-media-house/greybot.svg?style=flat-square&colorB=00aaff)](https://github.com/richardson-media-house/GReYBot) [![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/GReYBot) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/GReYBot) [![Issues Ready](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/ready-for-review.svg?style=flat-square&label=issues%20ready&colorB=ff00aa)](http://waffle.io/richardson-media-house/GReYBot)
+# Kirbi [![Kirbi!](/../util/kirbi_icon.png?raw=true)]
+A modular chat bot for Discord, using [discord.js](https://github.com/hydrabolt/discord.js/)
 
-Invite the bot to your server [here](https://discordapp.com/oauth2/authorize?client_id=283636170741514250&scope=bot&permissions=66186303).
+[![license](https://img.shields.io/github/license/richardson-media-house/kirbi.svg?style=flat-square&colorB=00aaff)](https://github.com/richardson-media-house/kirbi) [![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/kirbi) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/kirbi) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/kirbi) [![Issues Ready](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/ready-for-review.svg?style=flat-square&label=issues%20ready&colorB=ff00aa)](http://waffle.io/richardson-media-house/kirbi)
 
-# Features:
+Invite the bot to your server: [here](https://discordapp.com/oauth2/authorize?client_id=345207331295854593&scope=bot&permissions=66186303).
 
-- @botname => responds when @mentioned
+# Modules
 
-- !brew *query* => returns a summary of a specific beer or brewery
+Kirbi absorbs the functionality of whatever you add to him! We've included a few base features to help with your plugins, which we will describe later (probably in a wiki or something).
 
-- !roll 1d20 => roll for initiative! Or something else, using whatever combo of dice.
+Modules for Kirbi can add commands or other functionality. For example, the [kirbi-beer-lookup](https://github.com/Richardson-Media-House/kirbi-beer-lookup) module adds the !brew command which returns information on breweries and specific brews!
 
-- !unshorten *shortlink* => unshorten a shortened link, so you can see if it's shady or not.
+## Using Modules
 
-- !lmgtfy *query* => googles something for an idiot!
+Modules can be autoloaded from either a single file in `./modules/module-name.js` or an NPM module/Github repo named `kirbi-module-name`.
 
-- !say *text* => echos text
+To autoload a module, add the plugin name to the `externalModules` (or the `modules` array under the appropriate api name for an api-specific module) array in `config/config.json` (without the `kirbi-`):
 
-- !cat_fact
+```json
+{
+	...
+	"externalModules": ["beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "rss"],
+	"elizaEnabled": true,
+	"discord": {
+		"enabled": true,
+		"serverName": "insert your server name",
+		"welcomeChannel": "insert channel id of channel where you want welcome to be",
+		"modules": ["musicplayer", "moderation"],
+		...
+	}
+}
+```
 
-- !dog_fact
+and make sure to include any external modules as dependencies in the `package.json` file:
 
-- !bacon gifs!
+```json
+{
+  ...
+	"dependencies": {
+		"chalk": "^2.0.1",
+		"kirbi-beer-lookup": "Richardson-Media-House/kirbi-beer-lookup",
+		"kirbi-cocktail-lookup": "Richardson-Media-House/kirbi-cocktail-lookup",
+		"kirbi-dice": "Richardson-Media-House/kirbi-dice",
+		"kirbi-dictionary": "Richardson-Media-House/kirbi-dictionary",
+		"kirbi-discord": "Richardson-Media-House/kirbi-discord",
+		"kirbi-discord-moderation": "Richardson-Media-House/kirbi-discord-moderation",
+		"kirbi-discord-musicplayer": "Richardson-Media-House/kirbi-discord-musicplayer",
+		"kirbi-misc": "Richardson-Media-House/kirbi-misc",
+		"kirbi-urbandictionary": "Richardson-Media-House/kirbi-urbandictionary",
+		"kirbi-random": "Richardson-Media-House/kirbi-random",
+		"kirbi-rss": "Richardson-Media-House/kirbi-rss",
+		"kirbi-translator": "Richardson-Media-House/kirbi-translator",
+		"kirbi-wikipedia": "Richardson-Media-House/kirbi-wikipedia",
+		"kirbi-xkcd": "Richardson-Media-House/kirbi-xkcd"
+ 	},
+  ...
+}
+```
 
-- !smifffact => facts about Will Smith!
 
-- !gitgud *optional @mention* => tell someone to get gud!
+## Included Modules
+List of available modules (via `./modules/module-name`):
 
-- ask the magic !8ball stuff!
+*Modules for use when self-hosting*
+- `admin` => adds a few administrative commands for server owners and bot admins to use.
+- `server` => lists out a given list of servers and information about them.
+- `welcome` => spits out a given markdown file in a pretty embed format. Useful for making a welcome/rules channel look better than if you typed it yourself.
 
-- !choose *optional number of items, comma separated* => ask the bot to decide things for you!
+The commands in these modules are not available on the invited version of the bot, as they are for GReY and administering the bot itself :)
 
-- !wiki *query* => returns the summary of the first search result on Wikipedia
+## Official Modules
+List of external modules for you to include with your installation (if you wish):
 
-- !urban *query* => returns result from Urban Dictionary
+*API-Specific Modules*
+- [slack](https://github.com/Richardson-Media-House/kirbi-slack) => adds Slack support to Kirbi
+- [discord](https://github.com/Richardson-Media-House/kirbi-discord) => adds Discord support to Kirbi
+- [discord-moderation](https://github.com/Richardson-Media-House/kirbi-discord-moderation) => adds a collection of Discord-specific moderation commands
+- [discord-musicplayer](https://github.com/Richardson-Media-House/kirbi-discord-musicplayer) => adds commands to play music in voice channels
 
-- !xkcd *optional comic number*
+*General Modules*
+- [xkcd](https://github.com/Richardson-Media-House/kirbi-xkcd) => adds the !xkcd command
+- [wikipedia](https://github.com/Richardson-Media-House/kirbi-wikipedia) => adds the !wiki command
+- [urbandictionary](https://github.com/Richardson-Media-House/kirbi-urbandictionary) => adds the !urban command
+- [random](https://github.com/Richardson-Media-House/kirbi-random) => adds a bunch of random fact commands and fun stuff
+- [dictionary](https://github.com/Richardson-Media-House/kirbi-dictionary) => adds the !define command
+- [dice](https://github.com/Richardson-Media-House/kirbi-dice) => adds the !roll command
+- [cocktail-lookup](https://github.com/Richardson-Media-House/kirbi-cocktail-lookup) => adds the !cocktail command
+- [beer-lookup](https://github.com/Richardson-Media-House/kirbi-beer-lookup) => adds the !brew command
+- [translator](https://github.com/Richardson-Media-House/kirbi-translator) => adds translation commands
+- [rss](https://github.com/Richardson-Media-House/kirbi-rss) => adds rss feed related commands
+- [misc](https://github.com/Richardson-Media-House/kirbi-misc) => adds misc commands that don't fall into other categories
 
-- !topic => passive-aggressively remind your users of the channel topic!
+## Writing Modules
+To write a Kirbi module, create a new NPM module that exports an array named `commands` of triggers your bot will respond to. You can use a simple callback to display your message in either slack or discord (or both), depending on the features you added:
 
-Commands requiring permissions
-- !prune *optional number* => prunes a number of messages from the channel.
+```js
+exports.commands = [
+	'hello'
+]
 
-MUSIC!
-- !play most audio sources
-- !skip songs
-- !queue and !dequeue songs
-- !pause !resume and adjust the !volume
+exports.hello = {
+	description: 'responds with hello!',
+	process: (msg, suffix, isEdit, cb) => { cb('hello!', msg); }
+}
+```
 
-And more! Try !help to get a full list of available commands
+If you think your plugin is amazing, please let us know! We'd love to add it to our list. Currently, the bot is configured to work with external repositories with the `kirbi-` prefix, and we'd like to keep that for the official modules that our team makes :)
 
 # Installation
 
@@ -117,9 +173,9 @@ issues with this, you can try deleting your node_modules folder and then running
 `npm install` again. Please see [Installation](#Installation).
 
 # To Do:
-Check out our our [status page](https://waffle.io/richardson-media-house/GReYBot).
+Check out our our [status page](https://waffle.io/richardson-media-house/kirbi).
 
-[![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/GReYBot) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/GReYBot) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/GReYBot/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/GReYBot)
+[![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/kirbi) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/kirbi) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/kirbi)
 
 # Help
 If you need help join us on [discord](https://discord.gg/A8a2yeP).
