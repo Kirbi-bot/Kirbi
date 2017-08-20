@@ -13,7 +13,7 @@ exports.server = {
 		if (suffix.toLowerCase() === "list" || suffix.trim() === "") {
 			cb({
 				embed: {
-					title: `${Kirbi.Config.serverName} Servers`,
+					title: `${Kirbi.Config.discord.serverName} Servers`,
 					description: servers.map(server => server.key).join('\n'),
 					color: Kirbi.Config.discord.defaultEmbedColor
 				}
