@@ -58,7 +58,7 @@ exports.reload = {
 			cb({
 				embed: {
 					color: Kirbi.Config.discord.defaultEmbedColor,
-					description: 'Reloaded all commands...'
+					description: `Reloaded ${Kirbi.commandCount()} commands...`
 				}
 			}, msg, true);
 		} else {
