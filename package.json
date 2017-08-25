@@ -1,18 +1,19 @@
 {
 	"name": "Kirbi",
+	"description": "A modular chat bot for Discord/Slack/& more to come.",
 	"version": "0.2.5",
-	"description": "A modular chat bot for Discord.",
+	"license": "Apache-2.0",
 	"readme": "README.md",
-	"contributors": [
-		"Matt Carroll <admin@develogix.com> (https://develogix.com)",
-		"Joseph Moran III <joseph.moraniii@gmail.com> (https://josephmoran.co)"
-	],
-	"author": "Nate Richardson <hello@naterichardson.com> (https://naterichardson.com)",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Richardson-Media-House/Kirbi.git"
 	},
-	"license": "Apache-2.0",
+	"author": "Nate Richardson <hello@naterichardson.com> (https://naterichardson.com)",
+	"contributors": [
+		"Matt Carroll <admin@develogix.com> (https://develogix.com)",
+		"Joseph Moran III <joseph.moraniii@gmail.com> (https://josephmoran.co)"
+	],
+	"main": "start.js",
 	"dependencies": {
 		"chalk": "^2.0.1",
 		"kirbi-beer-lookup": "Richardson-Media-House/kirbi-beer-lookup",
@@ -34,7 +35,6 @@
 	"devDependencies": {
 		"xo": "^0.18.2"
 	},
-	"main": "start.js",
 	"xo": {
 		"rules": {
 			"linebreak-style": ["error", "windows"],

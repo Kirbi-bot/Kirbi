@@ -1,6 +1,6 @@
 
-# Kirbi [![Kirbi!](/../util/kirbi_icon.png?raw=true)]
-A modular chat bot for Discord, using [discord.js](https://github.com/hydrabolt/discord.js/)
+# Kirbi ![Kirbi!](/../util/kirbi_icon.png?raw=true)
+A modular chat bot for Discord/Slack/& more to come.
 
 [![license](https://img.shields.io/github/license/richardson-media-house/kirbi.svg?style=flat-square&colorB=00aaff)](https://github.com/richardson-media-house/kirbi) [![Issues Open](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi.svg?style=flat-square&label=issues%20open&colorB=ff0000)](https://waffle.io/richardson-media-house/kirbi) [![Issues Accepted](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/accepted.svg?style=flat-square&label=issues%20reviewed&colorB=00aaff)](https://waffle.io/richardson-media-house/kirbi) [![Issues in Progress](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/in-progress.svg?style=flat-square&label=issues%20in%20progress&colorB=0000ff)](http://waffle.io/richardson-media-house/kirbi) [![Issues Ready](https://img.shields.io/github/issues-raw/richardson-media-house/kirbi/ready-for-review.svg?style=flat-square&label=issues%20ready&colorB=ff00aa)](http://waffle.io/richardson-media-house/kirbi)
 
@@ -8,7 +8,7 @@ Invite the bot to your server: [here](https://discordapp.com/oauth2/authorize?cl
 
 # Modules
 
-Kirbi absorbs the functionality of whatever you add to him! We've included a few base features to help with your plugins, which we will describe later (probably in a wiki or something).
+Kirbi absorbs the functionality of whatever you add to him! We've included a few base features to help with your modules, which we will describe below.
 
 Modules for Kirbi can add commands or other functionality. For example, the [kirbi-beer-lookup](https://github.com/Richardson-Media-House/kirbi-beer-lookup) module adds the !brew command which returns information on breweries and specific brews!
 
