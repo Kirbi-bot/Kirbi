@@ -2,15 +2,14 @@ const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'server'
-]
+];
 
-var servers = Kirbi.getJsonObject('/config/servers.json');
+const servers = Kirbi.getJsonObject('/config/servers.json');
 
 exports.server = {
 	usage: `list|${servers.map(server => server.key).join('|')}`,
 	process: (msg, suffix, isEdit, cb) => {
-
-		if (suffix.toLowerCase() === "list" || suffix.trim() === "") {
+		if (suffix.toLowerCase() === 'list' || suffix.trim() === '') {
 			cb({
 				embed: {
 					title: `${Kirbi.Config.discord.serverName} Servers`,
@@ -18,10 +17,8 @@ exports.server = {
 					color: Kirbi.Config.discord.defaultEmbedColor
 				}
 			}, msg);
-		}
-		else {
-			var info = servers.filter(server => server.key === suffix.toLowerCase())[0];
-
+		} else {
+			const info = servers.filter(server => server.key === suffix.toLowerCase())[0];
 			if (info) {
 				cb({
 					embed: {
@@ -33,4 +30,4 @@ exports.server = {
 			}
 		}
 	}
-}
+};

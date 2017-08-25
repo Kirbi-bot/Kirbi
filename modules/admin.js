@@ -5,31 +5,33 @@ exports.commands = [
 	'uptime',
 	'reload',
 	'servers'
-]
+];
 
-var startTime = Date.now();
+const startTime = Date.now();
 
 exports.log = {
 	usage: '<log message>',
 	description: 'logs message to bot console',
-	process: (msg, suffix) => { console.log(msg.content); }
-}
+	process: msg => {
+		console.log(msg.content);
+	}
+};
 
 exports.uptime = {
 	usage: '<command>',
 	description: 'returns the amount of time since the bot started',
 	process: (msg, suffix, isEdit, cb) => {
-		var now = Date.now();
-		var msec = now - startTime;
+		const now = Date.now();
+		let msec = now - startTime;
 		console.log(`Uptime is ${msec} milliseconds`);
-		var days = Math.floor(msec / 1000 / 60 / 60 / 24);
+		const days = Math.floor(msec / 1000 / 60 / 60 / 24);
 		msec -= days * 1000 * 60 * 60 * 24;
-		var hours = Math.floor(msec / 1000 / 60 / 60);
+		const hours = Math.floor(msec / 1000 / 60 / 60);
 		msec -= hours * 1000 * 60 * 60;
-		var mins = Math.floor(msec / 1000 / 60);
+		const mins = Math.floor(msec / 1000 / 60);
 		msec -= mins * 1000 * 60;
-		var secs = Math.floor(msec / 1000);
-		var timestr = "";
+		const secs = Math.floor(msec / 1000);
+		let timestr = '';
 		if (days > 0) {
 			timestr += `${days} days `;
 		}
@@ -49,7 +51,7 @@ exports.uptime = {
 			}
 		}, msg);
 	}
-}
+};
 
 exports.reload = {
 	process: (msg, suffix, isEdit, cb) => {
@@ -70,7 +72,7 @@ exports.reload = {
 			}, msg, true);
 		}
 	}
-}
+};
 
 exports.servers = {
 	usage: '<command>',
@@ -84,4 +86,4 @@ exports.servers = {
 			}
 		}, msg);
 	}
-}
+};

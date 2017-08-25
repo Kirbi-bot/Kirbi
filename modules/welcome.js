@@ -2,7 +2,7 @@ const Kirbi = require('../kirbi');
 
 exports.commands = [
 	'welcome'
-]
+];
 
 exports.welcome = {
 	usage: `can only be used in <#${Kirbi.Config.discord.welcomeChannel}>`,
@@ -11,7 +11,7 @@ exports.welcome = {
 		if (msg.channel.id !== Kirbi.Config.discord.welcomeChannel) {
 			return;
 		}
-		
+
 		let welcomeMessage = Kirbi.getFileContents('/extras/welcome.md');
 		if (welcomeMessage) {
 			welcomeMessage = welcomeMessage.split('=====');
@@ -27,4 +27,4 @@ exports.welcome = {
 			});
 		}
 	}
-}
+};

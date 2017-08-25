@@ -31,5 +31,17 @@
 		"kirbi-wikipedia": "Richardson-Media-House/kirbi-wikipedia",
 		"kirbi-xkcd": "Richardson-Media-House/kirbi-xkcd"
 	},
-	"main": "start.js"
+	"devDependencies": {
+		"xo": "^0.18.2"
+	},
+	"main": "start.js",
+	"xo": {
+		"rules": {
+			"linebreak-style": ["error", "windows"],
+			"no-prototype-builtins": "warn"
+		}
+	},
+	"scripts": {
+		"test": "xo"
+	}
 }
