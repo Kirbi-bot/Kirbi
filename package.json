@@ -38,7 +38,9 @@
 	"xo": {
 		"rules": {
 			"linebreak-style": ["error", "windows"],
-			"no-prototype-builtins": "warn"
+			"no-prototype-builtins": "warn",
+			"radix": "warn",
+			"guard-for-in": "warn"
 		}
 	},
 	"scripts": {
