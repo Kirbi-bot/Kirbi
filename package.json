@@ -9,7 +9,7 @@
 	],
 	"author": "Nate Richardson <hello@naterichardson.com> (https://naterichardson.com)",
 	"repository": {
-	  	"type": "git",
+		"type": "git",
 		"url": "git+https://github.com/Richardson-Media-House/Kirbi.git"
 	},
 	"license": "Apache-2.0",
@@ -26,9 +26,10 @@
 		"kirbi-urbandictionary": "Richardson-Media-House/kirbi-urbandictionary",
 		"kirbi-random": "Richardson-Media-House/kirbi-random",
 		"kirbi-rss": "Richardson-Media-House/kirbi-rss",
+		"kirbi-slack": "Richardson-Media-House/kirbi-slack",
 		"kirbi-translator": "Richardson-Media-House/kirbi-translator",
 		"kirbi-wikipedia": "Richardson-Media-House/kirbi-wikipedia",
 		"kirbi-xkcd": "Richardson-Media-House/kirbi-xkcd"
- 	},
- 	"main": "start.js"
+	},
+	"main": "start.js"
 }

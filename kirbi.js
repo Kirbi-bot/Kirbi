@@ -46,4 +46,11 @@ exports.login = function () {
 			exports.logError(e);
 		}
 	};
+	if (exports.Config.slack.enabled) {
+		try {
+			require('kirbi-slack').slackLogin();
+		} catch (e) {
+			exports.logError(e);
+		}
+	};
 }
