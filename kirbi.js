@@ -5,7 +5,7 @@ const chalk = require('chalk');
 console.log(chalk.green(`Starting Kirbi...`));
 console.log(chalk.green(`Node version: ${process.version}`));
 
-//helpers
+// Helpers
 exports.getFileArray = function (srcPath) {
 	try {
 		srcPath = path.join(path.dirname(require.main.filename), srcPath);
@@ -13,44 +13,44 @@ exports.getFileArray = function (srcPath) {
 	} catch (err) {
 		return [];
 	}
-}
+};
 exports.getFileContents = function (filePath) {
 	try {
 		return fs.readFileSync(path.join(path.dirname(require.main.filename), filePath), 'utf-8');
 	} catch (err) {
 		return '';
 	}
-}
+};
 exports.getJsonObject = function (filePath) {
 	return JSON.parse(exports.getFileContents(filePath));
-}
+};
 exports.require = function (filePath) {
 	delete require.cache[path.join(path.dirname(require.main.filename), filePath)];
 	return require(path.join(path.dirname(require.main.filename), filePath));
-}
+};
 exports.logError = function (err) {
 	console.log(chalk.red(err));
-}
+};
 
-require('./lib/auth');
-require('./lib/config');
-require('./lib/permissions');
+exports.Auth = require('./lib/auth');
+exports.Config = require('./lib/config');
+exports.Permissions = require('./lib/permissions');
 require('./lib/commands').setupCommands();
 
-//bot login
+// Bot login
 exports.login = function () {
 	if (exports.Config.discord.enabled) {
 		try {
 			require('kirbi-discord').discordLogin();
-		} catch (e) {
-			exports.logError(e);
+		} catch (err) {
+			exports.logError(err);
 		}
-	};
+	}
 	if (exports.Config.slack.enabled) {
 		try {
 			require('kirbi-slack').slackLogin();
-		} catch (e) {
-			exports.logError(e);
+		} catch (err) {
+			exports.logError(err);
 		}
-	};
-}
+	}
+};
