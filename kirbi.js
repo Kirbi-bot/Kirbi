@@ -14,6 +14,14 @@ exports.Config = require('./lib/config');
 exports.Permissions = require('./lib/permissions');
 require('./lib/commands').setupCommands();
 
+//initialize AI
+if (exports.Config.elizaEnabled && !exports.Eliza) {
+	let Eliza = exports.require('./extras/eliza');
+	exports.Eliza = new Eliza();
+	console.log('Eliza enabled.');
+	exports.Eliza.memSize = 500;
+}
+
 // Bot login
 exports.login = function () {
 	if (exports.Config.discord.enabled) {
