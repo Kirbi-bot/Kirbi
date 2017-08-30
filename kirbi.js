@@ -47,7 +47,7 @@ require('./lib/commands')(this);
 
 //initialize AI
 if (exports.Config.elizaEnabled && !exports.Eliza) {
-	let Eliza = exports.require('./extras/eliza');
+	let Eliza = require('/extras/eliza');
 	exports.Eliza = new Eliza();
 	console.log('Eliza enabled.');
 	exports.Eliza.memSize = 500;
