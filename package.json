@@ -16,6 +16,7 @@
 	"main": "start.js",
 	"dependencies": {
 		"chalk": "^2.0.1",
+		"kirbi-admin": "Richardson-Media-House/kirbi-admin",
 		"kirbi-beer-lookup": "Richardson-Media-House/kirbi-beer-lookup",
 		"kirbi-cocktail-lookup": "Richardson-Media-House/kirbi-cocktail-lookup",
 		"kirbi-dice": "Richardson-Media-House/kirbi-dice",
@@ -26,8 +27,10 @@
 		"kirbi-misc": "Richardson-Media-House/kirbi-misc",
 		"kirbi-urbandictionary": "Richardson-Media-House/kirbi-urbandictionary",
 		"kirbi-random": "Richardson-Media-House/kirbi-random",
+		"kirbi-server": "Richardson-Media-House/kirbi-server",
 		"kirbi-slack": "Richardson-Media-House/kirbi-slack",
 		"kirbi-translator": "Richardson-Media-House/kirbi-translator",
+		"kirbi-welcome": "Richardson-Media-House/kirbi-welcome",
 		"kirbi-wikipedia": "Richardson-Media-House/kirbi-wikipedia",
 		"kirbi-xkcd": "Richardson-Media-House/kirbi-xkcd"
 	},
