@@ -59,17 +59,6 @@ and make sure to include any external modules as dependencies in the `package.js
 }
 ```
 
-
-## Included Modules
-List of available modules (via `./modules/module-name`):
-
-*Modules for use when self-hosting*
-- `admin` => adds a few administrative commands for server owners and bot admins to use.
-- `server` => lists out a given list of servers and information about them.
-- `welcome` => spits out a given markdown file in a pretty embed format. Useful for making a welcome/rules channel look better than if you typed it yourself.
-
-The commands in these modules are not available on the invited version of the bot, as they are for GReY and administering the bot itself :)
-
 ## Official Modules
 List of external modules for you to include with your installation (if you wish):
 
@@ -93,17 +82,20 @@ List of external modules for you to include with your installation (if you wish)
 - [misc](https://github.com/Richardson-Media-House/kirbi-misc) => adds misc commands that don't fall into other categories
 
 ## Writing Modules
-To write a Kirbi module, create a new NPM module that exports an array named `commands` of triggers your bot will respond to. You can use a simple callback to display your message in either slack or discord (or both), depending on the features you added:
+To write a Kirbi module, create a new NPM module that exports an array named `commands` of triggers your bot will respond to. You can use a simple callback to display your message in both Slack and Discord, depending on the features you added:
 
 ```js
-exports.commands = [
-	'hello'
-]
-
-exports.hello = {
-	description: 'responds with hello!',
-	process: (msg, suffix, isEdit, cb) => { cb('hello!', msg); }
-}
+module.exports = function (config, auth) {
+	return {
+		commands: [
+			'hello'
+		],
+		hello: {
+			description: 'responds with hello!',
+			process: (msg, suffix, isEdit, cb) => { cb('hello!', msg); }
+		}
+	};
+};
 ```
 
 If you think your plugin is amazing, please let us know! We'd love to add it to our list. Currently, the bot is configured to work with external repositories with the `kirbi-` prefix, and we'd like to keep that for the official modules that our team makes :)
