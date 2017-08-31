@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "LTS"
+before_install:
+  - sudo apt-get make
+  - sudo apt-get gcc
+  - npm install -g node-gyp
+  
