@@ -40,7 +40,7 @@
 	},
 	"xo": {
 		"rules": {
-			"linebreak-style": ["error", "windows"],
+			"linebreak-style": "off",
 			"no-prototype-builtins": "warn",
 			"radix": "warn",
 			"guard-for-in": "warn",
