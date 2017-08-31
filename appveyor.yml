@@ -1,0 +1,43 @@
+environment:
+  nodejs_version: "6"
+
+version: 1.0.{build}
+
+init:
+  - ps: >-
+    Install-Product node LTS
+
+    npm config set python python2.7
+
+    npm config set msvs_version 2015
+    
+    npm install -g node-gyp
+
+    git config --global core.autocrlf true
+
+install:
+  - cmd: npm install
+
+test_script:
+  - cmd: >-
+    node --version
+
+    npm --version
+
+    npm test
+
+build: off
+
+notifications:
+- provider: Webhook
+  url: https://discordapp.com/api/webhooks/352805859346350080/i-_SpzZhlFuimtr05XAbCWrPlbB4MtkVdaRtv-xvM-0T9R1oW2Jd3wUdFXbE90uiYtX7
+  method: POST
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: true
+- provider: Slack
+  incoming_webhook: https://hooks.slack.com/services/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
+  channel: build_updates
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: true
