@@ -17,25 +17,23 @@ exports.getFileContents = function (filePath) {
 		return '';
 	}
 };
-exports.getFileArray = function (srcPath) { 
-	try { 
-	  srcPath = path.join(path.dirname(require.main.filename), srcPath); 
-	  return fs.readdirSync(srcPath).filter(file => fs.statSync(path.join(srcPath, file)).isFile()); 
-	} catch (err) { 
-	  return []; 
-	} 
+exports.getFileArray = function (srcPath) {
+	try {
+		srcPath = path.join(path.dirname(require.main.filename), srcPath);
+		return fs.readdirSync(srcPath).filter(file => fs.statSync(path.join(srcPath, file)).isFile());
+	} catch (err) {
+		return [];
+	}
 };
 exports.getJsonObject = function (filePath) {
 	return JSON.parse(exports.getFileContents(filePath));
 };
 exports.resolveMention = function (usertxt) {
-	var userid = usertxt;
+	let userid = usertxt;
 	if (usertxt.startsWith('<@!')) {
 		userid = usertxt.substr(3, usertxt.length - 4);
-	} else {
-		if (usertxt.startsWith('<@')) {
-			userid = usertxt.substr(2, usertxt.length - 3);
-		}
+	} else if (usertxt.startsWith('<@')) {
+		userid = usertxt.substr(2, usertxt.length - 3);
 	}
 	return userid;
 };
@@ -45,9 +43,9 @@ exports.Config = require('./lib/config');
 exports.Permissions = require('./lib/permissions');
 require('./lib/commands')(this);
 
-//initialize AI
+// Initialize AI
 if (exports.Config.elizaEnabled && !exports.Eliza) {
-	let Eliza = require('./extras/eliza');
+	const Eliza = require('./extras/eliza');
 	exports.Eliza = new Eliza();
 	console.log('Eliza enabled.');
 	exports.Eliza.memSize = 500;
