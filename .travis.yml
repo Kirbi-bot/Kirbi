@@ -1,5 +1,11 @@
 language: node_js
 node_js:
-  - "6"
+- '6'
 before_install:
-  - npm install -g node-gyp
+- npm install -g node-gyp
+notifications:
+  slack:
+    secure: nf1pb+fyhNkHgblItS5YmnyJAJFJKvIQ2Pk9w0kq6eFjHAkfs0VyKISIPjkhyrx7/4JucdZqEMttXjloGDznwpnYTq+I2ntqCJ+4VYXWNPkC6e7njy817bsj1CMp2shqwcrzo56iClA1lK1OYr4nELt8VzKFvbTc5KorsszKR1QqbBlS/IFRM48tYqBTAeDyr6GI5qVzhvgh1hSwyVyhQ9vRDGoC73ZsiD/AVFQ1VKObfUK6nnJi/mKJGcKfIzB8oDGA70W8LULp1ynNbcPzZwzwUINCS2czLMfG63LXu5NGZuSW+F31D3hPZKar1+B3IC3/XP+W74VodGjN+9ms7lQmiqqkWd0uEkBAoKPU0naZOHYOUQdMQmoarEb2dMcDMgLsyx1kxSbfPEbW/nabCPUWo+hZdkCA+p/MekyRQsjLbMfzaf1WnU3uY1AyYosQe0hTQG/wwIpudVgXk5AR3Aws6+hfNP8KWwAdVtnDfwDBHNIhUMlANLKFkNUXc+3uLqSnMutndBZt5MQNauTh61JhGEiLoOh060WeUn2O6kIJWRfaKhVJKtDyiGauG3Qv2Bvnfbpi1H5ULVnW3cP1gvxYbw4ohYL/Nc/jsERUiqpe+wNKSr7McN9xOhsA+bvCh7gC+8+iqr61mn/dLV/yEVtaX4v3IFWd0d+Qn8qB/74=
+branches:
+  except:
+  - hotfix
