@@ -1,7 +1,16 @@
 {
 	"debug": false,
 	"commandPrefix": "!",
-	"externalModules": ["beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "welcome", "server", "admin"],
+	"externalModules": ["mongodb", "beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "welcome", "server", "admin"],
+	"databases": {
+		"default": "mongodb",
+		"mongodb": {
+			"connection": "localhost/test",
+			"options": {
+				"useMongoClient": true
+			}
+		}
+	},
 	"elizaEnabled": true,
 	"discord": {
 		"enabled": true,
