@@ -22,9 +22,11 @@
 		"kirbi-dice": "Richardson-Media-House/kirbi-dice",
 		"kirbi-dictionary": "Richardson-Media-House/kirbi-dictionary",
 		"kirbi-discord": "Richardson-Media-House/kirbi-discord",
+		"kirbi-discord-antiraid": "Richardson-Media-House/kirbi-discord-antiraid",
 		"kirbi-discord-moderation": "Richardson-Media-House/kirbi-discord-moderation",
 		"kirbi-discord-musicplayer": "Richardson-Media-House/kirbi-discord-musicplayer",
 		"kirbi-misc": "Richardson-Media-House/kirbi-misc",
+		"kirbi-mongodb": "Richardson-Media-House/kirbi-mongodb",
 		"kirbi-urbandictionary": "Richardson-Media-House/kirbi-urbandictionary",
 		"kirbi-random": "Richardson-Media-House/kirbi-random",
 		"kirbi-rss": "Richardson-Media-House/kirbi-rss",
@@ -57,6 +59,7 @@
 		}
 	},
 	"scripts": {
+		"start": "node start",
 		"test": "xo"
 	}
 }

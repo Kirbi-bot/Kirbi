@@ -1,13 +1,22 @@
 {
 	"debug": false,
 	"commandPrefix": "!",
-	"externalModules": ["beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "welcome", "server", "admin"],
+	"externalModules": ["mongodb", "beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "welcome", "server", "admin"],
+	"databases": {
+		"default": "mongodb",
+		"mongodb": {
+			"connection": "localhost/test",
+			"options": {
+				"useMongoClient": true
+			}
+		}
+	},
 	"elizaEnabled": true,
 	"discord": {
 		"enabled": true,
 		"serverName": "insert your server name",
 		"welcomeChannel": "insert channel id of channel where you want welcome to be",
-		"modules": ["musicplayer", "moderation"],
+		"modules": ["antiraid", "musicplayer", "moderation"],
 		"defaultEmbedColor": 5592405,
 		"pruneInterval": 10,
 		"pruneMax": 100

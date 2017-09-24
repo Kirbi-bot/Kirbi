@@ -21,12 +21,8 @@ To autoload a module, add the plugin name to the `externalModules` (or the `modu
 ```json
 {
 	...
-	"externalModules": ["beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "rss"],
-	"elizaEnabled": true,
+	"externalModules": ["beer-lookup", "xkcd", "urbandictionary"],
 	"discord": {
-		"enabled": true,
-		"serverName": "insert your server name",
-		"welcomeChannel": "insert channel id of channel where you want welcome to be",
 		"modules": ["musicplayer", "moderation"],
 		...
 	}
@@ -39,21 +35,10 @@ and make sure to include any external modules as dependencies in the `package.js
 {
   ...
 	"dependencies": {
-		"chalk": "^2.0.1",
 		"kirbi-beer-lookup": "Richardson-Media-House/kirbi-beer-lookup",
-		"kirbi-cocktail-lookup": "Richardson-Media-House/kirbi-cocktail-lookup",
-		"kirbi-dice": "Richardson-Media-House/kirbi-dice",
-		"kirbi-dictionary": "Richardson-Media-House/kirbi-dictionary",
-		"kirbi-discord": "Richardson-Media-House/kirbi-discord",
-		"kirbi-discord-moderation": "Richardson-Media-House/kirbi-discord-moderation",
-		"kirbi-discord-musicplayer": "Richardson-Media-House/kirbi-discord-musicplayer",
-		"kirbi-misc": "Richardson-Media-House/kirbi-misc",
 		"kirbi-urbandictionary": "Richardson-Media-House/kirbi-urbandictionary",
-		"kirbi-random": "Richardson-Media-House/kirbi-random",
-		"kirbi-rss": "Richardson-Media-House/kirbi-rss",
-		"kirbi-translator": "Richardson-Media-House/kirbi-translator",
-		"kirbi-wikipedia": "Richardson-Media-House/kirbi-wikipedia",
 		"kirbi-xkcd": "Richardson-Media-House/kirbi-xkcd"
+		...
  	},
   ...
 }
@@ -85,7 +70,7 @@ List of external modules for you to include with your installation (if you wish)
 To write a Kirbi module, create a new NPM module that exports an array named `commands` of triggers your bot will respond to. You can use a simple callback to display your message in both Slack and Discord, depending on the features you added:
 
 ```js
-module.exports = function (config, auth) {
+module.exports = (Kirbi) => {
 	return {
 		commands: [
 			'hello'
