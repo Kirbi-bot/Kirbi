@@ -43,7 +43,7 @@
 			"linebreak-style": "off",
 			"no-prototype-builtins": "warn",
 			"radix": "warn",
-			"guard-for-in": "warn", 
+			"guard-for-in": "warn",
 			"import/no-unresolved": "off",
 			"camelcase": "off",
 			"no-negated-condition": "warn",
