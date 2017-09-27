@@ -25,6 +25,7 @@
 		"kirbi-discord-antiraid": "Richardson-Media-House/kirbi-discord-antiraid",
 		"kirbi-discord-moderation": "Richardson-Media-House/kirbi-discord-moderation",
 		"kirbi-discord-musicplayer": "Richardson-Media-House/kirbi-discord-musicplayer",
+		"kirbi-discord-welcome": "Richardson-Media-House/kirbi-discord-welcome",
 		"kirbi-misc": "Richardson-Media-House/kirbi-misc",
 		"kirbi-mongodb": "Richardson-Media-House/kirbi-mongodb",
 		"kirbi-urbandictionary": "Richardson-Media-House/kirbi-urbandictionary",
@@ -33,7 +34,6 @@
 		"kirbi-server": "Richardson-Media-House/kirbi-server",
 		"kirbi-slack": "Richardson-Media-House/kirbi-slack",
 		"kirbi-translator": "Richardson-Media-House/kirbi-translator",
-		"kirbi-welcome": "Richardson-Media-House/kirbi-welcome",
 		"kirbi-wikipedia": "Richardson-Media-House/kirbi-wikipedia",
 		"kirbi-xkcd": "Richardson-Media-House/kirbi-xkcd"
 	},

@@ -1,7 +1,7 @@
 {
 	"debug": false,
 	"commandPrefix": "!",
-	"externalModules": ["mongodb", "beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "welcome", "server", "admin"],
+	"externalModules": ["mongodb", "beer-lookup", "xkcd", "urbandictionary", "wikipedia", "cocktail-lookup", "dice", "dictionary", "misc", "random", "translator", "server", "admin"],
 	"databases": {
 		"default": "mongodb",
 		"mongodb": {
@@ -16,7 +16,7 @@
 		"enabled": true,
 		"serverName": "insert your server name",
 		"welcomeChannel": "insert channel id of channel where you want welcome to be",
-		"modules": ["antiraid", "musicplayer", "moderation"],
+		"modules": ["antiraid", "musicplayer", "moderation", "welcome"],
 		"defaultEmbedColor": 5592405,
 		"pruneInterval": 10,
 		"pruneMax": 100
