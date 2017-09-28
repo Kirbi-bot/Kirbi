@@ -6,18 +6,18 @@ console.log(chalk.green(`Starting Kirbi...`));
 console.log(chalk.green(`Node version: ${process.version}`));
 
 // Helpers
-exports.require = function (filePath) {
+exports.require = filePath => {
 	delete require.cache[path.join(path.dirname(require.main.filename), filePath)];
 	return require(path.join(path.dirname(require.main.filename), filePath))(this);
 };
-exports.getFileContents = function (filePath) {
+exports.getFileContents = filePath => {
 	try {
 		return fs.readFileSync(path.join(path.dirname(require.main.filename), filePath), 'utf-8');
 	} catch (err) {
 		return '';
 	}
 };
-exports.getFileArray = function (srcPath) {
+exports.getFileArray = srcPath => {
 	try {
 		srcPath = path.join(path.dirname(require.main.filename), srcPath);
 		return fs.readdirSync(srcPath).filter(file => fs.statSync(path.join(srcPath, file)).isFile());
@@ -25,10 +25,10 @@ exports.getFileArray = function (srcPath) {
 		return [];
 	}
 };
-exports.getJsonObject = function (filePath) {
+exports.getJsonObject = filePath => {
 	return JSON.parse(exports.getFileContents(filePath));
 };
-exports.resolveMention = function (usertxt) {
+exports.resolveMention = usertxt => {
 	let userid = usertxt;
 	if (usertxt.startsWith('<@!')) {
 		userid = usertxt.substr(3, usertxt.length - 4);
@@ -52,7 +52,7 @@ if (exports.Config.elizaEnabled && !exports.Eliza) {
 }
 
 // Bot login
-exports.login = function () {
+exports.login = () => {
 	if (exports.Config.discord.enabled) {
 		try {
 			require('kirbi-discord').discordLogin(this);
