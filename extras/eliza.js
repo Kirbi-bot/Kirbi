@@ -588,7 +588,7 @@ function ElizaBot(noRandomFlag) {
 	this.reset();
 }
 
-ElizaBot.prototype.reset = function () {
+ElizaBot.prototype.reset = () => {
 	this.quit = false;
 	this.mem = [];
 	this.lastchoice = [];
@@ -603,29 +603,29 @@ ElizaBot.prototype.reset = function () {
 
 ElizaBot.prototype._dataParsed = false;
 
-ElizaBot.prototype._init = function () {
-    // Install ref to object
-    // ElizaBot.prototype.global=self;
-    // let m=ElizaBot.prototype.global;
+ElizaBot.prototype._init = () => {
+	// Install ref to object
+	// ElizaBot.prototype.global=self;
+	// let m=ElizaBot.prototype.global;
 
-    // parse data and convert it from canonical form to internal use
-    // prodoce synonym list
+	// parse data and convert it from canonical form to internal use
+	// prodoce synonym list
 	const synPatterns = {};
 	if ((elizaSynons) && (typeof elizaSynons === 'object')) {
 		for (const i in elizaSynons) {
 			synPatterns[i] = '(' + i + '|' + elizaSynons[i].join('|') + ')';
 		}
 	}
-    // Check for keywords or install empty structure to prevent any errors
+	// Check for keywords or install empty structure to prevent any errors
 	if ((!elizaKeywords) || (typeof elizaKeywords.length === 'undefined')) {
 		elizaKeywords = [
 			['###', 0, [
-                ['###', []]
+				['###', []]
 			]]
 		];
 	}
-    // 1st convert rules to regexps
-    // expand synonyms and insert asterisk expressions for backtracking
+	// 1st convert rules to regexps
+	// expand synonyms and insert asterisk expressions for backtracking
 	const sre = /@(\S+)/;
 	const are = /(\S)\s*\*\s*(\S)/;
 	const are1 = /^\s*\*\s*(\S)/;
@@ -637,7 +637,7 @@ ElizaBot.prototype._init = function () {
 		elizaKeywords[k][3] = k; // Save original index for sorting
 		for (let i = 0; i < rules.length; i++) {
 			const r = rules[i];
-            // Check mem flag and store it as decomp's element 2
+			// Check mem flag and store it as decomp's element 2
 			if (r[0].charAt(0) === '$') {
 				let ofs = 1;
 				while (r[0].charAt[ofs] === ' ') {
@@ -648,14 +648,14 @@ ElizaBot.prototype._init = function () {
 			} else {
 				r[2] = false;
 			}
-            // Expand synonyms (v.1.1: work around lambda function)
+			// Expand synonyms (v.1.1: work around lambda function)
 			let m = sre.exec(r[0]);
 			while (m) {
 				const sp = (synPatterns[m[1]]) ? synPatterns[m[1]] : m[1];
 				r[0] = r[0].substring(0, m.index) + sp + r[0].substring(m.index + m[0].length);
 				m = sre.exec(r[0]);
 			}
-            // Expand asterisk expressions (v.1.1: work around lambda function)
+			// Expand asterisk expressions (v.1.1: work around lambda function)
 			if (are3.test(r[0])) {
 				r[0] = '\\s*(.*)\\s*';
 			} else {
@@ -695,14 +695,14 @@ ElizaBot.prototype._init = function () {
 					r[0] = lp + '\\s*(.*)\\s*';
 				}
 			}
-            // Expand white space
+			// Expand white space
 			r[0] = r[0].replace(wsre, '\\s+');
 			wsre.lastIndex = 0;
 		}
 	}
-    // Now sort keywords by rank (highest first)
+	// Now sort keywords by rank (highest first)
 	elizaKeywords.sort(this._sortKeywords);
-    // And compose regexps and refs for pres and posts
+	// And compose regexps and refs for pres and posts
 	ElizaBot.prototype.pres = {};
 	ElizaBot.prototype.posts = {};
 	if ((elizaPres) && (elizaPres.length > 0)) {
@@ -713,7 +713,7 @@ ElizaBot.prototype._init = function () {
 		}
 		ElizaBot.prototype.preExp = new RegExp('\\b(' + a.join('|') + ')\\b');
 	} else {
-        // Default (should not match)
+		// Default (should not match)
 		ElizaBot.prototype.preExp = /####/;
 		ElizaBot.prototype.pres['####'] = '####';
 	}
@@ -725,27 +725,27 @@ ElizaBot.prototype._init = function () {
 		}
 		ElizaBot.prototype.postExp = new RegExp('\\b(' + a.join('|') + ')\\b');
 	} else {
-        // Default (should not match)
+		// Default (should not match)
 		ElizaBot.prototype.postExp = /####/;
 		ElizaBot.prototype.posts['####'] = '####';
 	}
-    // Check for elizaQuits and install default if missing
+	// Check for elizaQuits and install default if missing
 	if ((!elizaQuits) || (typeof elizaQuits.length === 'undefined')) {
 		elizaQuits = [];
 	}
-    // Done
+	// Done
 	ElizaBot.prototype._dataParsed = true;
 };
 
 ElizaBot.prototype._sortKeywords = function (a, b) {
-    // Sort by rank
+	// Sort by rank
 	if (a[1] > b[1]) {
 		return -1;
-	}	else if (a[1] < b[1]) {
+	} else if (a[1] < b[1]) {
 		return 1;
 	} else if (a[3] > b[3]) {
 		return 1;
-	}	else if (a[3] < b[3]) {
+	} else if (a[3] < b[3]) {
 		return -1;
 	}
 	return 0;
@@ -757,26 +757,26 @@ ElizaBot.prototype.transform = function (text) {
 	}
 	let rpl = '';
 	this.quit = false;
-    // Unify text string
+	// Unify text string
 	text = text.toLowerCase();
 	text = text.replace(/@#\$%\^&\*\(\)_\+=~`\{\[\}\]\|:;<>\/\\\t/g, ' ');
 	text = text.replace(/\s+-+\s+/g, '.');
 	text = text.replace(/\s*[,.?!;]+\s*/g, '.');
 	text = text.replace(/\s*\bbut\b\s*/g, '.');
 	text = text.replace(/\s{2,}/g, ' ');
-    // Split text in part sentences and loop through them
+	// Split text in part sentences and loop through them
 	const parts = text.split('.');
 	for (let i = 0; i < parts.length; i++) {
 		let part = parts[i];
 		if (part !== '') {
-            // Check for quit expression
+			// Check for quit expression
 			for (let q = 0; q < elizaQuits.length; q++) {
 				if (elizaQuits[q] === part) {
 					this.quit = true;
 					return this.getFinal();
 				}
 			}
-            // Preprocess (v.1.1: work around lambda function)
+			// Preprocess (v.1.1: work around lambda function)
 			let m = this.preExp.exec(part);
 			if (m) {
 				let lp = '';
@@ -789,7 +789,7 @@ ElizaBot.prototype.transform = function (text) {
 				part = lp + rp;
 			}
 			this.sentence = part;
-            // Loop trough keywords
+			// Loop trough keywords
 			for (let k = 0; k < elizaKeywords.length; k++) {
 				if (part.search(new RegExp('\\b' + elizaKeywords[k][0] + '\\b', 'i')) >= 0) {
 					rpl = this._execRule(k);
@@ -800,9 +800,9 @@ ElizaBot.prototype.transform = function (text) {
 			}
 		}
 	}
-    // Nothing matched try mem
+	// Nothing matched try mem
 	rpl = this._memGet();
-    // If nothing in mem, so try xnone
+	// If nothing in mem, so try xnone
 	if (rpl === '') {
 		this.sentence = ' ';
 		const k = this._getRuleIndexByKey('xnone');
@@ -817,7 +817,7 @@ ElizaBot.prototype.transform = function (text) {
 	return rpl;
 };
 
-ElizaBot.prototype._execRule = function (k) {
+ElizaBot.prototype._execRule = k => {
 	const rule = elizaKeywords[k];
 	const decomps = rule[2];
 	const paramre = /\(([0-9]+)\)/;
@@ -839,10 +839,10 @@ ElizaBot.prototype._execRule = function (k) {
 			let rpl = reasmbs[ri];
 			if (this.debug) {
 				console.log('match:\nkey: ' + elizaKeywords[k][0] +
-                '\nrank: ' + elizaKeywords[k][1] +
-                '\ndecomp: ' + decomps[i][0] +
-                '\nreasmb: ' + rpl +
-                '\nmemflag: ' + memflag);
+					'\nrank: ' + elizaKeywords[k][1] +
+					'\ndecomp: ' + decomps[i][0] +
+					'\nreasmb: ' + rpl +
+					'\nmemflag: ' + memflag);
 			}
 			if (rpl.search('^goto ', 'i') === 0) {
 				const ki = this._getRuleIndexByKey(rpl.substring(5));
@@ -850,14 +850,14 @@ ElizaBot.prototype._execRule = function (k) {
 					return this._execRule(ki);
 				}
 			}
-            // Substitute positional params (v.1.1: work around lambda function)
+			// Substitute positional params (v.1.1: work around lambda function)
 			let m1 = paramre.exec(rpl);
 			if (m1) {
 				let lp = '';
 				let rp = rpl;
 				while (m1) {
-					let param = m[parseInt(m1[1])];
-                    // Postprocess param
+					let param = m[parseInt(m1[1], 10)];
+					// Postprocess param
 					let m2 = this.postExp.exec(param);
 					if (m2) {
 						let lp2 = '';
@@ -878,7 +878,7 @@ ElizaBot.prototype._execRule = function (k) {
 			rpl = this._postTransform(rpl);
 			if (memflag) {
 				this._memSave(rpl);
-			}	else {
+			} else {
 				return rpl;
 			}
 		}
@@ -886,8 +886,8 @@ ElizaBot.prototype._execRule = function (k) {
 	return '';
 };
 
-ElizaBot.prototype._postTransform = function (s) {
-    // Final cleanings
+ElizaBot.prototype._postTransform = s => {
+	// Final cleanings
 	s = s.replace(/\s{2,}/g, ' ');
 	s = s.replace(/\s+\./g, '.');
 	if ((elizaPostTransforms) && (elizaPostTransforms.length > 0)) {
@@ -896,7 +896,7 @@ ElizaBot.prototype._postTransform = function (s) {
 			elizaPostTransforms[i].lastIndex = 0;
 		}
 	}
-    // Capitalize first char (v.1.1: work around lambda function)
+	// Capitalize first char (v.1.1: work around lambda function)
 	if (this.capitalizeFirstLetter) {
 		const re = /^([a-z])/;
 		const m = re.exec(s);
@@ -907,7 +907,7 @@ ElizaBot.prototype._postTransform = function (s) {
 	return s;
 };
 
-ElizaBot.prototype._getRuleIndexByKey = function (key) {
+ElizaBot.prototype._getRuleIndexByKey = key => {
 	for (let k = 0; k < elizaKeywords.length; k++) {
 		if (elizaKeywords[k][0] === key) {
 			return k;
@@ -916,14 +916,14 @@ ElizaBot.prototype._getRuleIndexByKey = function (key) {
 	return -1;
 };
 
-ElizaBot.prototype._memSave = function (t) {
+ElizaBot.prototype._memSave = t => {
 	this.mem.push(t);
 	if (this.mem.length > this.memSize) {
 		this.mem.shift();
 	}
 };
 
-ElizaBot.prototype._memGet = function () {
+ElizaBot.prototype._memGet = () => {
 	if (this.mem.length > 0) {
 		if (this.noRandom) {
 			return this.mem.shift();
@@ -940,14 +940,14 @@ ElizaBot.prototype._memGet = function () {
 	return '';
 };
 
-ElizaBot.prototype.getFinal = function () {
+ElizaBot.prototype.getFinal = () => {
 	if (!elizaFinals) {
 		return '';
 	}
 	return elizaFinals[Math.floor(Math.random() * elizaFinals.length)];
 };
 
-ElizaBot.prototype.getInitial = function () {
+ElizaBot.prototype.getInitial = () => {
 	if (!elizaInitials) {
 		return '';
 	}
