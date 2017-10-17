@@ -588,7 +588,7 @@ function ElizaBot(noRandomFlag) {
 	this.reset();
 }
 
-ElizaBot.prototype.reset = () => {
+ElizaBot.prototype.reset = function () {
 	this.quit = false;
 	this.mem = [];
 	this.lastchoice = [];
@@ -603,7 +603,7 @@ ElizaBot.prototype.reset = () => {
 
 ElizaBot.prototype._dataParsed = false;
 
-ElizaBot.prototype._init = () => {
+ElizaBot.prototype._init = function () {
 	// Install ref to object
 	// ElizaBot.prototype.global=self;
 	// let m=ElizaBot.prototype.global;
@@ -817,7 +817,7 @@ ElizaBot.prototype.transform = function (text) {
 	return rpl;
 };
 
-ElizaBot.prototype._execRule = k => {
+ElizaBot.prototype._execRule = function (k) {
 	const rule = elizaKeywords[k];
 	const decomps = rule[2];
 	const paramre = /\(([0-9]+)\)/;
@@ -886,7 +886,7 @@ ElizaBot.prototype._execRule = k => {
 	return '';
 };
 
-ElizaBot.prototype._postTransform = s => {
+ElizaBot.prototype._postTransform = function (s) {
 	// Final cleanings
 	s = s.replace(/\s{2,}/g, ' ');
 	s = s.replace(/\s+\./g, '.');
@@ -907,7 +907,7 @@ ElizaBot.prototype._postTransform = s => {
 	return s;
 };
 
-ElizaBot.prototype._getRuleIndexByKey = key => {
+ElizaBot.prototype._getRuleIndexByKey = function (key) {
 	for (let k = 0; k < elizaKeywords.length; k++) {
 		if (elizaKeywords[k][0] === key) {
 			return k;
@@ -916,14 +916,14 @@ ElizaBot.prototype._getRuleIndexByKey = key => {
 	return -1;
 };
 
-ElizaBot.prototype._memSave = t => {
+ElizaBot.prototype._memSave = function (t) {
 	this.mem.push(t);
 	if (this.mem.length > this.memSize) {
 		this.mem.shift();
 	}
 };
 
-ElizaBot.prototype._memGet = () => {
+ElizaBot.prototype._memGet = function () {
 	if (this.mem.length > 0) {
 		if (this.noRandom) {
 			return this.mem.shift();
@@ -940,14 +940,14 @@ ElizaBot.prototype._memGet = () => {
 	return '';
 };
 
-ElizaBot.prototype.getFinal = () => {
+ElizaBot.prototype.getFinal = function () {
 	if (!elizaFinals) {
 		return '';
 	}
 	return elizaFinals[Math.floor(Math.random() * elizaFinals.length)];
 };
 
-ElizaBot.prototype.getInitial = () => {
+ElizaBot.prototype.getInitial = function () {
 	if (!elizaInitials) {
 		return '';
 	}
