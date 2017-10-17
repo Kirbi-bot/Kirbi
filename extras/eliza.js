@@ -839,10 +839,10 @@ ElizaBot.prototype._execRule = function (k) {
 			let rpl = reasmbs[ri];
 			if (this.debug) {
 				console.log('match:\nkey: ' + elizaKeywords[k][0] +
-				'\nrank: ' + elizaKeywords[k][1] +
-				'\ndecomp: ' + decomps[i][0] +
-				'\nreasmb: ' + rpl +
-				'\nmemflag: ' + memflag);
+					'\nrank: ' + elizaKeywords[k][1] +
+					'\ndecomp: ' + decomps[i][0] +
+					'\nreasmb: ' + rpl +
+					'\nmemflag: ' + memflag);
 			}
 			if (rpl.search('^goto ', 'i') === 0) {
 				const ki = this._getRuleIndexByKey(rpl.substring(5));
