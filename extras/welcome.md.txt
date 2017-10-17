@@ -1,6 +1,6 @@
 Welcome to the GReY Discord Server
 -----
-We are an adult gaming community focused on bullshit-free gaming experiences on all platforms and genres. We welcome all types/activity levels of gamers, but are adult gamers with a few evenings a week on average. We enjoy gaming on Xbox One, PS4, PC, and more! Please join us on our SubReddit if you haven't (<https://reddit.com/r/grey_online>), as well as check out our landing page for links to social media and all that garbage (<https://greyonline.net/>).
+We are an adult gaming community focused on bullshit-free gaming experiences on all platforms and genres. We welcome all types/activity levels of gamers, but are adult gamers with a few evenings a week on average. We enjoy gaming on Xbox One, PS4, PC, and more! Please join us on our subreddit if you haven't (<https://reddit.com/r/grey_online>), as well as check out our landing page for links to social media and all that garbage (<https://greyonline.net/>).
 
 This community was founded by close friends, and kept growing as we added more and more like-minded gamers focused on having a close-knit group to game with.
 
@@ -29,12 +29,16 @@ While most of our conversations happens in the main <#223806376596602880> channe
 
 =====
 
+Play Together!
+-----
+We also host a variety of game servers (usually geared towards survival-style games), that you as a member get access to! Just type `!server list` to see the full list of games you can join us on, then you can type `!server <game>` to see details for that game! This list conveniently includes the names of Clans/Guilds we have started on the corresponding games, so we can all band together.
+
+=====
+
 Support
 -----
 Lastly, we'd love your help supporting the community!
 
 You can donate here: <https://www.paypal.me/nebula>
-OR
 send bitcoin to: `1PxwKxJiDdhpX14YKjGfwsPUberN8aK5Ka`
-OR
 send Ethereum to: `0x02c83E52f8018612da24012B3953E7AF6b805c30`
