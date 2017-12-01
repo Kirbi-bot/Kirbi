@@ -50,21 +50,26 @@ List of external modules for you to include with your installation (if you wish)
 *API-Specific Modules*
 - [slack](https://github.com/Richardson-Media-House/kirbi-slack) => adds Slack support to Kirbi
 - [discord](https://github.com/Richardson-Media-House/kirbi-discord) => adds Discord support to Kirbi
+- [discord-antiraid](https://github.com/Richardson-Media-House/kirbi-discord-antiraid) => monitors join rates to prevent attempts to raid the server
 - [discord-moderation](https://github.com/Richardson-Media-House/kirbi-discord-moderation) => adds a collection of Discord-specific moderation commands
 - [discord-musicplayer](https://github.com/Richardson-Media-House/kirbi-discord-musicplayer) => adds commands to play music in voice channels
+- [discord-welcome](https://github.com/Richardson-Media-House/kirbi-discord-welcome) => adds the ability to add nicely formatted text to your welcome channel
 
 *General Modules*
-- [xkcd](https://github.com/Richardson-Media-House/kirbi-xkcd) => adds the !xkcd command
-- [wikipedia](https://github.com/Richardson-Media-House/kirbi-wikipedia) => adds the !wiki command
+- [admin](https://github.com/Richardson-Media-House/kirbi-admin) => adds a few administrative commands for server owners and bot admins to use
+- [beer-lookup](https://github.com/Richardson-Media-House/kirbi-beer-lookup) => adds the !brew command
+- [cocktail-lookup](https://github.com/Richardson-Media-House/kirbi-cocktail-lookup) => adds the !cocktail command
+- [dice](https://github.com/Richardson-Media-House/kirbi-dice) => adds the !roll command
+- [dictionary](https://github.com/Richardson-Media-House/kirbi-dictionary) => adds the !define command
+- [misc](https://github.com/Richardson-Media-House/kirbi-misc) => adds misc commands that don't fall into other categories
+- [mongodb](https://github.com/Richardson-Media-House/kirbi-mongodb) => adds support for MongoDB via Mongoose
 - [urbandictionary](https://github.com/Richardson-Media-House/kirbi-urbandictionary) => adds the !urban command
 - [random](https://github.com/Richardson-Media-House/kirbi-random) => adds a bunch of random fact commands and fun stuff
-- [dictionary](https://github.com/Richardson-Media-House/kirbi-dictionary) => adds the !define command
-- [dice](https://github.com/Richardson-Media-House/kirbi-dice) => adds the !roll command
-- [cocktail-lookup](https://github.com/Richardson-Media-House/kirbi-cocktail-lookup) => adds the !cocktail command
-- [beer-lookup](https://github.com/Richardson-Media-House/kirbi-beer-lookup) => adds the !brew command
-- [translator](https://github.com/Richardson-Media-House/kirbi-translator) => adds translation commands
 - [rss](https://github.com/Richardson-Media-House/kirbi-rss) => adds rss feed related commands
-- [misc](https://github.com/Richardson-Media-House/kirbi-misc) => adds misc commands that don't fall into other categories
+- [server](https://github.com/Richardson-Media-House/kirbi-server) => adds the !servers command, and the ability to list out a custom list of server info
+- [translator](https://github.com/Richardson-Media-House/kirbi-translator) => adds translation commands
+- [wikipedia](https://github.com/Richardson-Media-House/kirbi-wikipedia) => adds the !wiki command
+- [xkcd](https://github.com/Richardson-Media-House/kirbi-xkcd) => adds the !xkcd command
 
 ## Writing Modules
 To write a Kirbi module, create a new NPM module that exports an array named `commands` of triggers your bot will respond to. You can use a simple callback to display your message in both Slack and Discord, depending on the features you added:
